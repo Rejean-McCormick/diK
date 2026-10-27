@@ -1,122 +1,206 @@
-# diK — Implémentation 1.0.0-alpha.6
+# diK — Dictionaries and Semantic Identities for Kristal
 
-**Statut : version alpha**, pas le logiciel 1.0 certifié. Ce dépôt inclut le socle fonctionnel v0.3, de nouveaux modules 1.0 et la [spécification candidate.2](spec/diK-1.0/START_HERE.md).
+**diK** is an offline-first Python toolkit for managing multilingual Kristal dictionaries, auditing language coverage, exploring semantic concepts, and reviewing external Wikidata mappings without changing canonical semantic identities.
 
-Le graphe KQ/KP reste la source de vérité; les mots sont dans les dictionnaires, et les Wikidata Q/P sont des identifiants *externes* reliés par crosswalk approuvé. Une projection enrichie ne supprime ni ne renomme les identifiants KQ/KP.
+> **Status: `1.0.0-alpha.7` — experimental software, not a certified 1.0 release.**
+> This repository combines the established v0.3 functionality with candidate 1.0 modules and the [diK 1.0 candidate specification](spec/diK-1.0/START_HERE.md). It targets **Kristal Framework `11.0.0-draft.3`**. See [Implementation Status](IMPLEMENTATION_STATUS.md) for unfinished work and limitations.
 
-## Démarrage hors ligne
+## Core principles
+
+- **Stable semantic identities:** Kristal's KQ/KP graph is the source of truth. Words and translations live in separate dictionary layers.
+- **External IDs stay external:** Wikidata Q/P identifiers are linked through reviewed crosswalks; they never replace or automatically merge KQ/KP identities.
+- **Traceable changes:** Curated dictionaries, import snapshots, and proposed crosswalk revisions are published separately rather than silently overwriting canonical data.
+- **Reversible projections:** Generate readable, language-specific views while preserving the information needed to restore the original graph.
+- **Offline by default:** Inspection, coverage, indexing, projection, and local imports do not require a network connection. Network operations are explicit.
+
+## Features
+
+| Area | Capabilities |
+| --- | --- |
+| Project inspection | Validate Kristal graphs, identity registries, catalogs, and external crosswalks. |
+| Multilingual dictionaries | Audit and resolve labels, compare lexical layers, and identify conflicting preferred terms or shared terms. |
+| Language coverage | Report missing, fallback, and directly available labels for KQ/KP concepts, including multi-project portfolios. |
+| Search | Build a rebuildable SQLite index and look up lexical candidates by term and language. A candidate is **not** an approved identity match. |
+| Projections | Export compact or verbose, annotated or clean views; verify and restore reversible JSON projections. |
+| Review and curation | Record append-only review decisions, publish new lexical catalogs, and propose controlled crosswalk revisions. |
+| Wikidata | Import approved external labels, compare snapshots, inspect redirect observations, and process large local dumps with checkpoints. |
+| Local web interface | Browse concepts and translations, inspect coverage, and export projections in a localhost-only workbench. |
+
+## Requirements
+
+- Python **3.11 or newer**
+- `jsonschema >= 4.21, < 5` (installed automatically)
+- No database server required; the optional search index uses SQLite.
+
+## Quick start
+
+Run these commands from the repository root:
 
 ```bash
 python -m pip install -e .
+
+dik --version
 dik project inspect --project examples/demo/dik.project.json
+dik dictionaries audit --project examples/demo/dik.project.json
 dik coverage report --project examples/demo/dik.project.json --locales fr,en,fr-CA
-dik index build --project examples/demo/dik.project.json --output /tmp/dik-search.sqlite
-dik index lookup --project examples/demo/dik.project.json --index /tmp/dik-search.sqlite --term 'Saint Augustin' --locale fr --kind KQ
-dik serve --project examples/demo/dik.project.json --index /tmp/dik-search.sqlite --port 8765
-# Option locale : créer des catalogues candidats sans écrire dans le Kristal
-dik serve --project examples/demo/dik.project.json --index /tmp/dik-search.sqlite --workspace /tmp/dik-revisions --port 8765
 ```
 
-### Flux de travail
-
-- `dik dictionaries audit|resolve|compare|conflicts|conflict-detail` : contrôler les lexiques, rapprocher les observations de couches et expliquer les ambiguïtés **sans fusionner les KQ/KP**.
-- `dik curate publish` : créer une **nouvelle** version de dictionnaires revue, sans modifier les anciens.
-- `dik index build|lookup` : index local reconstructible et candidats lexicaux (jamais identité acceptée).
-- `dik review append|list` : journal append-only de décisions avec preuves KS; aucune signature d'identité forte.
-- `dik reconcile` : nouvelle révision de crosswalk externe, contrôlée par le Framework et soumise au propriétaire.
-- `dik portfolio coverage` : complétude multi-Kristals et par langue.
-- `dik legacy plan|verify` : plan non exécutable; l'Authoring Kit est seul responsable de publier un nouveau canon.
-- `dik patch verify` : vérifier un patch candidat, sans appliquer.
-- `dik wikidata import-local` et `dik sync import-local` : importer depuis un dump local, garder provenance et snapshots.
-- `dik projection export|verify|restore` : sortie annotée/épurée et retour exact au canon depuis le JSON réversible.
-- `dik serve` : atelier Web local : concepts, correspondances, matrice linguistique paginée, projection épurée/annotée et export réversible. Par défaut **lecture seule**; avec `--workspace`, création de **catalogues lexicaux candidats isolés**, sans modification canonique ni authentification multi-acteur.
-
-Voir `dik --help`, puis `dik <module> --help` pour les paramètres exacts.
-
-## Conformité et sécurité
-
-Les nouveaux `contracts/*.json` sont **candidats** et ne modifient pas les contrats officiels du Framework 11.0.0-draft.3. Les sources référencées sont verrouillées dans la spécification; leurs empreintes doivent être vérifiées avant une release stable.
-
-Les noms de réviseurs sont pour l'instant déclaratifs; une preuve d'authentification est nécessaire avant de considérer une gouvernance multi-acteurs comme fiable. Les sauvegardes, les benchmarks réels, la synchronisation Wikidata distribuée et la certification cross-repo restent à effectuer.
-
-Lire [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) pour la liste précise de ce qui n'est **pas** encore livré.
-
-Licence : AGPL-3.0-or-later (voir `LICENSE`). Python >= 3.11; `jsonschema >=4.21,<5`.
-
-## Interface locale alpha.2 — parcours
-
-Après `dik serve`, ouvrir `http://127.0.0.1:8765/`. L'interface suit trois tâches : **chercher un concept et vérifier sa traduction**, **voir les manques linguistiques**, **lire ou exporter un Kristal**. Les diagnostics et endpoints JSON sont secondaires.
-
-La recherche inverse demande un index SQLite `--index` construit auparavant; sans index, le formulaire explique comment le créer. La couverture fonctionne sans cet index. L’atelier est exclusivement lié à `127.0.0.1`. Aucun service public, aucune API d’approbation Wikidata et aucune signature de réviseur ne sont fournis.
-
-L’option `--workspace` permet seulement de créer une nouvelle révision de dictionnaire avec nom de réviseur *déclaratif*. Le dossier doit être distinct du projet canonique. Le fichier de projet ne bascule pas automatiquement vers la nouvelle révision. Consultez [la spécification UI et sécurité](docs/docs/19_ATELIER_WEB_v1-alpha2.md).
-
-## Nouveauté alpha.3 — détecter les désaccords entre dictionnaires
+Create a local search index and look up a term:
 
 ```bash
-dik index build --project examples/demo/dik.project.json --output /tmp/dik-alpha3-index.sqlite
-dik dictionaries conflicts --project examples/demo/dik.project.json --index /tmp/dik-alpha3-index.sqlite --locale fr
-dik dictionaries compare --project examples/demo/dik.project.json --index /tmp/dik-alpha3-index.sqlite --locale fr --id KQ1001
+dik index build \
+  --project examples/demo/dik.project.json \
+  --output /tmp/dik-search.sqlite
+
+dik index lookup \
+  --project examples/demo/dik.project.json \
+  --index /tmp/dik-search.sqlite \
+  --term 'Saint Augustin' --locale fr --kind KQ
 ```
 
-La fiche KQ présente désormais les observations de chaque couche et leur provenance. Un écran de liste des contradictions se trouve dans **Concepts et traductions**, sans nouvel onglet technique. Les anciens index SQLite doivent être reconstruits pour les nouvelles commandes, tandis que les anciennes projections diK restent compatibles. Voir [la spécification d'implémentation](docs/docs/20_CONCILIATION_LEXICALE_v1-alpha3.md).
+The lookup returns lexical **candidates**, not automatically accepted equivalences.
 
-
-## Alpha.4 — téléchargements Wikidata et comparaison de snapshots
-
-Les nouveaux parcours sont **explicites** : `dik sync fetch` récupère un dump HTTPS officiel avec possibilité de reprise HTTP conditionnelle ; `dik sync import-mirror` exige un SHA-256 approuvé indépendamment ; `dik sync diff` détecte les changements lexicaux entre catalogues importés, en flux et sans modifier le canon. Voir [la documentation détaillée](docs/docs/21_MIROIR_WIKIDATA_REPRENABLE_v1-alpha4.md).
-
-Les dumps locaux historiques restent pris en charge. Aucun traitement automatique de redirections Wikidata ni ingestion de deltas arbitraires n'est annoncé.
-
-
-## Alpha.5 — évolutions d’identité Wikidata
-
-`dik sync evolution` produit un **rapport de revue uniquement** sur des observations externes **normalisées** de redirections Q/P, de retraits et de scissions candidates. Il suit les chaînes de redirection et détecte les collisions avec les mappings actifs sans fusionner de KQ/KP et sans modifier le crosswalk. Le rapport indique les informations de provenance fournies par la source et les empreintes, mais ne les confond pas avec une preuve d’équivalence.
-
-Voir [la documentation alpha.5](docs/docs/22_EVOLUTIONS_WIKIDATA_v1-alpha5.md) pour le format, les commandes et les limites. **L’extraction ciblée des redirections depuis les réponses officielles MediaWiki est fournie en alpha.6 ; le moteur de deltas global reste à développer.**
-
-
-## Alpha.6 — Sources officielles de redirection Wikidata
-
-Deux parcours **explicites et séparés** :
-
-1. `dik sync probe-redirects` interroge par lots l’API officielle MediaWiki **uniquement** pour les Q/P déjà présents dans des alignements exacts approuvés. Nécessite l’accès Internet, un User-Agent identifiable et un opérateur conscient des quotas. Archive les réponses JSONL sans modifier d’identités.
-2. `dik sync extract-redirects` normalise les réponses API enregistrées (`action=query&redirects=1`, JSON ou JSONL) en événements immuables compatibles avec `dik sync evolution`. Les SHA-256 sont vérifiables et les sources conservées. Les pages manquantes ne deviennent **jamais** automatiquement des retraits.
+### Launch the local web workbench
 
 ```bash
-# Parcours réseau ciblé (sur demande seulement)
-dik sync probe-redirects \
+dik serve \
+  --project examples/demo/dik.project.json \
+  --index /tmp/dik-search.sqlite \
+  --port 8765
+```
+
+Open **http://127.0.0.1:8765/** in your browser.
+
+The workbench supports three primary workflows: finding a concept and checking its translations, identifying missing language coverage, and reading or exporting a Kristal projection. It is **read-only by default**. Reverse term search requires an index created beforehand; coverage reporting does not.
+
+For optional, isolated lexical curation, provide a workspace **outside the canonical project**:
+
+```bash
+dik serve \
+  --project examples/demo/dik.project.json \
+  --index /tmp/dik-search.sqlite \
+  --workspace /tmp/dik-revisions \
+  --port 8765
+```
+
+This creates **candidate dictionary revisions only**. It does not change the canonical graph, approve Wikidata mappings, or automatically activate new catalogs. Reviewer names are currently declarative, not cryptographically authenticated. The server binds to loopback and is **not intended for public or multi-user deployment**.
+
+## Command reference
+
+| Command | Purpose |
+| --- | --- |
+| `dik project inspect` | Inspect and validate a project. |
+| `dik dictionaries audit\|resolve` | Audit dictionary layers and resolve labels. |
+| `dik dictionaries compare\|conflicts\|conflict-detail` | Examine lexical disagreements with provenance, without merging identities. |
+| `dik coverage report` | Analyze coverage by language and KQ/KP family. |
+| `dik portfolio coverage` | Analyze coverage across multiple Kristal projects. |
+| `dik index build\|lookup` | Build the local SQLite index and search for lexical candidates. |
+| `dik projection export\|verify\|restore` | Produce, check, and restore reversible projections. |
+| `dik review append\|list` | Maintain an append-only decision journal. |
+| `dik curate publish` | Publish a new curated dictionary revision. |
+| `dik reconcile` | Generate a candidate crosswalk revision from reviewed decisions. |
+| `dik patch verify` | Validate a proposed semantic patch without applying it. |
+| `dik legacy plan\|verify` | Prepare and verify non-executable legacy migration plans. |
+| `dik wikidata import-local` | Import labels from an existing local Wikidata dump. |
+| `dik sync ...` | Handle snapshots, mirrored imports, differences, and identity-evolution observations. |
+| `dik serve` | Start the local web workbench. |
+
+Use `dik --help` and `dik <command> --help` for the exact parameters.
+
+## Reversible projections
+
+Export an annotated, human-readable view together with the JSON information needed for restoration:
+
+```bash
+dik projection export \
+  --project examples/demo/dik.project.json \
+  --locale fr-CA \
+  --format compact --style annotated \
+  --output /tmp/dik-fr-CA.json \
+  --markdown /tmp/dik-fr-CA.md
+
+dik projection verify \
+  --input /tmp/dik-fr-CA.json \
+  --project examples/demo/dik.project.json
+
+dik projection restore \
+  --input /tmp/dik-fr-CA.json \
+  --project examples/demo/dik.project.json \
+  --output /tmp/dik-restored-graph.json
+```
+
+**Important:** The reversible **JSON** envelope contains the restoration references. The Markdown view alone is not reversible. Exporting a translation or readable view does not alter KQ/KP identities.
+
+## Wikidata workflows
+
+All Wikidata identifiers remain external observations or mappings. They are not imported as new canonical KQ/KP identities, and matching text is never sufficient to establish an `exactMatch`.
+
+### Import a large local dump (alpha.7)
+
+`dik sync import-large` reads supported JSON/JSONL, gzip, and bzip2 dumps, selects labels for **previously approved exact mappings**, and publishes immutable dictionary snapshots. SQLite checkpoints allow interrupted imports to resume.
+
+```bash
+dik sync import-large \
+  --dump /path/to/wikidata.json.bz2 \
   --crosswalk examples/demo/external-crosswalk.example.json \
   --registry examples/demo/identity-registry.example.json \
   --namespace example.org/kristal-demo \
-  --user-agent 'diK Wikidata audit (contact: admin@example.org)' \
-  --output /tmp/wikidata-queries.jsonl
-
-# Extraction HORS réseau, archivable puis révisable
-dik sync extract-redirects --source /tmp/wikidata-queries.jsonl \
-  --format action-api-jsonl --snapshot wd-review-2026-10-16 \
-  --output /tmp/wikidata-observations.jsonl
-
-# Analyse sans mutation du crosswalk ou du graphe
-dik sync evolution --observations /tmp/wikidata-observations.jsonl \
-  --crosswalk examples/demo/external-crosswalk.example.json \
-  --registry examples/demo/identity-registry.example.json \
-  --namespace example.org/kristal-demo --snapshot wd-review-2026-10-16
+  --snapshot my-wikidata-snapshot \
+  --locales fr,en,fr-CA \
+  --root /tmp/dik-imports
 ```
 
-L’analyse d’un snapshot historique ne doit pas supposer que l’API actuelle permet de le reconstituer. Aucune suppression, scission ni fusion n'est inférée d'une absence de résultat. Voir [le guide alpha.6](docs/docs/23_EXTRACTION_REDIRECTIONS_MEDIAWIKI_v1-alpha6.md).
+Optionally supply `--approved-sha256` using a checksum obtained independently of diK. A locally computed hash checks file integrity; **it does not by itself establish source authenticity**.
 
-### Alpha.7 — traiter ta copie locale Wikidata
+For compressed inputs, resuming may require re-reading and decompressing earlier records up to the last checkpoint. Full-dump, industrial-scale performance has **not** been validated. See the [alpha.7 import guide](docs/docs/24_IMPORT_INDUSTRIEL_LOCAL_v1-alpha7.md).
 
-Une nouvelle commande `dik sync import-large` importe les lexiques associés aux KQ/KP qui possèdent déjà une correspondance Wikidata exacte approuvée. Elle reprend après interruption grâce à SQLite et publie un nouveau snapshot sans modifier le canon.
+### Review Wikidata changes (alpha.4–alpha.6)
+
+The following commands are explicitly initiated by an operator:
+
+- `dik sync fetch`: download a permitted official HTTPS Wikimedia dump with guarded byte-range resumption.
+- `dik sync import-mirror`: import a mirrored dump after checking an independently approved SHA-256.
+- `dik sync diff`: compare immutable imported lexical snapshots.
+- `dik sync probe-redirects`: query the official MediaWiki API only for already-approved external Q/P mappings; **requires network access** and an identifiable User-Agent.
+- `dik sync extract-redirects`: normalize archived MediaWiki API responses into immutable observations, offline.
+- `dik sync evolution`: review possible mapping impacts from normalized redirect, removal, and split observations, without updating the crosswalk.
+
+A redirect, missing API result, or changed label is **not** proof that two semantic identities should be merged. No automated crosswalk adoption occurs.
+
+See the [mirror workflow](docs/docs/21_MIROIR_WIKIDATA_REPRENABLE_v1-alpha4.md), [evolution analysis](docs/docs/22_EVOLUTIONS_WIKIDATA_v1-alpha5.md), and [MediaWiki redirect adapter](docs/docs/23_EXTRACTION_REDIRECTIONS_MEDIAWIKI_v1-alpha6.md).
+
+## Development and testing
 
 ```bash
-dik sync import-large --dump /chemin/vers/wikidata.json.bz2 \
-  --crosswalk /projet/crosswalk.json --registry /projet/registry.json \
-  --namespace mon.espace --snapshot 2026-10-16 \
-  --locales fr,en,fr-CA --root /imports-dik
+python -m pip install -e .
+python -m pip install 'pytest>=8,<10'
+python -m pytest -q
 ```
 
-La lecture des fichiers comprimés est en flux, mais la **reprise** se fait en relisant les lignes décompressées jusqu'au checkpoint. Pour la provenance externe, utiliser en plus `--approved-sha256` avec une empreinte obtenue par une voie indépendante.
+GitHub Actions runs the Python test suite and a demo project inspection on pushes and pull requests (see [tests.yml](.github/workflows/tests.yml)). The [validation report](VALIDATION.md) documents the alpha.7 fixture tests and explicitly identifies what has **not** been tested on live or full-size data.
 
-[Limites, protections et plan d'exploitation](docs/docs/24_IMPORT_INDUSTRIEL_LOCAL_v1-alpha7.md).
+## Current limitations
+
+This is an **alpha release**, not a production-ready, certified 1.0 system. In particular:
+
+- Strong reviewer authentication, digital signatures, and trusted multi-user approvals are not implemented.
+- The local web interface is not a hardened, hosted, multi-tenant service.
+- Advanced lexical disambiguation and automatic identity reconciliation are not available.
+- Complete Wikidata delta processing, industrial-scale redirect ingestion, and full-dump qualification remain unfinished.
+- End-to-end publication of a new canonical Kristal through the Authoring Kit, full cross-repository certification, and complete TCK coverage are pending.
+- Large-scale real-world benchmarks, recovery after physical failures, and fully validated multilingual coverage at production scale remain to be demonstrated.
+
+**Do not use candidate outputs as canonical identities or treat this release as formally qualified.** For the detailed status, see [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) and [VALIDATION.md](VALIDATION.md).
+
+## Documentation
+
+- [Implementation status](IMPLEMENTATION_STATUS.md) — delivered capabilities and missing requirements
+- [Validation](VALIDATION.md) — test evidence and qualification limits
+- [Changelog](CHANGELOG.md) — version history
+- [Candidate diK 1.0 specification](spec/diK-1.0/START_HERE.md) — contracts and design rationale
+- [Project documentation](docs/README.md) — architecture, dictionaries, projections, and workflows (primarily in French)
+- [Framework pin](FRAMEWORK-PIN.md) — reference Framework version and source integrity
+
+## License
+
+Licensed under **GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later)**. See [LICENSE](LICENSE) for the repository's license notice and a link to the full license terms.
