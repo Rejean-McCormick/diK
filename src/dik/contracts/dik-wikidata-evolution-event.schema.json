@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "diK normalized Wikidata identity evolution observation (candidate; NOT an official dump format)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_type", "source_id", "targets", "source_snapshot", "source_reference"],
+  "properties": {
+    "event_type": {"enum": ["redirect", "retired", "split_candidate"]},
+    "source_id": {"type": "string", "pattern": "^[QP][1-9][0-9]*$"},
+    "targets": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[QP][1-9][0-9]*$"}},
+    "source_snapshot": {"type": "string", "minLength": 1, "maxLength": 200},
+    "source_reference": {"type": "string", "minLength": 1, "maxLength": 2048}
+  },
+  "allOf": [
+    {"if": {"properties": {"event_type": {"const": "redirect"}}},
+     "then": {"properties": {"targets": {"minItems": 1, "maxItems": 1}}}},
+    {"if": {"properties": {"event_type": {"const": "retired"}}},
+     "then": {"properties": {"targets": {"maxItems": 0}}}},
+    {"if": {"properties": {"event_type": {"const": "split_candidate"}}},
+     "then": {"properties": {"targets": {"minItems": 2}}}}
+  ]
+}

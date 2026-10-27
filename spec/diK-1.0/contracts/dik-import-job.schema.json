@@ -1,0 +1,156 @@
+{
+  "$id": "https://example.invalid/dik/contracts/dik-import-job.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "published"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "output_catalog_sha256"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "failed",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "error_code"
+        ]
+      }
+    }
+  ],
+  "description": "Cible de diK 1.0, contrat candidat à ratifier; ne remplace aucun schéma Framework.",
+  "properties": {
+    "checkpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "last_completed_shard": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "processed_records": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "staged_files": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "processed_records",
+        "last_completed_shard",
+        "staged_files"
+      ],
+      "type": "object"
+    },
+    "contract_profile": {
+      "const": "dik.import-job/1.0-candidate"
+    },
+    "crosswalk_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "error_code": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "idempotency_key": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "job_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "namespace_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "output_catalog_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "requested_locales": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_snapshot": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_system": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "downloading",
+        "parsing",
+        "staging",
+        "validating",
+        "ready",
+        "published",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "transform_version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_profile",
+    "job_id",
+    "status",
+    "source_system",
+    "source_snapshot",
+    "source_sha256",
+    "namespace_id",
+    "crosswalk_sha256",
+    "requested_locales",
+    "transform_version",
+    "idempotency_key",
+    "checkpoint"
+  ],
+  "title": "dik-import-job — DIK PROPOSED, NOT FRAMEWORK",
+  "type": "object"
+}

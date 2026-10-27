@@ -1,0 +1,66 @@
+{
+  "dik_baseline": "0.3.0",
+  "document": "diK v1.0 specification source lock",
+  "framework_version": "11.0.0-draft.3",
+  "sources": {
+    "dik/src/cli": {
+      "sha256": "8da2edc18c6f2acbbc569fbcbde75558e50b14f6b2725c124b36c2955c0e5a83",
+      "source_path": "[uploaded-session]/diK-repo-v0.3.0/src/dik/cli.py"
+    },
+    "dik/src/compact": {
+      "sha256": "eda69d58b35340552ae3848281a650fe9545e4bd38e63e1aa0cb4f6221e4a335",
+      "source_path": "[uploaded-session]/diK-repo-v0.3.0/src/dik/compact.py"
+    },
+    "dik/src/operations": {
+      "sha256": "0a6f43bfd2c3578aaf55866c68b2e596e1bf722fc14264fc5570cbee5ba566f7",
+      "source_path": "[uploaded-session]/diK-repo-v0.3.0/src/dik/operations.py"
+    },
+    "dik/src/projection": {
+      "sha256": "94319fe605f4ee133be067cc95d1f115a152e3db2eafbbfd03e9cd2e130dc581",
+      "source_path": "[uploaded-session]/diK-repo-v0.3.0/src/dik/projection.py"
+    },
+    "framework/schema/conversion-plan": {
+      "sha256": "9e6b70ad076da002208e2cd17d7a686b61981ceec20b3a60550d9f5822659475",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/schemas/v11/kristal-dik-conversion-plan.schema.json"
+    },
+    "framework/schema/coverage": {
+      "sha256": "9eef3af61beaa8d74f821429fe685fe9532a1ac3e58cc4d59bfb71e50161f586",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/schemas/v11/kristal-dik-coverage-report.schema.json"
+    },
+    "framework/schema/crosswalk": {
+      "sha256": "b89aad88281f500b9609045b99c5523873407cd8c3407aa0d2b629739fbbf172",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/schemas/v11/kristal-external-crosswalk.schema.json"
+    },
+    "framework/schema/dictionary-catalog": {
+      "sha256": "58132545e23367bf4b0f207d59fd9fa23235a8d0f8913d574cc036e7205426d9",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/schemas/v11/kristal-dictionary-catalog.schema.json"
+    },
+    "framework/schema/semantic-graph": {
+      "sha256": "405fdae79a2ab1c4c7147baf7aeac6b6964d59282046f8a5e2e9d2185e42de86",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/schemas/v11/kristal-semantic-graph.schema.json"
+    },
+    "framework/spec/dictionary": {
+      "sha256": "61e5ea48a260c651df320c599618cac7de4f9f808774f235dd9cef5b369c65ac",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/spec/v11/Dictionary-Management.md"
+    },
+    "framework/spec/identity": {
+      "sha256": "96ef2060d3905544f44c222158db7d5352e24e418bad8349a4fe5421e657e4d7",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/spec/v11/Identity-and-Wikidata.md"
+    },
+    "framework/spec/interoperability": {
+      "sha256": "c8b03c0f1a2b21c204b964789d37e30fb163ba9f5bd9c5ada66a438357598e52",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/spec/v11/diK-Interoperability.md"
+    },
+    "framework/spec/legacy": {
+      "sha256": "8d17eca9212bcac9c23ac30f77c9700e7b095a139ca6120af851af32fe85587f",
+      "source_path": "[uploaded-session]/dik_1_sources/framework/kristal-11.0.0-draft.3/spec/v11/Legacy-Resolution.md"
+    }
+  },
+  "uploaded_archives": {
+    "Kristal-Authoring-Kit-4.0.0-draft.2-v11.zip": "6e3423be907d2a6cfad689ca57e39d981a6308514980b05edac80fce32e67f8b",
+    "Kristal-Framework-v11.0.0-draft.3.zip": "1ce0d4b89210d067f0c5e136c1b77b8f0daf363c82018ffbd983905d03616ba7",
+    "Kristal-Integration-Pack-0.2.0-alpha.1-v11.zip": "f7c043b9afcf4362178c88f77c3adc1beeec697e8b82cca500f504c25ed75b40",
+    "diK-v0.3.0-source.zip": "fc7200e3c38d43bb70bee5b38f6a8eaf630aaaeadcef782a6aeb57f2349aa151",
+    "senior-architecture-patterns(3).zip": "8acd0b0e6547767a868d3e33d5aa5cdc20c7f7f57fc077d3ce5c8dbaafabd1e3"
+  }
+}

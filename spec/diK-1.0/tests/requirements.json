@@ -1,0 +1,1835 @@
+{
+  "suite_id": "DIK-1.0-REQUIREMENTS-CANDIDATE.2",
+  "status": "REQUIREMENTS_PLANNED_NOT_EXECUTED",
+  "framework_pin": "11.0.0-draft.3",
+  "requirement_count": 87,
+  "requirements": [
+    {
+      "requirement_id": "API-001",
+      "title": "CLI sans surprise",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-001 — CLI sans surprise",
+      "normative_summary": "Commandes diK 0.3 à préserver : project inspect, dictionaries audit|resolve, coverage report, wikidata import-local, projection export|verify|restore. Compatibilité des options existantes, et --format verbose maintenu.",
+      "positive_test": {
+        "id": "API-001-POS",
+        "scenario": "Comportement conforme : CLI sans surprise (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-001-NEG",
+        "scenario": "Refus ou signalement de violation : CLI sans surprise (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "API-002",
+      "title": "Interface programme",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-002 — Interface programme",
+      "normative_summary": "Éviter les réponses polymorphes non typées. Résultat uniforme : request_id, contract_version, status, data, errors[], input_manifest_digest, output_manifest_digest?, warnings[]. status=success uniquement si publication complète. status=proposed n'est pas approved, ni published.",
+      "positive_test": {
+        "id": "API-002-POS",
+        "scenario": "Comportement conforme : Interface programme (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-002-NEG",
+        "scenario": "Refus ou signalement de violation : Interface programme (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "API-003",
+      "title": "Idempotence et conflits",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-003 — Idempotence et conflits",
+      "normative_summary": "Toute commande mutante accepte un idempotency_key ou en dérive une par opération ; même clé / mêmes paramètres => même résultat ; même clé / paramètres différents => IDEMPOTENCY_CONFLICT. Édition revue conditionnée à expected_revision/hash ; si changement simultané => REVISION_CONFLICT. Les opérations de lecture n'altèrent pas les manifestes.",
+      "positive_test": {
+        "id": "API-003-POS",
+        "scenario": "Comportement conforme : Idempotence et conflits (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-003-NEG",
+        "scenario": "Refus ou signalement de violation : Idempotence et conflits (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "API-004",
+      "title": "Filtres et pagination",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-004 — Filtres et pagination",
+      "normative_summary": "Recherches et matrice de couverture : pagination déterministe, curseur lié au snapshot, tri défini. Une API ne retourne pas silencieusement « tous les concepts de Wikidata » en RAM. Exports massifs en fichiers versionnés + manifestes/hashes.",
+      "positive_test": {
+        "id": "API-004-POS",
+        "scenario": "Comportement conforme : Filtres et pagination (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-004-NEG",
+        "scenario": "Refus ou signalement de violation : Filtres et pagination (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "API-005",
+      "title": "Codes de sortie CLI",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-005 — Codes de sortie CLI",
+      "normative_summary": "Proposition : 0 success, 2 invalid_input, 3 conflict_or_ambiguous, 4 integrity_or_security_failure, 5 external_source_unavailable, 6 approval_required, 7 contract_mismatch, 8 partial_or_interrupted_job, 9 internal_error. Un code partiel ne doit pas se faire passer pour succès ; les exceptions doivent fournir error_code stable sans exposer secret/chemins sensibles.",
+      "positive_test": {
+        "id": "API-005-POS",
+        "scenario": "Comportement conforme : Codes de sortie CLI (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-005-NEG",
+        "scenario": "Refus ou signalement de violation : Codes de sortie CLI (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "API-006",
+      "title": "Local d'abord",
+      "source_document": "11_API_CLI.md",
+      "source_heading": "## API-006 — Local d'abord",
+      "normative_summary": "API bind 127.0.0.1 par défaut et authentification robuste si mode multiutilisateur; pas d'exposition réseau implicite. Pas de téléchargement réseau lors de la simple ouverture d'un projet. Formats JSON/JSONL strictement documentés et versions explicites.",
+      "positive_test": {
+        "id": "API-006-POS",
+        "scenario": "Comportement conforme : Local d'abord (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "API-006-NEG",
+        "scenario": "Refus ou signalement de violation : Local d'abord (voir 11_API_CLI.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-001",
+      "title": "Dénominateur",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-001 — Dénominateur",
+      "normative_summary": "Inventorier les KQ distincts utilisés comme entités et les KP distincts utilisés comme propriétés, y compris qualificatifs, pour le graphe v11 visé. KA/KS sont contrôlés pour intégrité, pas additionnés arbitrairement au nombre de concepts traduisibles. Le rapport provient d'un graphe et d'un catalogue versionnés, pas du nombre de Q Wikidata ni du nombre de fichiers de langue.",
+      "positive_test": {
+        "id": "COV-001-POS",
+        "scenario": "Comportement conforme : Dénominateur (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-001-NEG",
+        "scenario": "Refus ou signalement de violation : Dénominateur (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-002",
+      "title": "Statuts exclusifs",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-002 — Statuts exclusifs",
+      "normative_summary": "Par identifiant+locale : direct si terme approuvé dans locale demandée ; fallback seulement si chaîne déclarée ; missing si aucun terme ; conflicted si concurrence non résolue. Rapport par famille KQ / KP, par locale, et intersection de toutes les locales sélectionnées. complete_direct ne compte ni fallback ni missing/conflict. complete_usable tolère fallback, pas missing/conflict. crosswalk cover",
+      "positive_test": {
+        "id": "COV-002-POS",
+        "scenario": "Comportement conforme : Statuts exclusifs (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-002-NEG",
+        "scenario": "Refus ou signalement de violation : Statuts exclusifs (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-003",
+      "title": "Reporting multi-Kristals",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-003 — Reporting multi-Kristals",
+      "normative_summary": "Sélection par manifestes explicites ; construire une matrice (graph_id, namespace, locale, family) et les unions/intersections de référents par namespaces. Pour une organisation, ne pas dédupliquer deux KQ1001 de namespaces différents. Toute ligne conserve version, empreinte, compteur, date logique, nombre de conflits, exemples manquants et statut de troncature.",
+      "positive_test": {
+        "id": "COV-003-POS",
+        "scenario": "Comportement conforme : Reporting multi-Kristals (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-003-NEG",
+        "scenario": "Refus ou signalement de violation : Reporting multi-Kristals (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-004",
+      "title": "Qualité != présence",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-004 — Qualité != présence",
+      "normative_summary": "Complétude nominale = présence validée du terme. Qualité de traduction = révision, domaine, profondeur lexicale, source, date, éventuel contrôle linguistique ; métrique distincte. Un terme généré automatiquement en attente de revue peut exister comme proposal mais ne compte pas comme traduction directe vérifiée.",
+      "positive_test": {
+        "id": "COV-004-POS",
+        "scenario": "Comportement conforme : Qualité != présence (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-004-NEG",
+        "scenario": "Refus ou signalement de violation : Qualité != présence (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-005",
+      "title": "Historique et delta",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-005 — Historique et delta",
+      "normative_summary": "Comparer rapports A/B avec mêmes graphes ou changements d'inventaire identifiés : nouveau concept, traduction ajoutée/supprimée, variante en conflit, fallback devenu direct. Conserver le dénominateur pour chaque état historique ; ne jamais attribuer la variation entière à « traduction » si les KQ du graphe ont changé.",
+      "positive_test": {
+        "id": "COV-005-POS",
+        "scenario": "Comportement conforme : Historique et delta (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-005-NEG",
+        "scenario": "Refus ou signalement de violation : Historique et delta (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "COV-006",
+      "title": "300+ langues",
+      "source_document": "08_COMPLETUDE.md",
+      "source_heading": "## COV-006 — 300+ langues",
+      "normative_summary": "Le rapport peut porter 301 langues sparse et plusieurs graphes ; afficher par défaut vue agrégée et pagination/drilldown. Ne pas prétendre à 100 % si un seul KQ/KP manque ou est conflictuel. Une entrée legacy non résolue interdit un taux fiable de 100 % pour l'ensemble ; le rapport doit signaler legacy_denominator_unknown.",
+      "positive_test": {
+        "id": "COV-006-POS",
+        "scenario": "Comportement conforme : 300+ langues (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "COV-006-NEG",
+        "scenario": "Refus ou signalement de violation : 300+ langues (voir 08_COMPLETUDE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "ID-001",
+      "title": "Clé canonique",
+      "source_document": "02_IDENTITES.md",
+      "source_heading": "## ID-001 — Clé canonique",
+      "normative_summary": "La seule clé référentielle d'un KQ/KP est (namespace_id, id). KQ1001 dans alpha et KQ1001 dans beta ne sont pas interchangeables. Toutes les API/domain objects portent le namespace ; l'affichage abrégé de KQ1001 n'autorise pas sa résolution hors contexte.",
+      "positive_test": {
+        "id": "ID-001-POS",
+        "scenario": "Comportement conforme : Clé canonique (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "ID-001-NEG",
+        "scenario": "Refus ou signalement de violation : Clé canonique (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "ID-002",
+      "title": "Types stricts",
+      "source_document": "02_IDENTITES.md",
+      "source_heading": "## ID-002 — Types stricts",
+      "normative_summary": "KQ… = entity; KP… = property; KA… = assertion; KS… = source. Le parser rejette Q8018, P31, wikidata:Q8018, has_property, urn:legacy:… dans un rôle d'ID canonique. Il peut les reconnaître dans des champs externes typés, des demandes de migration ou une valeur littérale.",
+      "positive_test": {
+        "id": "ID-002-POS",
+        "scenario": "Comportement conforme : Types stricts (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "ID-002-NEG",
+        "scenario": "Refus ou signalement de violation : Types stricts (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "ID-003",
+      "title": "Allocation",
+      "source_document": "02_IDENTITES.md",
+      "source_heading": "## ID-003 — Allocation",
+      "normative_summary": "- Allocation durable et non réutilisable au sein du namespace, y compris après suppression logique.",
+      "positive_test": {
+        "id": "ID-003-POS",
+        "scenario": "Comportement conforme : Allocation (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "ID-003-NEG",
+        "scenario": "Refus ou signalement de violation : Allocation (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "ID-004",
+      "title": "Statuts, fusion, scission",
+      "source_document": "02_IDENTITES.md",
+      "source_heading": "## ID-004 — Statuts, fusion, scission",
+      "normative_summary": "Une erreur d'identité se corrige par des déclarations de remplacement/supersession versionnées et une décision auditée, pas en remplaçant la clé de l'histoire. Les fusions/splits Wikidata ne fusionnent pas les KQ de Kristal. La dépendance à Wikidata est la table de correspondance, jamais l'ID maître.",
+      "positive_test": {
+        "id": "ID-004-POS",
+        "scenario": "Comportement conforme : Statuts, fusion, scission (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "ID-004-NEG",
+        "scenario": "Refus ou signalement de violation : Statuts, fusion, scission (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "ID-005",
+      "title": "Contrôles systématiques",
+      "source_document": "02_IDENTITES.md",
+      "source_heading": "## ID-005 — Contrôles systématiques",
+      "normative_summary": "- Champs entities, properties, assertions et sources v11 validés contre le schéma officiel et le registre.",
+      "positive_test": {
+        "id": "ID-005-POS",
+        "scenario": "Comportement conforme : Contrôles systématiques (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "ID-005-NEG",
+        "scenario": "Refus ou signalement de violation : Contrôles systématiques (voir 02_IDENTITES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "IMP-001",
+      "title": "Source externe et miroir",
+      "source_document": "05_WIKIDATA.md",
+      "source_heading": "## IMP-001 — Source externe et miroir",
+      "normative_summary": "Le dump Wikidata est une entrée non fiable et non une autorité locale de KQ. Son format Q/P, ses alias, ses révisions, ses descriptions, redirections sont adaptés dans une couche anti-corruption. Le miroir local de l'utilisateur est supporté sans accès Internet. Un téléchargement depuis une source officielle est une opération explicite distincte du rendu/lookup.",
+      "positive_test": {
+        "id": "IMP-001-POS",
+        "scenario": "Comportement conforme : Source externe et miroir (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "IMP-001-NEG",
+        "scenario": "Refus ou signalement de violation : Source externe et miroir (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "IMP-002",
+      "title": "Pipeline robuste",
+      "source_document": "05_WIKIDATA.md",
+      "source_heading": "## IMP-002 — Pipeline robuste",
+      "normative_summary": "1. L'opérateur fournit URL ou chemin local, mode (full/delta si source fiable disponible), révision/date, langues ciblées, limites de ressources et destination. 2. Vérifier signature/checksum de l'amont si disponible ; toujours calculer empreinte locale ; ne jamais décompresser sans quotas ni écrire à une destination arbitraire contrôlée par le dump. 3. Parser en flux, supporter .json, .jsonl, .gz",
+      "positive_test": {
+        "id": "IMP-002-POS",
+        "scenario": "Comportement conforme : Pipeline robuste (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "IMP-002-NEG",
+        "scenario": "Refus ou signalement de violation : Pipeline robuste (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "IMP-003",
+      "title": "Reprise/idempotence",
+      "source_document": "05_WIKIDATA.md",
+      "source_heading": "## IMP-003 — Reprise/idempotence",
+      "normative_summary": "Clé de tâche = hash canonique (source snapshot, namespace, crosswalk revision, selected locales, transform version, settings). Même clé/mêmes octets -> résultat identique sans duplication ; même clé/octets différents -> conflit bloquant. Checkpoints portent compteur d'objets, shard terminé, empreintes ; reprise uniquement si source identique, transformation identique et point de reprise validé. Co",
+      "positive_test": {
+        "id": "IMP-003-POS",
+        "scenario": "Comportement conforme : Reprise/idempotence (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "IMP-003-NEG",
+        "scenario": "Refus ou signalement de violation : Reprise/idempotence (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "IMP-004",
+      "title": "Téléchargements",
+      "source_document": "05_WIKIDATA.md",
+      "source_heading": "## IMP-004 — Téléchargements",
+      "normative_summary": "HTTP(S) seulement si activé ; délais et budget total, retry avec backoff+jitter seulement sur erreurs transitoires, limite de débit, stockage temporaire de téléchargement, métadonnées ETag/Last-Modified si la source les fournit, checksum post-téléchargement, publication après validation. Aucun appel réseau dans projection restore, coverage, lookup ni au démarrage de diK.",
+      "positive_test": {
+        "id": "IMP-004-POS",
+        "scenario": "Comportement conforme : Téléchargements (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "IMP-004-NEG",
+        "scenario": "Refus ou signalement de violation : Téléchargements (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "IMP-005",
+      "title": "Wikibase lexèmes",
+      "source_document": "05_WIKIDATA.md",
+      "source_heading": "## IMP-005 — Wikibase lexèmes",
+      "normative_summary": "Les lexèmes Wikidata L… (formes/sens) sont différents des items Q… et propriétés P…. L'import 1.0 des labels Q/P ne les traite pas comme des KQ. Un connecteur L séparé demanderait des contrats explicitement typés et des tests distincts.",
+      "positive_test": {
+        "id": "IMP-005-POS",
+        "scenario": "Comportement conforme : Wikibase lexèmes (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "IMP-005-NEG",
+        "scenario": "Refus ou signalement de violation : Wikibase lexèmes (voir 05_WIKIDATA.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-001",
+      "title": "Deux catégories qui ne fusionnent jamais",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-001 — Deux catégories qui ne fusionnent jamais",
+      "normative_summary": "Lexical : (namespace, KQ/KP, locale[, domaine]) → label, alias, définition descriptive, provenance, statut et priorité. Crosswalk : (namespace, KQ/KP) ↔ (source externe, Q/P ou autre), relation, statut, preuve, revue. Le libellé externe ne devient utilisable que via l'alignement approprié et la couche lexicalement admise. Un mot commun n'est pas une clé de jointure sémantique fiable.",
+      "positive_test": {
+        "id": "LEX-001-POS",
+        "scenario": "Comportement conforme : Deux catégories qui ne fusionnent jamais (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-001-NEG",
+        "scenario": "Refus ou signalement de violation : Deux catégories qui ne fusionnent jamais (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-002",
+      "title": "Catalogue et fichiers",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-002 — Catalogue et fichiers",
+      "normative_summary": "- Catalogue unique sélectionne les langues, fallbacks, couches ordonnées, chemins relatifs, SHA-256 et versions. Ne jamais déduire la priorité d'un nom de fichier ou d'un ordre d'itération du dossier.",
+      "positive_test": {
+        "id": "LEX-002-POS",
+        "scenario": "Comportement conforme : Catalogue et fichiers (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-002-NEG",
+        "scenario": "Refus ou signalement de violation : Catalogue et fichiers (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-003",
+      "title": "Sélection et déterminisme",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-003 — Sélection et déterminisme",
+      "normative_summary": "Pour (namespace, semantic_id, locale, domaine) : valider ID + langue ; consulter couches déclarées ; ordonner par priorité du catalogue ; en cas de tie incompatible -> erreur ; sinon rendre {label,status,effective_locale,layer_id,provenance}. Fallback uniquement si déclaré et sans cycle. Si aucun libellé : {label:null,status:\"missing\"} et ID conservé. Pas de traduction de secours silencieuse par I",
+      "positive_test": {
+        "id": "LEX-003-POS",
+        "scenario": "Comportement conforme : Sélection et déterminisme (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-003-NEG",
+        "scenario": "Refus ou signalement de violation : Sélection et déterminisme (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-004",
+      "title": "Versions et corrections",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-004 — Versions et corrections",
+      "normative_summary": "Une correction crée un nouvel objet curaté/reviewed, journalise auteur, décision, justification, avant/après, KS le cas échéant, source et date. Les anciens snapshots restent accessibles pour reproduire une projection historique. Une mise à jour Wikidata ne supprime ni n'édite une couche curatée. Dictionnaire externe absent de licence ou d'alignement validé : untrusted, exclu du canal vérifié.",
+      "positive_test": {
+        "id": "LEX-004-POS",
+        "scenario": "Comportement conforme : Versions et corrections (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-004-NEG",
+        "scenario": "Refus ou signalement de violation : Versions et corrections (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-005",
+      "title": "Sparsité et domaines",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-005 — Sparsité et domaines",
+      "normative_summary": "- 300+ langues supportées comme données clairsemées ; pas de matrice dense KQ×300 à créer à l'import.",
+      "positive_test": {
+        "id": "LEX-005-POS",
+        "scenario": "Comportement conforme : Sparsité et domaines (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-005-NEG",
+        "scenario": "Refus ou signalement de violation : Sparsité et domaines (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-006",
+      "title": "Publication",
+      "source_document": "03_DICTIONNAIRES.md",
+      "source_heading": "## LEX-006 — Publication",
+      "normative_summary": "Staging privé -> validation JSON Schema + hash + licences + collision + fallback -> écriture de tous shards -> publication atomique du pointeur de catalogue -> audit postpublication. Réexécuter avec la même clé idempotente retourne le snapshot existant, jamais un nouveau contenu conflictuel sous le même ID.",
+      "positive_test": {
+        "id": "LEX-006-POS",
+        "scenario": "Comportement conforme : Publication (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-006-NEG",
+        "scenario": "Refus ou signalement de violation : Publication (voir 03_DICTIONNAIRES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-020",
+      "title": "Normalisation",
+      "source_document": "19_LOCALES.md",
+      "source_heading": "## LEX-020 — Normalisation",
+      "normative_summary": "Utiliser une bibliothèque/registre BCP 47 approprié, versionné et documenté : validité de la langue, canonicalisation (alias/variante/script/région) et tag source conservé à des fins d'audit. Une simple regex fr-CA ne prouve pas une langue valide. Choisir une seule politique d'égalité de tags et la tester sur fr, fr-CA, zh-Hans, zh-Hant, sr-Latn, ar et tags inattendus.",
+      "positive_test": {
+        "id": "LEX-020-POS",
+        "scenario": "Comportement conforme : Normalisation (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-020-NEG",
+        "scenario": "Refus ou signalement de violation : Normalisation (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-021",
+      "title": "Fallback",
+      "source_document": "19_LOCALES.md",
+      "source_heading": "## LEX-021 — Fallback",
+      "normative_summary": "Chaque repli est un arc déclaré dans le catalogue. fr-CA -> fr n'autorise pas fr -> en sans déclaration ; interdire cycles et ambiguïtés de priorité. Un libellé en langue de repli ne compte pas comme direct. Ne pas supposer que zh-Hant et zh-Hans sont interchangeables, ni qu'une translittération constitue une traduction.",
+      "positive_test": {
+        "id": "LEX-021-POS",
+        "scenario": "Comportement conforme : Fallback (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-021-NEG",
+        "scenario": "Refus ou signalement de violation : Fallback (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-022",
+      "title": "Unicode et rendu",
+      "source_document": "19_LOCALES.md",
+      "source_heading": "## LEX-022 — Unicode et rendu",
+      "normative_summary": "Conserver Unicode d'origine, normaliser pour comparaison par NFC si nécessaire, mais ne pas perdre les distinctions significatives ; sécuriser rendus HTML/Markdown ; RTL et scripts combinants testés ; normalisation ne sert jamais à fusionner des concepts. Les formes fléchies, sens lexicographiques et lemmes Wikidata L sont hors import Q/P par défaut.",
+      "positive_test": {
+        "id": "LEX-022-POS",
+        "scenario": "Comportement conforme : Unicode et rendu (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-022-NEG",
+        "scenario": "Refus ou signalement de violation : Unicode et rendu (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-023",
+      "title": "300+ langues",
+      "source_document": "19_LOCALES.md",
+      "source_heading": "## LEX-023 — 300+ langues",
+      "normative_summary": "Les langues sont déclarées même avec zéro entrée ; couverture sparse évaluée avec missing. Le catalogue doit permettre shards compressés et nombreux locales sans charger l'ensemble pour résoudre une locale. TCK inclut 301 langues déclarées et plusieurs scripts, avec fallback vérifié.",
+      "positive_test": {
+        "id": "LEX-023-POS",
+        "scenario": "Comportement conforme : 300+ langues (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-023-NEG",
+        "scenario": "Refus ou signalement de violation : 300+ langues (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "LEX-024",
+      "title": "Préférence contextuelle",
+      "source_document": "19_LOCALES.md",
+      "source_heading": "## LEX-024 — Préférence contextuelle",
+      "normative_summary": "Terme de spécialité (théologie, physique) peut l'emporter sur le dictionnaire général par profil de domaine/version, jamais sur la seule orthographe ; termes homographes distincts peuvent référer à plusieurs KQ. Une interface affiche la provenance et la langue effective du terme rendu.",
+      "positive_test": {
+        "id": "LEX-024-POS",
+        "scenario": "Comportement conforme : Préférence contextuelle (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "LEX-024-NEG",
+        "scenario": "Refus ou signalement de violation : Préférence contextuelle (voir 19_LOCALES.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-001",
+      "title": "Découverte des rôles",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-001 — Découverte des rôles",
+      "normative_summary": "Parcourir les sources historiques avec adaptateur de version qui identifie précisément les rôles sémantiques : sujet, propriété, cible d'entité, qualificateur sémantique. Les champs littéraux, citations, noms de personnes dans du texte, corps de document, URLs, références éditoriales ne sont pas des cibles à convertir par remplacement. S'il est impossible d'établir le rôle d'un champ, le laisser u",
+      "positive_test": {
+        "id": "MIG-001-POS",
+        "scenario": "Comportement conforme : Découverte des rôles (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-001-NEG",
+        "scenario": "Refus ou signalement de violation : Découverte des rôles (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-002",
+      "title": "Plan non exécutable Framework",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-002 — Plan non exécutable Framework",
+      "normative_summary": "Produire un kristal_dik_conversion_plan conforme au schéma upstream : source artefact/version/SHA, namespace, catalog/crosswalk, liste d'opérations chacune avec JSON Pointer exact, ancienne valeur, rôle, ID cible, décision pending|approved|rejected suivant schéma officiel. Les scores de correspondance restent consultatifs. Aucune opération pending ou rejected ne s'exécute.",
+      "positive_test": {
+        "id": "MIG-002-POS",
+        "scenario": "Comportement conforme : Plan non exécutable Framework (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-002-NEG",
+        "scenario": "Refus ou signalement de violation : Plan non exécutable Framework (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-003",
+      "title": "Résolution et revue",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-003 — Résolution et revue",
+      "normative_summary": "Ordre de proposition : ID interne déjà connu -> mapping externe accepté/exact et typé -> recherche lexicale contextualisée -> candidats manuels. Vérifier toutes les hypothèses, ambiguïtés et absence de KQ. Créer un nouveau KQ éventuel via l'autorité d'allocation, après revue. Ne pas convertir un mot « grâce » automatiquement sans préciser le sens.",
+      "positive_test": {
+        "id": "MIG-003-POS",
+        "scenario": "Comportement conforme : Résolution et revue (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-003-NEG",
+        "scenario": "Refus ou signalement de violation : Résolution et revue (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-004",
+      "title": "Exécution par producteur",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-004 — Exécution par producteur",
+      "normative_summary": "L'Authoring Kit ou autre producteur autorisé exécute après relecture indépendante : comparer digest octets de l'ancien artefact, JSON pointers et anciennes valeurs, décision approuvée et preuves ; appliquer transactionnellement à une nouvelle révision, jamais à la source ; valider le nouveau graphe contre Framework ; conserver journal de conversion et lien de retour. diK ne se déclare pas implicit",
+      "positive_test": {
+        "id": "MIG-004-POS",
+        "scenario": "Comportement conforme : Exécution par producteur (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-004-NEG",
+        "scenario": "Refus ou signalement de violation : Exécution par producteur (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-005",
+      "title": "Patch d'édition linguistique",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-005 — Patch d'édition linguistique",
+      "normative_summary": "Une vue annotée peut demander une modification sémantique : le système affiche avant/après et identifiants, produit patch_candidate, oblige revue. Si seule la traduction change et aucun ID/relation ne change, modifier une couche curatée, pas le graphe. Cette bifurcation est essentielle pour éviter la confusion « correction d'un mot » = « changement de sens ».",
+      "positive_test": {
+        "id": "MIG-005-POS",
+        "scenario": "Comportement conforme : Patch d'édition linguistique (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-005-NEG",
+        "scenario": "Refus ou signalement de violation : Patch d'édition linguistique (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "MIG-006",
+      "title": "Échecs et reprises",
+      "source_document": "07_MIGRATION.md",
+      "source_heading": "## MIG-006 — Échecs et reprises",
+      "normative_summary": "L'opération est idempotente par (source hash, plan ID/revision, decisions hash, producer version). Si une révision a déjà été produite, rendre son adresse ; pas de seconde mutation. En cas de crash pendant staging : révision non visible, rollback et possibilité de relance vérifiée. L'original historique et ses commitments v9 restent inchangés.",
+      "positive_test": {
+        "id": "MIG-006-POS",
+        "scenario": "Comportement conforme : Échecs et reprises (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "MIG-006-NEG",
+        "scenario": "Refus ou signalement de violation : Échecs et reprises (voir 07_MIGRATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-001",
+      "title": "Structure recommandée",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-001 — Structure recommandée",
+      "normative_summary": "text src/dik/ domain/ # IDs, résolution, décisions, composition, invariants ; sans SQL/HTTP/IO application/ # use cases : import, revue, audit, couverture, projection, migration candidate ports/ # interfaces Reader/Writer/Registry/Catalog/Crosswalk/Clock/Verifier adapters/ framework/ # schémas/validations versionnées Framework (pas une réécriture) wikidata/ # dump parser, change feed, HTTP explici",
+      "positive_test": {
+        "id": "OPS-001-POS",
+        "scenario": "Comportement conforme : Structure recommandée (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-001-NEG",
+        "scenario": "Refus ou signalement de violation : Structure recommandée (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-002",
+      "title": "Règle des dépendances",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-002 — Règle des dépendances",
+      "normative_summary": "entrypoints -> application -> domain, adapters -> ports/domain via injection. Le domaine n'importe ni SQLite ni requests/urllib ni frameworks web. Un CatalogReader vérifie les artefacts Framework ; un IndexReader sert les recherches mais ne crée aucun concept. Les writes passent par commandes explicites, les reads par vues dérivées (CQRS local léger, pas besoin Kafka).",
+      "positive_test": {
+        "id": "OPS-002-POS",
+        "scenario": "Comportement conforme : Règle des dépendances (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-002-NEG",
+        "scenario": "Refus ou signalement de violation : Règle des dépendances (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-003",
+      "title": "Bounded contexts",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-003 — Bounded contexts",
+      "normative_summary": "- identity : référents et types, normalisation, namespace.",
+      "positive_test": {
+        "id": "OPS-003-POS",
+        "scenario": "Comportement conforme : Bounded contexts (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-003-NEG",
+        "scenario": "Refus ou signalement de violation : Bounded contexts (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-004",
+      "title": "Patterns retenus, sans sur-ingénierie",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-004 — Patterns retenus, sans sur-ingénierie",
+      "normative_summary": "Anti-Corruption Layer pour Wikidata et legacy ; Hexagonal Architecture pour le domaine ; Modular Monolith pour déploiement simple ; CQRS interne pour index rapides ; Idempotency pour les jobs ; Cache-Aside pour résolutions ; Immutable Infrastructure (par analogie) pour snapshots ; Strangler Fig pour migration progressive des anciens Kristals. Pas de service mesh, microservices obligatoires, Event ",
+      "positive_test": {
+        "id": "OPS-004-POS",
+        "scenario": "Comportement conforme : Patterns retenus, sans sur-ingénierie (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-004-NEG",
+        "scenario": "Refus ou signalement de violation : Patterns retenus, sans sur-ingénierie (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-005",
+      "title": "Déterminisme",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-005 — Déterminisme",
+      "normative_summary": "À entrées/version identiques, résultat sémantique identique. Ordre stable des entrées, canonical JSON pour hashes défini, gestion UTF-8/NFC explicite, horodatage/auteur séparés de la partie reproductible, politique de tie/conflict non basée sur l'ordre SQL ni un dictionnaire Python arbitraire.",
+      "positive_test": {
+        "id": "OPS-005-POS",
+        "scenario": "Comportement conforme : Déterminisme (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-005-NEG",
+        "scenario": "Refus ou signalement de violation : Déterminisme (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-006",
+      "title": "Import Framework",
+      "source_document": "09_ARCHITECTURE.md",
+      "source_heading": "## OPS-006 — Import Framework",
+      "normative_summary": "Remplacer les copies vendoriées par un composant upstream épinglé si disponible et contractuellement compatible ; à défaut conserver avec hash et tests de comparaison. Ne jamais « améliorer » silencieusement les validateurs v11 embarqués.",
+      "positive_test": {
+        "id": "OPS-006-POS",
+        "scenario": "Comportement conforme : Import Framework (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-006-NEG",
+        "scenario": "Refus ou signalement de violation : Import Framework (voir 09_ARCHITECTURE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-010",
+      "title": "Autorité",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-010 — Autorité",
+      "normative_summary": "La source de vérité est le catalogue de fichiers versionnés et les documents Framework signés/empreintés selon leur profil. SQLite est un index dérivé reconstructible, pas un registre KQ autonome. L'instance peut être détruite puis reconstruite à partir d'un manifeste publié et de ses shards.",
+      "positive_test": {
+        "id": "OPS-010-POS",
+        "scenario": "Comportement conforme : Autorité (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-010-NEG",
+        "scenario": "Refus ou signalement de violation : Autorité (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-011",
+      "title": "Structure proposée",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-011 — Structure proposée",
+      "normative_summary": "text workspace/ projects/ # références à graphes/catalogues, non copies massives obligatoires manifests/ # pointeurs de révisions publiées snapshots/ # objets immuables de dictionnaires/crosswalks/lexiques curated/ # nouvelles révisions revues staging/ # zone de travail non publiée, nettoyable indexes/ # sqlite/fts reconstructibles et cache jobs/ # checkpoints sans autorité sémantique audits/ # dé",
+      "positive_test": {
+        "id": "OPS-011-POS",
+        "scenario": "Comportement conforme : Structure proposée (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-011-NEG",
+        "scenario": "Refus ou signalement de violation : Structure proposée (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-012",
+      "title": "Index logique (dérivé)",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-012 — Index logique (dérivé)",
+      "normative_summary": "Tables proposées : active_manifest, semantic_key(namespace,id,kind), lexeme(namespace,id,locale,domain,layer,priority,term,aliases,status), reverse_terms(locale,normalized_term,namespace,id,kind,context), external_mapping(namespace,id,system,external_id,relation,status,decision), snapshot(hash,source,version), job_checkpoint, audit_decision. Indexer locale + normalized_term + kind et namespace+id+",
+      "positive_test": {
+        "id": "OPS-012-POS",
+        "scenario": "Comportement conforme : Index logique (dérivé) (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-012-NEG",
+        "scenario": "Refus ou signalement de violation : Index logique (dérivé) (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-013",
+      "title": "MVCC / cohérence",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-013 — MVCC / cohérence",
+      "normative_summary": "Le lecteur fixe une révision complète de manifeste au début ; les jobs peuvent préparer une autre révision sans changer les données vues. Un pointer swap atomique rend la nouvelle version visible après validation. Caches clés : (manifest_digest, namespace, KQ/KP, locale, domain, resolution_profile) ; invalider par changement de digest, pas via TTL qui pourrait masquer une publication.",
+      "positive_test": {
+        "id": "OPS-013-POS",
+        "scenario": "Comportement conforme : MVCC / cohérence (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-013-NEG",
+        "scenario": "Refus ou signalement de violation : MVCC / cohérence (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-014",
+      "title": "Tâches et transactions",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-014 — Tâches et transactions",
+      "normative_summary": "Une mise à jour publie son catalogue et ses shards ensemble, jamais un par un visibles. Crash avant commit : ancien pointeur inchangé. Crash après commit : manifeste vérifié, index peut être reconstruit. Aucun état partial-success silencieux à une API qui annonce réussite.",
+      "positive_test": {
+        "id": "OPS-014-POS",
+        "scenario": "Comportement conforme : Tâches et transactions (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-014-NEG",
+        "scenario": "Refus ou signalement de violation : Tâches et transactions (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "OPS-015",
+      "title": "Efficacité",
+      "source_document": "10_STOCKAGE_INDEXATION.md",
+      "source_heading": "## OPS-015 — Efficacité",
+      "normative_summary": "Chargement par lots/shards, streaming, réutilisation des parseurs/index, mémoire plafonnée, index réparables ; comparaison incrémentale des hashes de shards ; limiter l'audit complet quotidien en préférant audit incrémental + audit intégral périodique au lancement d'une release.",
+      "positive_test": {
+        "id": "OPS-015-POS",
+        "scenario": "Comportement conforme : Efficacité (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "OPS-015-NEG",
+        "scenario": "Refus ou signalement de violation : Efficacité (voir 10_STOCKAGE_INDEXATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PERF-001",
+      "title": "Objectifs, pas promesses déjà atteintes",
+      "source_document": "14_PERFORMANCE.md",
+      "source_heading": "## PERF-001 — Objectifs, pas promesses déjà atteintes",
+      "normative_summary": "diK 1.0 vise les centaines de langues, les dictionnaires clairsemés, millions d'enregistrements lexicaux et un gros miroir Wikidata local. Les performances doivent être mesurées sur une configuration publiée et ne peuvent pas être déduites des 36 tests de diK 0.3 ou du seul gain de 72,6 % sur 1 000 assertions synthétiques.",
+      "positive_test": {
+        "id": "PERF-001-POS",
+        "scenario": "Comportement conforme : Objectifs, pas promesses déjà atteintes (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PERF-001-NEG",
+        "scenario": "Refus ou signalement de violation : Objectifs, pas promesses déjà atteintes (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PERF-002",
+      "title": "Métriques obligatoires",
+      "source_document": "14_PERFORMANCE.md",
+      "source_heading": "## PERF-002 — Métriques obligatoires",
+      "normative_summary": "Taille brut vs compact vs gzip, CPU max/moyenne, RSS max, disque temporaire, lecture séquentielle, nb de shards, débit d'import, taux cache, nombre de fichiers lus, durée de vérification des hashes, temps de reprise/crash, couverture 300 langues sparse, latence UI. Faire essais froid/chaud séparément.",
+      "positive_test": {
+        "id": "PERF-002-POS",
+        "scenario": "Comportement conforme : Métriques obligatoires (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PERF-002-NEG",
+        "scenario": "Refus ou signalement de violation : Métriques obligatoires (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PERF-003",
+      "title": "Techniques",
+      "source_document": "14_PERFORMANCE.md",
+      "source_heading": "## PERF-003 — Techniques",
+      "normative_summary": "- Joins via index par ID/crosswalk, pas scans complets de tous les 300 fichiers par lookup.",
+      "positive_test": {
+        "id": "PERF-003-POS",
+        "scenario": "Comportement conforme : Techniques (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PERF-003-NEG",
+        "scenario": "Refus ou signalement de violation : Techniques (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PERF-004",
+      "title": "Jeu d'essais",
+      "source_document": "14_PERFORMANCE.md",
+      "source_heading": "## PERF-004 — Jeu d'essais",
+      "normative_summary": "S0 : fixture Framework v11. S1 : 1 000 assertions répétitives (comparaison v0.3). S2 : 100k assertions mixtes (littéraux et qualifiers). S3 : 1M identifiants dont plusieurs langues clairsemées. S4 : échantillon représentatif d'un dump Wikidata local. S5 : snapshot énorme/import interrompu/snapshot changé. Toutes les fixtures ont hash, provenance et droits appropriés ; aucune distribution de dump m",
+      "positive_test": {
+        "id": "PERF-004-POS",
+        "scenario": "Comportement conforme : Jeu d'essais (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PERF-004-NEG",
+        "scenario": "Refus ou signalement de violation : Jeu d'essais (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PERF-005",
+      "title": "Critère de release",
+      "source_document": "14_PERFORMANCE.md",
+      "source_heading": "## PERF-005 — Critère de release",
+      "normative_summary": "Le rapport de performances joint à la release doit préciser réussite/échec pour chaque budget ratifié, version Python/OS/disque/RAM, exact format de fichier et commandes. Pas de « optimisé » uniquement parce que l'archive est plus petite.",
+      "positive_test": {
+        "id": "PERF-005-POS",
+        "scenario": "Comportement conforme : Critère de release (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PERF-005-NEG",
+        "scenario": "Refus ou signalement de violation : Critère de release (voir 14_PERFORMANCE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-001",
+      "title": "Contrat des trois vues",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-001 — Contrat des trois vues",
+      "normative_summary": "- Canonique Framework v11 : KQ/KP/KA/KS + assertions/littéraux/qualificatifs/sources, aucun label servant d'identité.",
+      "positive_test": {
+        "id": "PRJ-001-POS",
+        "scenario": "Comportement conforme : Contrat des trois vues (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-001-NEG",
+        "scenario": "Refus ou signalement de violation : Contrat des trois vues (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-002",
+      "title": "Règles de réversibilité",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-002 — Règles de réversibilité",
+      "normative_summary": "La restauration extrait le graphe conservé et compare structure/hashes/ancres ; aucun reverse lookup des mots. En mode robuste, vérifier aussi le graphe, registre, catalogue, crosswalk et couches d'origine. Sans projet source/ancres authentifiées, les hashes auto-déclarés ne prouvent pas l'origine ; répondre integrity_consistent et non authentic.",
+      "positive_test": {
+        "id": "PRJ-002-POS",
+        "scenario": "Comportement conforme : Règles de réversibilité (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-002-NEG",
+        "scenario": "Refus ou signalement de violation : Règles de réversibilité (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-003",
+      "title": "Portée du lexique",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-003 — Portée du lexique",
+      "normative_summary": "Références couvertes : KQ entités et KP prédicats/qualificateurs ; KS/KA sont conservés mais leur dénomination n'est pas comptée comme couverture KQ. La table lexicale est indexée par identifiant dans un namespace fixé et ancré. En projet multi-namespace futur, les clés de table devront porter le namespace ou employer des namespaces isolés par enveloppe — jamais fusionner deux KQ1001.",
+      "positive_test": {
+        "id": "PRJ-003-POS",
+        "scenario": "Comportement conforme : Portée du lexique (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-003-NEG",
+        "scenario": "Refus ou signalement de violation : Portée du lexique (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-004",
+      "title": "Bords importants",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-004 — Bords importants",
+      "normative_summary": "- Valeurs littérales/texte cité préservés octet logiquement (Unicode identique ; sérialisation JSON peut différer en whitespace).",
+      "positive_test": {
+        "id": "PRJ-004-POS",
+        "scenario": "Comportement conforme : Bords importants (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-004-NEG",
+        "scenario": "Refus ou signalement de violation : Bords importants (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-005",
+      "title": "Compatibilité",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-005 — Compatibilité",
+      "normative_summary": "Lire et vérifier dik.compact-projection/1.0 et l'ancienne projection verbose v0.2 ; ne pas changer rétroactivement leur définition. Pour les rendre plus robustes : enveloppe externe versionnée optionnelle, sans altérer l'ancienne structure. Ne pas supprimer --format verbose avant décision de dépréciation publiée et tests de non-régression.",
+      "positive_test": {
+        "id": "PRJ-005-POS",
+        "scenario": "Comportement conforme : Compatibilité (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-005-NEG",
+        "scenario": "Refus ou signalement de violation : Compatibilité (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-006",
+      "title": "Édition",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-006 — Édition",
+      "normative_summary": "Un utilisateur qui modifie un texte en mode clean ne crée pas un nouveau KQ ni une nouvelle assertion. L'éditeur lié au canon doit créer un patch d'intention : chemin de l'objet structuré, ancienne valeur/ID, candidat de nouvelle valeur/ID, preuves et statut pending_review. Une modification textuelle libre non ancrée ne peut pas se convertir automatiquement en patch accepté.",
+      "positive_test": {
+        "id": "PRJ-006-POS",
+        "scenario": "Comportement conforme : Édition (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-006-NEG",
+        "scenario": "Refus ou signalement de violation : Édition (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "PRJ-007",
+      "title": "Limites mémoire",
+      "source_document": "06_PROJECTIONS.md",
+      "source_heading": "## PRJ-007 — Limites mémoire",
+      "normative_summary": "Le format compact actuel incorpore le graphe entier. diK 1.0 DOIT conserver cette compatibilité mais MAY proposer un nouveau profil de projection par références à des shards immuables, uniquement si nécessaire à l'échelle, avec manifeste/empreintes, non une modification silencieuse du profil compact existant.",
+      "positive_test": {
+        "id": "PRJ-007-POS",
+        "scenario": "Comportement conforme : Limites mémoire (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "PRJ-007-NEG",
+        "scenario": "Refus ou signalement de violation : Limites mémoire (voir 06_PROJECTIONS.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-001",
+      "title": "Modèle des menaces",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-001 — Modèle des menaces",
+      "normative_summary": "Entrées potentiellement hostiles : dumps Wikidata, dictionnaires tiers, archives legacy, documents d'IA, labels avec Markdown/HTML/JSON malicieux, noms de fichiers, manifestes/path, fichiers trop volumineux et liens symboliques. Risques : exécution arbitraire, path traversal, zip/decompression bomb, injection SQL/HTML/Markdown, SSRF lors de téléchargement, effacement de couches curatées, falsifica",
+      "positive_test": {
+        "id": "SEC-001-POS",
+        "scenario": "Comportement conforme : Modèle des menaces (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-001-NEG",
+        "scenario": "Refus ou signalement de violation : Modèle des menaces (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-002",
+      "title": "Validation à chaque frontière",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-002 — Validation à chaque frontière",
+      "normative_summary": "Utiliser parsing strict JSON Schema officiel pour artefacts Framework, validation de schéma applicatif pour documents diK, limites de taille/profondeur, UTF-8, contrôles namespace/type, chemins confinés au root, sorties JSON échappées, requêtes SQL paramétrées, quotas de ressources. Le contenu des dumps n'est jamais une instruction pour une IA, un appel système ou un interpréteur.",
+      "positive_test": {
+        "id": "SEC-002-POS",
+        "scenario": "Comportement conforme : Validation à chaque frontière (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-002-NEG",
+        "scenario": "Refus ou signalement de violation : Validation à chaque frontière (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-003",
+      "title": "Intégrité vs authenticité",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-003 — Intégrité vs authenticité",
+      "normative_summary": "SHA-256 protège contre corruption accidentelle et permet adressage par contenu, mais ne prouve pas qui a émis un fichier. Le système affiche hash_verified distinct de publisher_authenticated. Pour des approbations distribuées, prévoir signature et contrôle des rôles ; aucune signature fictive ou « approved by AI » n'est acceptable.",
+      "positive_test": {
+        "id": "SEC-003-POS",
+        "scenario": "Comportement conforme : Intégrité vs authenticité (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-003-NEG",
+        "scenario": "Refus ou signalement de violation : Intégrité vs authenticité (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-004",
+      "title": "Revue et rôles",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-004 — Revue et rôles",
+      "normative_summary": "Rôles conceptuels : viewer, editor (propositions), reviewer (approbations), publisher (snapshots), operator (imports). Un environnement mono-utilisateur peut implémenter un mode local explicite mais doit garder l'identité et les décisions d'audit. Un agent IA ne doit pas être compté comme réviseur humain ni contourner une approbation. Séparation des responsabilités pour décisions critiques, config",
+      "positive_test": {
+        "id": "SEC-004-POS",
+        "scenario": "Comportement conforme : Revue et rôles (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-004-NEG",
+        "scenario": "Refus ou signalement de violation : Revue et rôles (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-005",
+      "title": "Licences",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-005 — Licences",
+      "normative_summary": "Toute source externe exige métadonnées licence, origine, version, conditions d'usage/redistribution. Sans licence connue/compatible : quarantaine ; ne pas redistribuer automatiquement les entrées. Les données importées ne deviennent pas libres parce qu'elles sont encodées en JSONL. Les fichiers diK distribués doivent respecter l'AGPL et notices du code utilisé, sans inventer des permissions de red",
+      "positive_test": {
+        "id": "SEC-005-POS",
+        "scenario": "Comportement conforme : Licences (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-005-NEG",
+        "scenario": "Refus ou signalement de violation : Licences (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-006",
+      "title": "Restauration historique",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-006 — Restauration historique",
+      "normative_summary": "Les anciens commits/empreintes/bytes sont intouchables. La vérification d'un nouveau Kristal ne doit pas exiger la présence de Wikidata en ligne. Prévenir exfiltration de textes soumis en projet privé (pas de recherche distante implicite ni index central).",
+      "positive_test": {
+        "id": "SEC-006-POS",
+        "scenario": "Comportement conforme : Restauration historique (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-006-NEG",
+        "scenario": "Refus ou signalement de violation : Restauration historique (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "SEC-007",
+      "title": "Déni de service",
+      "source_document": "13_SECURITE.md",
+      "source_heading": "## SEC-007 — Déni de service",
+      "normative_summary": "Quota taille fichier/shard, limite de langue sélectionnée par tâche, budget temps/mémoire, cancellation safe, nombre max de candidats/requêtes, liens symboliques et noms Unicode ambigus traités de manière explicite ; liste blanche de sources réseau, pas de téléchargement arbitraire sur URLs fournies par un dump.",
+      "positive_test": {
+        "id": "SEC-007-POS",
+        "scenario": "Comportement conforme : Déni de service (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "SEC-007-NEG",
+        "scenario": "Refus ou signalement de violation : Déni de service (voir 13_SECURITE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-001",
+      "title": "Sources",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-001 — Sources",
+      "normative_summary": "Toujours exécuter : (a) tests unitaires/domain diK ; (b) tests des schémas et vecteurs réels Framework v11 draft.3 ; (c) tests compat dik.compact-projection/1.0 et verbose v0.2 ; (d) cross-repo Authoring Kit + Integration Pack ; (e) tests historiques v9/v10 lecture ; (f) attaques et tests de reprise.",
+      "positive_test": {
+        "id": "TCK-001-POS",
+        "scenario": "Comportement conforme : Sources (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-001-NEG",
+        "scenario": "Refus ou signalement de violation : Sources (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-002",
+      "title": "Catégories bloquantes",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-002 — Catégories bloquantes",
+      "normative_summary": "| ID | Propriété | Test positif | Rejet exigé |",
+      "positive_test": {
+        "id": "TCK-002-POS",
+        "scenario": "Comportement conforme : Catégories bloquantes (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-002-NEG",
+        "scenario": "Refus ou signalement de violation : Catégories bloquantes (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-003",
+      "title": "Tests d'invariants génératifs",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-003 — Tests d'invariants génératifs",
+      "normative_summary": "- Générer des IDs valides de multiples namespaces, y compris mêmes numéros ; vérifier non-fusion.",
+      "positive_test": {
+        "id": "TCK-003-POS",
+        "scenario": "Comportement conforme : Tests d'invariants génératifs (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-003-NEG",
+        "scenario": "Refus ou signalement de violation : Tests d'invariants génératifs (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-004",
+      "title": "Oracles",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-004 — Oracles",
+      "normative_summary": "Un test doit comparer sorties diK au calcul de référence Framework quand il existe : validation v11, couverture, audit crosswalk ; pour projection comparer equality structurelle du graphe, pas comparaison de Markdown seul. L'Integration Pack doit afficher les mêmes IDs et le même décompte de couverture que diK. L'Authoring Kit doit revérifier un plan avant migration.",
+      "positive_test": {
+        "id": "TCK-004-POS",
+        "scenario": "Comportement conforme : Oracles (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-004-NEG",
+        "scenario": "Refus ou signalement de violation : Oracles (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-005",
+      "title": "Gates CI",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-005 — Gates CI",
+      "normative_summary": "G1 lint/docs + schémas, G2 tests unitaires, G3 négatifs et propriétés, G4 contrats Framework, G5 interop Authoring + Integration, G6 sécurité + reprise, G7 bench performance, G8 package déterministe/manifest signature selon politique. Aucun G1–G6 en échec ou non exécuté pour RC/stable. G7 selon budgets ratifiés ; preuves jointes.",
+      "positive_test": {
+        "id": "TCK-005-POS",
+        "scenario": "Comportement conforme : Gates CI (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-005-NEG",
+        "scenario": "Refus ou signalement de violation : Gates CI (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "TCK-006",
+      "title": "Traçabilité",
+      "source_document": "15_TESTS_TCK.md",
+      "source_heading": "## TCK-006 — Traçabilité",
+      "normative_summary": "Chaque nouveau test porte un ID exigence et un cas d'essai ; chaque MUST a au moins un test positif et un test d'échec. La matrice [17_TRACABILITE.md](17_TRACABILITE.md) est le registre initial, à compléter par lien précis vers fichier/méthode/résultat lorsque le code sera produit.",
+      "positive_test": {
+        "id": "TCK-006-POS",
+        "scenario": "Comportement conforme : Traçabilité (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "TCK-006-NEG",
+        "scenario": "Refus ou signalement de violation : Traçabilité (voir 15_TESTS_TCK.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-001",
+      "title": "Espaces principaux",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-001 — Espaces principaux",
+      "normative_summary": "1. Vue Projets : état de validité, Framework lié, namespace, graphes, dictionnaires, fraîcheur du miroir, tâches en cours. 2. Sources de dictionnaires : ajouter source Wikidata/tiers/fichier, licence, langues, provenance, statut, snapshot, priorité proposée ; jamais importer une source externe comme fiable sans contrôle. 3. Atelier lexical : chercher un KQ/KP ou un terme, comparer termes par langu",
+      "positive_test": {
+        "id": "UI-001-POS",
+        "scenario": "Comportement conforme : Espaces principaux (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-001-NEG",
+        "scenario": "Refus ou signalement de violation : Espaces principaux (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-002",
+      "title": "Modèle de confiance visible",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-002 — Modèle de confiance visible",
+      "normative_summary": "Afficher toujours ce qui est verified, candidate, unreviewed, missing, fallback, conflicted. Aucun code couleur seul : statuts textuels, tooltip avec source et décision, icônes accessibles. Distinguer un label disponible de une identité correctement alignée. Un bouton « Accepter » doit indiquer les conséquences et nécessite un rôle autorisé.",
+      "positive_test": {
+        "id": "UI-002-POS",
+        "scenario": "Comportement conforme : Modèle de confiance visible (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-002-NEG",
+        "scenario": "Refus ou signalement de violation : Modèle de confiance visible (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-003",
+      "title": "Lecture légère",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-003 — Lecture légère",
+      "normative_summary": "Rendu clean ne montre pas obligatoirement les KQ mais chaque fragment peut ouvrir son détail (ID/namespace/source/langue/provenance). Les KQ manquants restent visibles comme lacune au lieu d'être remplacés par un mot conjectural. Mode annoté pour IA affiche références contextualisées, sans alourdir le canon. Un sélecteur de langue ne charge pas 300 dictionnaires.",
+      "positive_test": {
+        "id": "UI-003-POS",
+        "scenario": "Comportement conforme : Lecture légère (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-003-NEG",
+        "scenario": "Refus ou signalement de violation : Lecture légère (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-004",
+      "title": "UX de revue",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-004 — UX de revue",
+      "normative_summary": "Vue diff avant/après ; afficher la phrase, l'ID cible, contexte type/propriété, source, licence et éventuelles ambiguïtés ; actions proposer, rejeter, accepter avec preuve, différer. La revue doit résister à double clic et perte réseau (clé idempotente, révision attendue). Impossible de passer candidate à accepted via simple tri/filtre.",
+      "positive_test": {
+        "id": "UI-004-POS",
+        "scenario": "Comportement conforme : UX de revue (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-004-NEG",
+        "scenario": "Refus ou signalement de violation : UX de revue (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-005",
+      "title": "Accessibilité",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-005 — Accessibilité",
+      "normative_summary": "Support navigation clavier, lecteurs d'écran, internationalisation, RTL (arabe, hébreu…), scripts multiples, très longs labels, et affichage d'alias non romains sans translittération forcée. Langue UI indépendante du choix de dictionnaire. La qualité des textes de 300 langues reste mesurée, non prétendue.",
+      "positive_test": {
+        "id": "UI-005-POS",
+        "scenario": "Comportement conforme : Accessibilité (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-005-NEG",
+        "scenario": "Refus ou signalement de violation : Accessibilité (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "UI-006",
+      "title": "Déploiement",
+      "source_document": "12_INTERFACE.md",
+      "source_heading": "## UI-006 — Déploiement",
+      "normative_summary": "Application locale utilisable sans compte cloud ; interface GUI portable selon technologie retenue. Une implémentation web locale ne doit pas exposer par défaut fichiers privés/dumps sans permission. Pas de télémétrie réseau cachée.",
+      "positive_test": {
+        "id": "UI-006-POS",
+        "scenario": "Comportement conforme : Déploiement (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "UI-006-NEG",
+        "scenario": "Refus ou signalement de violation : Déploiement (voir 12_INTERFACE.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "XW-001",
+      "title": "Recherche candidate, pas attribution d'identité",
+      "source_document": "04_CONCILIATION.md",
+      "source_heading": "## XW-001 — Recherche candidate, pas attribution d'identité",
+      "normative_summary": "Entrée obligatoire : term, locale, expected_kind (KQ/KP), namespace_id et facultativement domaine KQ, provenance et type de source. La recherche explore exact Unicode normalisé, alias, descriptions, relations existantes et types contextuels ; les variantes fuzzy sont des candidats. Sortie : ensemble déterministe de candidats identifiés, raison par signal, distance/type de relation, preuves, dictio",
+      "positive_test": {
+        "id": "XW-001-POS",
+        "scenario": "Comportement conforme : Recherche candidate, pas attribution d'identité (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "XW-001-NEG",
+        "scenario": "Refus ou signalement de violation : Recherche candidate, pas attribution d'identité (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "XW-002",
+      "title": "Machine d'états des rapprochements",
+      "source_document": "04_CONCILIATION.md",
+      "source_heading": "## XW-002 — Machine d'états des rapprochements",
+      "normative_summary": "proposed -> reviewed -> accepted | rejected; accepted -> superseded avec nouvelle décision. Les rapprochements closeMatch/broadMatch/narrowMatch/relatedMatch ne deviennent jamais exactMatch implicitement. Une acceptation exige : identifiant de décision, réviseur autorisé, méthode, lien d'évidence KS, version des sources, justification et contrôle d'unicité active. Il n'existe pas d'acceptation sim",
+      "positive_test": {
+        "id": "XW-002-POS",
+        "scenario": "Comportement conforme : Machine d'états des rapprochements (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "XW-002-NEG",
+        "scenario": "Refus ou signalement de violation : Machine d'états des rapprochements (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "XW-003",
+      "title": "Multi-dictionnaires",
+      "source_document": "04_CONCILIATION.md",
+      "source_heading": "## XW-003 — Multi-dictionnaires",
+      "normative_summary": "- Comparer les sources sans confondre les clés locales des fournisseurs avec les clés KQ.",
+      "positive_test": {
+        "id": "XW-003-POS",
+        "scenario": "Comportement conforme : Multi-dictionnaires (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "XW-003-NEG",
+        "scenario": "Refus ou signalement de violation : Multi-dictionnaires (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "XW-004",
+      "title": "Crosswalk Wikidata",
+      "source_document": "04_CONCILIATION.md",
+      "source_heading": "## XW-004 — Crosswalk Wikidata",
+      "normative_summary": "(namespace,KQ) ↔ (wikidata,Q) et (namespace,KP) ↔ (wikidata,P) seulement, sans mélange. Les contraintes de mapping accepted exact du Framework s'appliquent à chaque vue active. Pour un nouveau Q Wikidata : créer candidate, évaluer puis publier une révision ; aucun KQ modifié. Pour Q redirigé, supprimé, scindé, fusionné : événement de revue + éventuel superseding, pas substitution immédiate.",
+      "positive_test": {
+        "id": "XW-004-POS",
+        "scenario": "Comportement conforme : Crosswalk Wikidata (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "XW-004-NEG",
+        "scenario": "Refus ou signalement de violation : Crosswalk Wikidata (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    },
+    {
+      "requirement_id": "XW-005",
+      "title": "Corrections et annulations",
+      "source_document": "04_CONCILIATION.md",
+      "source_heading": "## XW-005 — Corrections et annulations",
+      "normative_summary": "Toute promotion/rejet/supersession s'écrit dans un journal append-only pour audit et est matérialisée dans une nouvelle vue active. Les prévisualisations peuvent être annulées sans effet. Les décisions déjà publiées sont contredites par un événement nouveau, jamais éditées rétroactivement.",
+      "positive_test": {
+        "id": "XW-005-POS",
+        "scenario": "Comportement conforme : Corrections et annulations (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "negative_test": {
+        "id": "XW-005-NEG",
+        "scenario": "Refus ou signalement de violation : Corrections et annulations (voir 04_CONCILIATION.md)",
+        "result": "NOT_RUN",
+        "evidence": null
+      },
+      "level": "TARGET",
+      "artifact_sha256": null
+    }
+  ]
+}

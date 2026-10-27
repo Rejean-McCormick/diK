@@ -1,0 +1,9 @@
+{
+  "batchcomplete": true,
+  "query": {
+    "redirects": [
+      {"from": "Q8018", "to": "Q99000"}
+    ],
+    "pages": [{"ns": 0, "title": "Q99000", "pageid": 123}]
+  }
+}

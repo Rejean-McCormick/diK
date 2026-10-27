@@ -1,0 +1,13 @@
+{
+  "change_kind": "semantic_relation",
+  "contract_profile": "dik.semantic-patch-intent/1.0-candidate",
+  "namespace_id": "example.org/kristal-demo",
+  "original": "KP2001",
+  "patch_id": "demo-patch-1",
+  "proposed": "KP2002",
+  "reason": "Proposition à revoir, jamais automatiquement appliquée.",
+  "review_status": "pending",
+  "source_graph_id": "demo-graph",
+  "source_graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_path": "/assertions/0/predicate"
+}

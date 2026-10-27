@@ -1,0 +1,751 @@
+{
+  "suite_id": "DIK-1.0-DOC-ORACLE-CANDIDATE.2",
+  "notice": "Spec oracle; tests future product NOT RUN",
+  "vectors": [
+    {
+      "case_id": "D-LEX-01",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resolved",
+        "id": "KQ1",
+        "effective_locale": "fr",
+        "term": "Saint Augustin",
+        "fallback": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-02",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr-CA",
+        "fallbacks": {
+          "fr-CA": [
+            "fr"
+          ],
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resolved",
+        "id": "KQ1",
+        "effective_locale": "fr",
+        "term": "Saint Augustin",
+        "fallback": true
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-03",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ2",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "missing",
+        "id": "KQ2"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-04",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Alpha",
+            "layer": "a"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Bêta",
+            "layer": "b"
+          }
+        ]
+      },
+      "expected": {
+        "status": "conflicted",
+        "id": "KQ1",
+        "effective_locale": "fr"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-05",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr-CA",
+        "fallbacks": {
+          "fr-CA": [],
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "missing",
+        "id": "KQ1"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-06",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr-CA",
+        "fallbacks": {
+          "fr-CA": [
+            "fr"
+          ],
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          },
+          {
+            "locale": "fr-CA",
+            "id": "KQ1",
+            "priority": 1,
+            "term": "Augustin local",
+            "layer": "regional"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resolved",
+        "id": "KQ1",
+        "effective_locale": "fr-CA",
+        "term": "Augustin local",
+        "fallback": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-07",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": [
+            "fr-CA"
+          ],
+          "fr-CA": [
+            "fr"
+          ]
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "reject",
+        "code": "FALLBACK_CYCLE"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-08",
+      "operation": "label",
+      "requirement_id": "ID-001",
+      "input": {
+        "id": "Q8018",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 10,
+            "term": "Augustin",
+            "layer": "wd"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Saint Augustin",
+            "layer": "curated"
+          }
+        ]
+      },
+      "expected": {
+        "status": "reject",
+        "code": "INVALID_SEMANTIC_ID"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-LEX-09",
+      "operation": "label",
+      "requirement_id": "LEX-003",
+      "input": {
+        "id": "KQ1",
+        "locale": "fr",
+        "fallbacks": {
+          "fr": []
+        },
+        "entries": [
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Augustin",
+            "layer": "z"
+          },
+          {
+            "locale": "fr",
+            "id": "KQ1",
+            "priority": 20,
+            "term": "Augustin",
+            "layer": "a"
+          }
+        ]
+      },
+      "expected": {
+        "status": "resolved",
+        "id": "KQ1",
+        "effective_locale": "fr",
+        "term": "Augustin",
+        "fallback": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-REV-01",
+      "operation": "reverse",
+      "requirement_id": "XW-001",
+      "input": {
+        "term": "grâce",
+        "locale": "fr",
+        "kind": "KQ",
+        "namespace": "demo",
+        "entries": [
+          {
+            "id": "KQ1",
+            "term": "grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          },
+          {
+            "id": "KQ2",
+            "term": "grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ambiguous",
+        "ids": [
+          "KQ1",
+          "KQ2"
+        ]
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-REV-02",
+      "operation": "reverse",
+      "requirement_id": "XW-001",
+      "input": {
+        "term": "Grâce",
+        "locale": "fr",
+        "kind": "KQ",
+        "namespace": "demo",
+        "entries": [
+          {
+            "id": "KQ1",
+            "term": "Grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          },
+          {
+            "id": "KQ3",
+            "term": "Grace",
+            "locale": "en",
+            "kind": "KQ"
+          }
+        ]
+      },
+      "expected": {
+        "status": "unique_candidate",
+        "ids": [
+          "KQ1"
+        ]
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-REV-03",
+      "operation": "reverse",
+      "requirement_id": "XW-001",
+      "input": {
+        "term": "grâce",
+        "locale": "fr",
+        "kind": "KP",
+        "namespace": "demo",
+        "entries": [
+          {
+            "id": "KQ1",
+            "term": "grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          }
+        ]
+      },
+      "expected": {
+        "status": "no_candidate",
+        "ids": []
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-REV-04",
+      "operation": "reverse",
+      "requirement_id": "XW-001",
+      "input": {
+        "term": "grâce",
+        "locale": "fr",
+        "kind": "KQ",
+        "namespace": "demo",
+        "entries": [
+          {
+            "id": "KQ2",
+            "term": "grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          },
+          {
+            "id": "KQ1",
+            "term": "grâce",
+            "locale": "fr",
+            "kind": "KQ"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ambiguous",
+        "ids": [
+          "KQ1",
+          "KQ2"
+        ]
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-01",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-002",
+      "input": {
+        "internal": "KQ12",
+        "external": "Q8018",
+        "relation": "exactMatch",
+        "status": "accepted",
+        "reviewer": "human:alice",
+        "evidence": [
+          "KS1"
+        ],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": true
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-02",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-004",
+      "input": {
+        "internal": "KP2",
+        "external": "Q8018",
+        "relation": "exactMatch",
+        "status": "accepted",
+        "reviewer": "human:alice",
+        "evidence": [
+          "KS1"
+        ],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-03",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-002",
+      "input": {
+        "internal": "KQ12",
+        "external": "Q8018",
+        "relation": "closeMatch",
+        "status": "accepted",
+        "reviewer": "human:alice",
+        "evidence": [
+          "KS1"
+        ],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-04",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-002",
+      "input": {
+        "internal": "KQ12",
+        "external": "Q8018",
+        "relation": "exactMatch",
+        "status": "candidate",
+        "reviewer": "human:alice",
+        "evidence": [
+          "KS1"
+        ],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-05",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-002",
+      "input": {
+        "internal": "KQ12",
+        "external": "Q8018",
+        "relation": "exactMatch",
+        "status": "accepted",
+        "reviewer": "",
+        "evidence": [
+          "KS1"
+        ],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-XW-06",
+      "operation": "eligible_crosswalk",
+      "requirement_id": "XW-002",
+      "input": {
+        "internal": "KQ12",
+        "external": "Q8018",
+        "relation": "exactMatch",
+        "status": "accepted",
+        "reviewer": "human:alice",
+        "evidence": [],
+        "decision": "DEC-1",
+        "method": "manual"
+      },
+      "expected": {
+        "eligible": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-COV-01",
+      "operation": "coverage",
+      "requirement_id": "COV-002",
+      "input": {
+        "ids": [
+          "KQ1",
+          "KQ2",
+          "KP1"
+        ],
+        "states": {
+          "KQ1": "direct",
+          "KQ2": "fallback",
+          "KP1": "missing"
+        },
+        "denominator_known": true
+      },
+      "expected": {
+        "total": 3,
+        "direct": 1,
+        "fallback": 1,
+        "missing": 1,
+        "conflicted": 0,
+        "complete_direct": false,
+        "complete_usable": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-COV-02",
+      "operation": "coverage",
+      "requirement_id": "COV-002",
+      "input": {
+        "ids": [
+          "KQ1",
+          "KQ2"
+        ],
+        "states": {
+          "KQ1": "direct",
+          "KQ2": "direct"
+        },
+        "denominator_known": true
+      },
+      "expected": {
+        "total": 2,
+        "direct": 2,
+        "fallback": 0,
+        "missing": 0,
+        "conflicted": 0,
+        "complete_direct": true,
+        "complete_usable": true
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-COV-03",
+      "operation": "coverage",
+      "requirement_id": "COV-006",
+      "input": {
+        "ids": [
+          "KQ1"
+        ],
+        "states": {
+          "KQ1": "direct"
+        },
+        "denominator_known": false
+      },
+      "expected": {
+        "total": 1,
+        "direct": 1,
+        "fallback": 0,
+        "missing": 0,
+        "conflicted": 0,
+        "complete_direct": false,
+        "complete_usable": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-COV-04",
+      "operation": "coverage",
+      "requirement_id": "COV-002",
+      "input": {
+        "ids": [
+          "KQ1",
+          "KQ2"
+        ],
+        "states": {
+          "KQ1": "direct",
+          "KQ2": "conflicted"
+        },
+        "denominator_known": true
+      },
+      "expected": {
+        "total": 2,
+        "direct": 1,
+        "fallback": 0,
+        "missing": 0,
+        "conflicted": 1,
+        "complete_direct": false,
+        "complete_usable": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-OPS-01",
+      "operation": "idempotence",
+      "requirement_id": "OPS-001",
+      "input": {
+        "previous_key": "job-1",
+        "previous_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "new_key": "job-1",
+        "new_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected": {
+        "action": "replay"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-OPS-02",
+      "operation": "idempotence",
+      "requirement_id": "OPS-001",
+      "input": {
+        "previous_key": "job-1",
+        "previous_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "new_key": "job-1",
+        "new_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected": {
+        "action": "reject",
+        "code": "IDEMPOTENCY_CONFLICT"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-OPS-03",
+      "operation": "idempotence",
+      "requirement_id": "OPS-001",
+      "input": {
+        "previous_key": "job-1",
+        "previous_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "new_key": "job-2",
+        "new_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected": {
+        "action": "start"
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    },
+    {
+      "case_id": "D-COV-05",
+      "operation": "coverage",
+      "requirement_id": "COV-002",
+      "input": {
+        "ids": [],
+        "states": {},
+        "denominator_known": true
+      },
+      "expected": {
+        "total": 0,
+        "direct": 0,
+        "fallback": 0,
+        "missing": 0,
+        "conflicted": 0,
+        "complete_direct": false,
+        "complete_usable": false
+      },
+      "run_status": "DOC_ORACLE_ONLY"
+    }
+  ]
+}

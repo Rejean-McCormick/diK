@@ -1,0 +1,22 @@
+{
+  "checkpoint": {
+    "last_completed_shard": null,
+    "processed_records": 0,
+    "staged_files": []
+  },
+  "contract_profile": "dik.import-job/1.0-candidate",
+  "crosswalk_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "idempotency_key": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "job_id": "demo-import",
+  "namespace_id": "example.org/kristal-demo",
+  "requested_locales": [
+    "fr",
+    "en",
+    "fr-CA"
+  ],
+  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_snapshot": "demo-snapshot",
+  "source_system": "wikidata",
+  "status": "planned",
+  "transform_version": "prototype-1"
+}

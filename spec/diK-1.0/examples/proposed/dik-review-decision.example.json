@@ -1,0 +1,28 @@
+{
+  "actor_id": "demo-author",
+  "candidate": {
+    "locale": "fr",
+    "source_record_id": "Q8018",
+    "source_snapshot": "demo-snapshot",
+    "source_system": "wikidata",
+    "term": "Augustin d’Hippone"
+  },
+  "contract_profile": "dik.review-decision/1.0-candidate",
+  "decision_id": "demo-rev-1",
+  "decision_method": "human",
+  "evidence_refs": [
+    "KS4001"
+  ],
+  "input_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "mapping_kind": "external_alignment",
+  "reason": "Correspondance vérifiée à titre d’exemple, sans approbation réelle de production.",
+  "relation": "exactMatch",
+  "reviewer_id": "demo-reviewer",
+  "revision": 1,
+  "status": "accepted",
+  "target": {
+    "id": "KQ1001",
+    "kind": "KQ",
+    "namespace_id": "example.org/kristal-demo"
+  }
+}

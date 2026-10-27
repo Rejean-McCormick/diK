@@ -1,0 +1,87 @@
+{
+  "$id": "https://example.invalid/dik/contracts/dik-portfolio-coverage.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Cible de diK 1.0, contrat candidat à ratifier; ne remplace aucun schéma Framework.",
+  "properties": {
+    "catalog_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "catalog_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "contract_profile": {
+      "const": "dik.portfolio-coverage/1.0-candidate"
+    },
+    "graph_reports": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "framework_report_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "graph_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "graph_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "namespace_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "namespace_id",
+          "graph_id",
+          "graph_sha256",
+          "framework_report_sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "legacy_unresolved_graph_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "notes": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "report_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "requested_locales": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "contract_profile",
+    "report_id",
+    "catalog_id",
+    "catalog_sha256",
+    "graph_reports",
+    "requested_locales",
+    "legacy_unresolved_graph_ids"
+  ],
+  "title": "dik-portfolio-coverage — DIK PROPOSED, NOT FRAMEWORK",
+  "type": "object"
+}

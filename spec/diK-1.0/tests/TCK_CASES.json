@@ -1,0 +1,246 @@
+{
+  "cases": [
+    {
+      "case_id": "ID-R2",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "identity",
+      "result": "NOT_RUN",
+      "scenario": "Raw Wikidata Q as graph subject"
+    },
+    {
+      "case_id": "ID-R4",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "identity",
+      "result": "NOT_RUN",
+      "scenario": "Same KQ allocated concurrently"
+    },
+    {
+      "case_id": "LEX-R2",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "lexical",
+      "result": "NOT_RUN",
+      "scenario": "Locale fallback not declared"
+    },
+    {
+      "case_id": "LEX-R3",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "lexical",
+      "result": "NOT_RUN",
+      "scenario": "Equal priority conflicting terms"
+    },
+    {
+      "case_id": "LEX-R4",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "lexical",
+      "result": "NOT_RUN",
+      "scenario": "Wikidata update overwrites curated"
+    },
+    {
+      "case_id": "LEX-R6",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "lexical",
+      "result": "NOT_RUN",
+      "scenario": "Tampered dictionary SHA"
+    },
+    {
+      "case_id": "XW-T1",
+      "expected": "ambiguous",
+      "mandatory": true,
+      "module": "alignment",
+      "result": "NOT_RUN",
+      "scenario": "Same spelling on two different KQ"
+    },
+    {
+      "case_id": "XW-T2",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "alignment",
+      "result": "NOT_RUN",
+      "scenario": "accepted exact without KS evidence"
+    },
+    {
+      "case_id": "XW-T3",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "alignment",
+      "result": "NOT_RUN",
+      "scenario": "Duplicate active exact crosswalk"
+    },
+    {
+      "case_id": "XW-T4",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "alignment",
+      "result": "NOT_RUN",
+      "scenario": "Q to KP mismatch"
+    },
+    {
+      "case_id": "PRJ-T1",
+      "expected": "identical",
+      "mandatory": true,
+      "module": "projection",
+      "result": "NOT_RUN",
+      "scenario": "Export and restore with qualifiers and literals"
+    },
+    {
+      "case_id": "PRJ-T2",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "projection",
+      "result": "NOT_RUN",
+      "scenario": "Edited labels and recomputed self-hash against source"
+    },
+    {
+      "case_id": "PRJ-T3",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "projection",
+      "result": "NOT_RUN",
+      "scenario": "Restore only from Markdown clean view"
+    },
+    {
+      "case_id": "PRJ-T7",
+      "expected": "missing",
+      "mandatory": true,
+      "module": "projection",
+      "result": "NOT_RUN",
+      "scenario": "Missing language label"
+    },
+    {
+      "case_id": "MIG-T1",
+      "expected": "unchanged",
+      "mandatory": true,
+      "module": "migration",
+      "result": "NOT_RUN",
+      "scenario": "Quotations not targeted"
+    },
+    {
+      "case_id": "MIG-T2",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "migration",
+      "result": "NOT_RUN",
+      "scenario": "Source pointer changed before apply"
+    },
+    {
+      "case_id": "MIG-T3",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "migration",
+      "result": "NOT_RUN",
+      "scenario": "Pending migration op executes"
+    },
+    {
+      "case_id": "MIG-T7",
+      "expected": "new_revision",
+      "mandatory": true,
+      "module": "migration",
+      "result": "NOT_RUN",
+      "scenario": "Approved plan emits new revision"
+    },
+    {
+      "case_id": "COV-T1",
+      "expected": "reference_match",
+      "mandatory": true,
+      "module": "coverage",
+      "result": "NOT_RUN",
+      "scenario": "Framework fixture fr-CA counts"
+    },
+    {
+      "case_id": "COV-T2",
+      "expected": "not_falsely_complete",
+      "mandatory": true,
+      "module": "coverage",
+      "result": "NOT_RUN",
+      "scenario": "301 sparse languages"
+    },
+    {
+      "case_id": "IMP-T1",
+      "expected": "atomic_resume",
+      "mandatory": true,
+      "module": "import",
+      "result": "NOT_RUN",
+      "scenario": "Crash in mid-import"
+    },
+    {
+      "case_id": "IMP-T3",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "import",
+      "result": "NOT_RUN",
+      "scenario": "Candidate mapping imported as verified"
+    },
+    {
+      "case_id": "IMP-T5",
+      "expected": "idempotent",
+      "mandatory": true,
+      "module": "import",
+      "result": "NOT_RUN",
+      "scenario": "Re-import exact same source"
+    },
+    {
+      "case_id": "SEC-T1",
+      "expected": "reject",
+      "mandatory": true,
+      "module": "security",
+      "result": "NOT_RUN",
+      "scenario": "Path traversal in import path"
+    },
+    {
+      "case_id": "SEC-T2",
+      "expected": "escaped",
+      "mandatory": true,
+      "module": "security",
+      "result": "NOT_RUN",
+      "scenario": "HTML labels rendered"
+    },
+    {
+      "case_id": "SEC-T7",
+      "expected": "safe_rollback",
+      "mandatory": true,
+      "module": "security",
+      "result": "NOT_RUN",
+      "scenario": "Quota reached during import"
+    },
+    {
+      "case_id": "PERF-S2",
+      "expected": "benchmark",
+      "mandatory": true,
+      "module": "performance",
+      "result": "NOT_RUN",
+      "scenario": "100k assertions projection"
+    },
+    {
+      "case_id": "OPS-INDEX",
+      "expected": "same_answers",
+      "mandatory": true,
+      "module": "operations",
+      "result": "NOT_RUN",
+      "scenario": "Delete SQLite index then rebuild"
+    },
+    {
+      "case_id": "OPS-CRASH",
+      "expected": "old_snapshot_visible",
+      "mandatory": true,
+      "module": "operations",
+      "result": "NOT_RUN",
+      "scenario": "Crash before catalog pointer publication"
+    },
+    {
+      "case_id": "INTEGRATION",
+      "expected": "same_structured_report",
+      "mandatory": true,
+      "module": "integration",
+      "result": "NOT_RUN",
+      "scenario": "Framework vs diK vs Integration coverage"
+    }
+  ],
+  "status": "test plan, not executed",
+  "suite_id": "DIK-1.0-TCK-CANDIDATE"
+}

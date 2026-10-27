@@ -1,0 +1,190 @@
+{
+  "$id": "https://example.invalid/dik/contracts/dik-review-decision.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "accepted"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence_refs": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "reviewer_id",
+          "decision_method",
+          "evidence_refs"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "superseded"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "supersedes"
+        ]
+      }
+    }
+  ],
+  "description": "Cible de diK 1.0, contrat candidat à ratifier; ne remplace aucun schéma Framework.",
+  "properties": {
+    "actor_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "locale": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_record_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_snapshot": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_system": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "term": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_system",
+        "source_snapshot",
+        "source_record_id"
+      ],
+      "type": "object"
+    },
+    "contract_profile": {
+      "const": "dik.review-decision/1.0-candidate"
+    },
+    "decision_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "decision_method": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^KS[1-9][0-9]*$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "input_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mapping_kind": {
+      "enum": [
+        "lexical_preference",
+        "external_alignment"
+      ]
+    },
+    "reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "relation": {
+      "enum": [
+        "exactMatch",
+        "closeMatch",
+        "broadMatch",
+        "narrowMatch",
+        "relatedMatch",
+        "not_applicable"
+      ]
+    },
+    "reviewer_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "in_review",
+        "accepted",
+        "rejected",
+        "superseded"
+      ]
+    },
+    "supersedes": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^K[QP][1-9][0-9]*$",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "KQ",
+            "KP"
+          ]
+        },
+        "namespace_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace_id",
+        "id",
+        "kind"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "contract_profile",
+    "decision_id",
+    "mapping_kind",
+    "target",
+    "status",
+    "relation",
+    "candidate",
+    "reason",
+    "revision",
+    "actor_id",
+    "input_manifest_sha256"
+  ],
+  "title": "dik-review-decision — DIK PROPOSED, NOT FRAMEWORK",
+  "type": "object"
+}

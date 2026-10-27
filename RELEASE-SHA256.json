@@ -1,0 +1,790 @@
+{
+  "files": [
+    {
+      "path": ".github/workflows/tests.yml",
+      "sha256": "1cacf7811dcea0b742545afbfaf299281d5c07176bbf9eff5b292b570af335c6"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "8e8343cc8a2fca112c8c141e90da73a97f97198a1f4361b79f8d27f7f0e0a1c7"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "0aa11b91d55d1fae286d134d1022e39f412a27d658c38e70eab32b55b499b520"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "2672b0461dae1c059aa904b7a95b6c3fbfa7453d73f70e707d6bccb0fbe06025"
+    },
+    {
+      "path": "FRAMEWORK-PIN.md",
+      "sha256": "4adc6841d2e75ab2a00ac80f46b3c4ed2b584957da78706520e449d970f818eb"
+    },
+    {
+      "path": "FRAMEWORK-SOURCE-SHA256.json",
+      "sha256": "d17bec78691107d4a40eb54ae8727b18c3d0756a50e48b5b841aead6e3ee83a1"
+    },
+    {
+      "path": "IMPLEMENTATION_STATUS.md",
+      "sha256": "edad9213a52b30b924beb2e8cb21e9a21ec0b4fd1a8762ef769539d0d7d0adb8"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "d22f2529ca628c715f59ed16fc7d2079c19d705f710f6a3542bef6e29578718d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f64b30e1d8a76da8c95b61d4e7b9cf4cf8f12f6bae6992b41abcfdec6c604208"
+    },
+    {
+      "path": "VALIDATION.md",
+      "sha256": "4018733bfec5e8821857ce26b30b62d076fd5611f38e95cda999da76a655f6bd"
+    },
+    {
+      "path": "benchmarks/size_comparison.py",
+      "sha256": "f72deea6f482c604baff43ffcf344629d4a4d8a5f34957a3bf65818d24417f19"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "sha256": "5e32c935ef21763fe16e89ecde2ceee16bd2ef69190212e9c343fd3523f0089a"
+    },
+    {
+      "path": "docs/DEMARRAGE_RAPIDE.md",
+      "sha256": "77eb96b9163c298fdd20328fb8278df32a52795d8410ed0275b8ff5a64ab17d6"
+    },
+    {
+      "path": "docs/MANIFEST_SHA256.json",
+      "sha256": "c0d217927c8b5179c3e26b13ff3b83088662cb898eed58137bdc28e3ade7768c"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "89a0f806072a91d38f42785a7abb230cba20238f83256e9ae14857597d3293a6"
+    },
+    {
+      "path": "docs/VERSION",
+      "sha256": "1d72bab6b7efd88397837b57886d0113d0fa67c7fc4b183122bc09abafbb808e"
+    },
+    {
+      "path": "docs/decisions/ADR-HISTORIQUE-v0.1.md",
+      "sha256": "9fb46b5b14cc535ffd85dceb7b874296e1c99ae328fd5a14d02b8b8fd0001b35"
+    },
+    {
+      "path": "docs/docs/01_VISION_ET_PERIMETRE.md",
+      "sha256": "054647a6de00ce33fedb3c688ce95a3fa34297ab4308ef1192dd01191509b6ea"
+    },
+    {
+      "path": "docs/docs/02_ARCHITECTURE.md",
+      "sha256": "3c57a5cd182d37c4362d06decc4837dd9dfa31010db3497714af59b6792e45bb"
+    },
+    {
+      "path": "docs/docs/03_IDENTITES_ET_ALIGNEMENTS.md",
+      "sha256": "c6f6b17edd44e29fde9a54f2c1efea227c61923c4a9f6236a0f5a90aa1414199"
+    },
+    {
+      "path": "docs/docs/04_DICTIONNAIRES_ET_LANGUES.md",
+      "sha256": "77b44743e95a820962ec6169547d49938ee7d0f37686876f6ea81c3f733c6d8f"
+    },
+    {
+      "path": "docs/docs/05_IMPORT_WIKIDATA_ET_SOURCES.md",
+      "sha256": "efa043b1a067887f491c5b41945a711483d67ef497dea6f14c095c8831bb1fe0"
+    },
+    {
+      "path": "docs/docs/06_COMPLETUDE_ET_AUDIT.md",
+      "sha256": "8d40e3716ff8a080240e69dfdb0c9fbb5c8fcbe4490ed34e4ab87133120225e3"
+    },
+    {
+      "path": "docs/docs/07_CONVERSION_LEGACY.md",
+      "sha256": "585b0303b5fac0a2bb43a87418b04fedeedcdedc7db781674f112b232fa99b19"
+    },
+    {
+      "path": "docs/docs/08_INTERFACE_DETAILLEE_v0.1.md",
+      "sha256": "ed34c7ed24a75309251cc16be14be4b2037cefc0625f6399b4f63e6a9b88f4ac"
+    },
+    {
+      "path": "docs/docs/08_INTERFACE_ET_PARCOURS.md",
+      "sha256": "887f71ad3f4e39d0c02940ce868cf677b273043e1aaa2e133df5a5c713a0aefc"
+    },
+    {
+      "path": "docs/docs/09_CLI_API_ET_INTEROPERABILITE.md",
+      "sha256": "908da41dbd042321df007e72419452299af2345133bc80f34a30549b5ba6159e"
+    },
+    {
+      "path": "docs/docs/10_SECURITE_QUALITE_GOUVERNANCE.md",
+      "sha256": "9e5f06caa7a351b386f19b0ebfa49d27c35049eb41c9dfebe1e6297464a0e11a"
+    },
+    {
+      "path": "docs/docs/11_TESTS_ET_ACCEPTATION.md",
+      "sha256": "03eab213a5996a560c17b7b7eeaf5fb8de90fb02e17b2613e70542ab21381f2b"
+    },
+    {
+      "path": "docs/docs/12_CONTRATS_HISTORIQUES_v0.1.md",
+      "sha256": "eedfc26e69b4850c781638a23cf558bf1cc09e444d498aa3a52fae49e62e4caa"
+    },
+    {
+      "path": "docs/docs/12_ROADMAP_ET_DEPENDANCES.md",
+      "sha256": "4b5ff2db47db18ab56e3682e06b5a42eb47e6f95c3f7760edd7c908e72c9f33c"
+    },
+    {
+      "path": "docs/docs/13_GLOSSAIRE_ET_EXEMPLES.md",
+      "sha256": "d2d03d8a09da619343d3ffd5744f1e130b7aba22768cd8b3379e562ba187afcb"
+    },
+    {
+      "path": "docs/docs/14_DECISIONS_OUVERTES.md",
+      "sha256": "8e882561c62899e36e19d245adf911aa719cb7cfab6079153dffe28fff9223b2"
+    },
+    {
+      "path": "docs/docs/15_DEPOTS_ET_DEPENDANCES.md",
+      "sha256": "04de7e8a84aff383c1175e8fa2e9274293981efdfb257499722cefe91f5acedb"
+    },
+    {
+      "path": "docs/docs/16_MATRICE_DE_TRACABILITE.md",
+      "sha256": "86569155b6151acfa8146be822b219f5b9a42504482ad67436a8385028b06691"
+    },
+    {
+      "path": "docs/docs/17_PROJECTIONS_BIDIRECTIONNELLES.md",
+      "sha256": "72edd40ee9eaf7b6b9ffe0cd1de77eef5f9bc80fa6704da663da5f119ac30eed"
+    },
+    {
+      "path": "docs/docs/18_PROJECTION_COMPACTE_v0.3.md",
+      "sha256": "2ba03684cd0d6fce83ca1211cc86925453a6eb3bc840a77f13efc3683984d06a"
+    },
+    {
+      "path": "docs/docs/19_ATELIER_WEB_v1-alpha2.md",
+      "sha256": "b53f3de3d3ee8ad175505ed4e4c3a12743b4317a0e4b41df79d5790c87a2bd68"
+    },
+    {
+      "path": "docs/docs/20_CONCILIATION_LEXICALE_v1-alpha3.md",
+      "sha256": "8f2748342945a5a8072f47cf3b14c73cbd7e3386bb8c8db0ac0548bd6af8f620"
+    },
+    {
+      "path": "docs/docs/21_MIROIR_WIKIDATA_REPRENABLE_v1-alpha4.md",
+      "sha256": "15fb47259579f2280392f578e222747d98b70a6991a20b3617822d2fed8468e4"
+    },
+    {
+      "path": "docs/docs/22_EVOLUTIONS_WIKIDATA_v1-alpha5.md",
+      "sha256": "3e0281a36844bf3cd78674f58b872d3492ca587743c0cd39c78be2b9721b9e7e"
+    },
+    {
+      "path": "docs/docs/23_EXTRACTION_REDIRECTIONS_MEDIAWIKI_v1-alpha6.md",
+      "sha256": "1bc8bcb78cef3fa9fd220e3210308db79eae399d4a48858a6c2803fa8a367f66"
+    },
+    {
+      "path": "docs/docs/24_IMPORT_INDUSTRIEL_LOCAL_v1-alpha7.md",
+      "sha256": "180d3ef421d3df9c053b2640ef7b155440766dace71861551cabc3cfb2124bb0"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dictionaries/catalog.json",
+      "sha256": "63662038addf7ca5e2e24729a024ea3b3b51ebb83533f9d1d2c263bf0487deb1"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dictionaries/curated-fr.json",
+      "sha256": "f538fafa081a2f8b84e7aed44218e0842aae9b5bda013a066636b15c1ff28b3d"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dictionaries/imported/wikidata/demo-snapshot/en.jsonl",
+      "sha256": "abff5561ac1510fd69d07bd7020c6010e27dc7bfe120facd469a94339ec65db5"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dictionaries/imported/wikidata/demo-snapshot/fr.jsonl",
+      "sha256": "436cf62b45ad30b357bf6c09ac0e6f3bf979981eb1d42ab9052ee43c793b08b4"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dik-conversion-plan.example.json",
+      "sha256": "b29c05841ba03706ee40e709685f7db770f985b118e3b1565b0c0256a2e5afd1"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/dik-coverage.example.json",
+      "sha256": "f8ccd25038d98707ea6eba3e6d0e0e403bf4555e2b459a7c0dcd9b81d3f9fc88"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/external-crosswalk.example.json",
+      "sha256": "3bcf0ab6a2dc6fdae4def9c3db4d5530f177ab53e18dc2ff1b859278ec4dc8e2"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/identity-registry.example.json",
+      "sha256": "95f671769ef44336eaa4790837d1fd24b4f28153d42c45680d9a9ebad9347410"
+    },
+    {
+      "path": "docs/examples/framework-v11-draft3/semantic-graph.example.json",
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "examples/demo/compact-fr-CA-clean.md",
+      "sha256": "a98fdde126d42bd5b73f8838d6a24e27b402a9b70fc038f11c75166d89167d58"
+    },
+    {
+      "path": "examples/demo/compact-fr-CA.json",
+      "sha256": "06620c5016c825b16829da73c432f6375c7382b81dc0513fcc84c11c78d3c056"
+    },
+    {
+      "path": "examples/demo/compact-restored-graph.json",
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "examples/demo/dictionaries/catalog.json",
+      "sha256": "63662038addf7ca5e2e24729a024ea3b3b51ebb83533f9d1d2c263bf0487deb1"
+    },
+    {
+      "path": "examples/demo/dictionaries/curated-fr.json",
+      "sha256": "f538fafa081a2f8b84e7aed44218e0842aae9b5bda013a066636b15c1ff28b3d"
+    },
+    {
+      "path": "examples/demo/dictionaries/imported/wikidata/demo-snapshot/en.jsonl",
+      "sha256": "abff5561ac1510fd69d07bd7020c6010e27dc7bfe120facd469a94339ec65db5"
+    },
+    {
+      "path": "examples/demo/dictionaries/imported/wikidata/demo-snapshot/fr.jsonl",
+      "sha256": "436cf62b45ad30b357bf6c09ac0e6f3bf979981eb1d42ab9052ee43c793b08b4"
+    },
+    {
+      "path": "examples/demo/dik-coverage.example.json",
+      "sha256": "f8ccd25038d98707ea6eba3e6d0e0e403bf4555e2b459a7c0dcd9b81d3f9fc88"
+    },
+    {
+      "path": "examples/demo/dik.project.json",
+      "sha256": "766037faa7c4e453078a9c0656bb6a335cdf0c6548335f8bb0885c3382893d9c"
+    },
+    {
+      "path": "examples/demo/external-crosswalk.example.json",
+      "sha256": "3bcf0ab6a2dc6fdae4def9c3db4d5530f177ab53e18dc2ff1b859278ec4dc8e2"
+    },
+    {
+      "path": "examples/demo/identity-registry.example.json",
+      "sha256": "95f671769ef44336eaa4790837d1fd24b4f28153d42c45680d9a9ebad9347410"
+    },
+    {
+      "path": "examples/demo/readable-fr-CA.md",
+      "sha256": "8b0e696c58946ab8ee608ec2832bec459e5f74ba583be4789b7d7a63e3a5c4c2"
+    },
+    {
+      "path": "examples/demo/restored-graph.json",
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "examples/demo/reversible-fr-CA.json",
+      "sha256": "ee6a8a07d02b1cd3901bb0591291bd3d28a9bf91ad9a585d8283dab85403e625"
+    },
+    {
+      "path": "examples/demo/semantic-graph.example.json",
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "examples/demo/wikidata-small.sample.jsonl",
+      "sha256": "70a6864adc4f9e3fd44225d77487b9f2860b2087d8858eaa774f9205370b6f2a"
+    },
+    {
+      "path": "examples/v1/README.md",
+      "sha256": "363ba267d9ccfcb9eec84c78863b23c8502833074dadfd27c06a784ad7667ea7"
+    },
+    {
+      "path": "examples/v1/roles-legacy.example.json",
+      "sha256": "00e1c33f9367948de2b8c38cb5706cef1bebbdd8a3d6ad677c7d8610205d7d18"
+    },
+    {
+      "path": "examples/wikidata-evolution/mediawiki-action-api.fictional.json",
+      "sha256": "a8bfde92e191f48c26fd33d2488614b3dd88990cade81a3fa05f9be8f68cfac1"
+    },
+    {
+      "path": "examples/wikidata-evolution/observations.jsonl",
+      "sha256": "c82264e8482b7e3483922fde368b40618c52ef658c1e48327b190f0d29a65ce3"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "baa87ec5a798b83232e338520664b25414b1047d02bd94ff8c732be75b1e5e50"
+    },
+    {
+      "path": "spec/diK-1.0/.github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "ecfd469265b3a654a712c7a4d5e653098ebcfb7e34b6d59bff7b9ff5c6b50491"
+    },
+    {
+      "path": "spec/diK-1.0/.github/workflows/doc-conformance.yml",
+      "sha256": "ef7c05886de4d25e5fbacb46473e083929ab98f1e9a3bd25f2941ed64fc54681"
+    },
+    {
+      "path": "spec/diK-1.0/.github/workflows/strict-qualification.yml",
+      "sha256": "edfeed4816c47c9c9a4a65ee47be1f6ba8822ca88f5992925bf0bcbd4ef64a17"
+    },
+    {
+      "path": "spec/diK-1.0/AGENTS.md",
+      "sha256": "6f34adfa0233b912dde109597ce8795790edc5efa1d5d4462e8526955403a213"
+    },
+    {
+      "path": "spec/diK-1.0/CHANGELOG.md",
+      "sha256": "7006573f04a7cd7b857a95616ad828f15ca81c0d0b052ca75c4258f88307b929"
+    },
+    {
+      "path": "spec/diK-1.0/DECISIONS_OUVERTES.md",
+      "sha256": "13c4dca18e43e3a0423db292f5b6b9859260158a0e2426e7006b27483eb5feea"
+    },
+    {
+      "path": "spec/diK-1.0/DOCUMENTATION_INTEGRALE.md",
+      "sha256": "6236084422f6b4ccce86fb55031d97fee83c31d7e54cd774b6289974fd0e01f4"
+    },
+    {
+      "path": "spec/diK-1.0/IMPLEMENTATION_BACKLOG.md",
+      "sha256": "32546661238788bbceae19a0506fc52e81199ba8dfb734f0eb32a99e96a09b6e"
+    },
+    {
+      "path": "spec/diK-1.0/MANIFEST_SHA256.json",
+      "sha256": "8220609455255ed36632b64286ee5ce320b03c114f4941677511a8b6a3123b0b"
+    },
+    {
+      "path": "spec/diK-1.0/README.md",
+      "sha256": "5e7b456b2b547ad2fd44909512e712a42f836b25bc768b2aa5699facacf7aef4"
+    },
+    {
+      "path": "spec/diK-1.0/REVISION.md",
+      "sha256": "a8c6e3da6cedc287d2dad7b8751d0dff317483a7a9f5001db14fc274dfb27f96"
+    },
+    {
+      "path": "spec/diK-1.0/RUNBOOK_IA.md",
+      "sha256": "709339c5cff33c95c581c1628e21b8dcb98bd92ca1e7173beca7b3324f4e5553"
+    },
+    {
+      "path": "spec/diK-1.0/SOURCES_ET_DECISIONS.md",
+      "sha256": "c006e4cd5ac921f596af4ffbd1552e57c06d4d48cf7d39dc8329f4b0fc5db431"
+    },
+    {
+      "path": "spec/diK-1.0/SOURCE_LOCK.json",
+      "sha256": "f1193b40d6e0f014a68aa1d610d271ac673295efb09d1a8af1b5b9251a2be523"
+    },
+    {
+      "path": "spec/diK-1.0/SPEC_LOCK.md",
+      "sha256": "879108da9048558610e6c2ab921ed3514e53d2eb57519e6ce3c9c756cf70ef93"
+    },
+    {
+      "path": "spec/diK-1.0/START_HERE.md",
+      "sha256": "8d9de469c060b00e73ee5cdc0882801aaa3b08eaf7b29b85dbf25013f11ba7aa"
+    },
+    {
+      "path": "spec/diK-1.0/VALIDATION.md",
+      "sha256": "0b3aecbc2065b1fcbaac60ba84682f7c4f286870b7d94924da3b5d73c7a86b60"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/README.md",
+      "sha256": "29257c63e4164d3ee430070a3ee2c518a05ffcd6779228198e7b2be21f714956"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/dik-import-job.schema.json",
+      "sha256": "efa52bb550f2c5abe0787f3c2a920b2e533decb917ba3b698b08830813111015"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/dik-portfolio-coverage.schema.json",
+      "sha256": "599c23fa757cefc542226da1cdd57d64d75c881777ae5a325a67ea44ec582b1b"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/dik-review-decision.schema.json",
+      "sha256": "8de5e11db03b37ad24c21c54022a578caa259336225bf227d4d690005de70985"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/dik-semantic-patch-intent.schema.json",
+      "sha256": "a3e03acf488960624ffea8cc86e1def3dfe62944da6789c464c13e84cce29d19"
+    },
+    {
+      "path": "spec/diK-1.0/contracts/dik-workspace-manifest.schema.json",
+      "sha256": "f5171a1350ada32bc385950ace16326d43c8b711489abec420623bc8ff7fddbb"
+    },
+    {
+      "path": "spec/diK-1.0/decisions/ADR-0001-NOYAU-IMMUTABLE.md",
+      "sha256": "3c0bcaf735f3553da6b11071049ad6d8487ae375ce30c6130d4a8b9b58dd9c0b"
+    },
+    {
+      "path": "spec/diK-1.0/decisions/ADR-0002-MONOLITHE-MODULAIRE.md",
+      "sha256": "008c157da12faccfecd2281909b333e27a2e38a5e0ff7f0a2abe7cd3ec02b5c0"
+    },
+    {
+      "path": "spec/diK-1.0/decisions/ADR-0003-PROFIL-LOCAL-1_0.md",
+      "sha256": "bd1857ae022ac9471f2db50bf1347e6060d73300cbe9c27ba3ade994bd1b1cf3"
+    },
+    {
+      "path": "spec/diK-1.0/docs/01_CONTRATS_ET_FRONTIERES.md",
+      "sha256": "bf1e4eaa06fe18c34d4f105b6a99777b6cfa69ce2c79cb4da224320e469c7e1e"
+    },
+    {
+      "path": "spec/diK-1.0/docs/02_IDENTITES.md",
+      "sha256": "8fb3dcf4d1ad039467e77fd0550794634a0464bf3b80ceb8b4e09f5617d903d1"
+    },
+    {
+      "path": "spec/diK-1.0/docs/03_DICTIONNAIRES.md",
+      "sha256": "28f171449413caf21a8fdf6b4bd197f4c1545fc07223868e807d664fbe0c0fca"
+    },
+    {
+      "path": "spec/diK-1.0/docs/04_CONCILIATION.md",
+      "sha256": "6a41661f08d854bdbbb4829b9876f5d8c3d536ad9c9ef99d433db567cd0466fc"
+    },
+    {
+      "path": "spec/diK-1.0/docs/05_WIKIDATA.md",
+      "sha256": "4529e8fc827fd349150b2f04e72ef80f30250614ef163e526ffb98c0ef804b93"
+    },
+    {
+      "path": "spec/diK-1.0/docs/06_PROJECTIONS.md",
+      "sha256": "206cbd8997f3fc2aff5ffc896939792834f89e01748cba0d736bbe9be6f7a9cd"
+    },
+    {
+      "path": "spec/diK-1.0/docs/07_MIGRATION.md",
+      "sha256": "1c806d338907997b4f4edeb79a5186e53ca1f16fc1450aaf6b9163980544c3b0"
+    },
+    {
+      "path": "spec/diK-1.0/docs/08_COMPLETUDE.md",
+      "sha256": "927ebcb84faf0d57bef6efda2c86ba4899e25809210ffb9a706b81427d3edd61"
+    },
+    {
+      "path": "spec/diK-1.0/docs/09_ARCHITECTURE.md",
+      "sha256": "1c08f50cf1ae37ddf43b588cf7ca4863f67d73b127c9dc40cb7651a98cdf4327"
+    },
+    {
+      "path": "spec/diK-1.0/docs/10_STOCKAGE_INDEXATION.md",
+      "sha256": "4a03ef932dd0176203ee871b571dcb38a1a14274877f9a8dd1da4b91c53b4de7"
+    },
+    {
+      "path": "spec/diK-1.0/docs/11_API_CLI.md",
+      "sha256": "10275c8bc6bc14af373f808b9df69a1c65292173b337b86093a9d7870b7ecac8"
+    },
+    {
+      "path": "spec/diK-1.0/docs/12_INTERFACE.md",
+      "sha256": "ac61e9e6da39865bb696962eec94431e9d074f79947f561f5d76f60cb0846fad"
+    },
+    {
+      "path": "spec/diK-1.0/docs/13_SECURITE.md",
+      "sha256": "a0b18394c2a6115685c1c8c67ca13e4290d63f3797fd6bb50999d41abb0420b5"
+    },
+    {
+      "path": "spec/diK-1.0/docs/14_PERFORMANCE.md",
+      "sha256": "a5a84f763b2f566adee1fbf8215124f2410d4779e035569b6aab9daed8993f92"
+    },
+    {
+      "path": "spec/diK-1.0/docs/15_TESTS_TCK.md",
+      "sha256": "3ad2278eb0624852a6d9d5cafe22ba43a2df6883f64588912283d7e5e665ceca"
+    },
+    {
+      "path": "spec/diK-1.0/docs/16_RELEASE.md",
+      "sha256": "9ba9f5eff4269dcaf5a04da5a64a0ef09bf187a303cdc2c92016bb863f9495d7"
+    },
+    {
+      "path": "spec/diK-1.0/docs/17_TRACABILITE.md",
+      "sha256": "323ef86283f4db90e5d36dc93392cffc4a4e84776be7d3a4fe6fc9e764e4a32e"
+    },
+    {
+      "path": "spec/diK-1.0/docs/18_INTEGRATION.md",
+      "sha256": "a0253d400091924d88dc0ac1cf5728b3ed346185eb2ec3fa5c89456c0e24401f"
+    },
+    {
+      "path": "spec/diK-1.0/docs/19_LOCALES.md",
+      "sha256": "a9fed51917b645f1abb0d542516eb66b94372a803b9b3f351939bc7bdc226ede"
+    },
+    {
+      "path": "spec/diK-1.0/docs/20_ETATS_ET_TRANSACTIONS.md",
+      "sha256": "a9f33fb312ba7509b48de90c0152550e39f8c200f797963223192857434426a1"
+    },
+    {
+      "path": "spec/diK-1.0/docs/21_ERREURS_OBSERVABILITE.md",
+      "sha256": "31a4dced7095852f3b22818d78fbf0f897854bb32e9841a06fb5ed0027509b2d"
+    },
+    {
+      "path": "spec/diK-1.0/docs/22_EVOLUTION_DES_CONTRATS.md",
+      "sha256": "72d4bbf32ec492b87e620862bc8bf21dca37f87fb238431993c2e34702fbf4ff"
+    },
+    {
+      "path": "spec/diK-1.0/docs/23_PROFIL_LOCAL_GOUVERNANCE.md",
+      "sha256": "026437408116e7cc673aa476803fed628466a421c22391c2cf0f3561bee1f350"
+    },
+    {
+      "path": "spec/diK-1.0/docs/24_ALGORITHMES_ORACLES.md",
+      "sha256": "219da271d01cc4cfaa2424f595676790774829cc808bb6c0e5b5c821466be515"
+    },
+    {
+      "path": "spec/diK-1.0/docs/25_GATES_CI_EXECUTABLES.md",
+      "sha256": "5da9ee2ea67d5b97aff14a5e37b10dbdc40ecb576dd995d47074f038f204de9b"
+    },
+    {
+      "path": "spec/diK-1.0/docs/26_BANC_PERFORMANCES.md",
+      "sha256": "93a97583f5f4df7bef3dcc73e120b0d2ba24e765cf6f42aed8d652d7acb287ca"
+    },
+    {
+      "path": "spec/diK-1.0/examples/README.md",
+      "sha256": "2188ce7199f948ab9592fc676f1307c5c38bde6e191f2d769264d960de9a0793"
+    },
+    {
+      "path": "spec/diK-1.0/examples/framework-v11-unaltered/dik-conversion-plan.example.json",
+      "sha256": "b29c05841ba03706ee40e709685f7db770f985b118e3b1565b0c0256a2e5afd1"
+    },
+    {
+      "path": "spec/diK-1.0/examples/framework-v11-unaltered/dik-coverage.example.json",
+      "sha256": "f8ccd25038d98707ea6eba3e6d0e0e403bf4555e2b459a7c0dcd9b81d3f9fc88"
+    },
+    {
+      "path": "spec/diK-1.0/examples/framework-v11-unaltered/external-crosswalk.example.json",
+      "sha256": "3bcf0ab6a2dc6fdae4def9c3db4d5530f177ab53e18dc2ff1b859278ec4dc8e2"
+    },
+    {
+      "path": "spec/diK-1.0/examples/framework-v11-unaltered/identity-registry.example.json",
+      "sha256": "95f671769ef44336eaa4790837d1fd24b4f28153d42c45680d9a9ebad9347410"
+    },
+    {
+      "path": "spec/diK-1.0/examples/framework-v11-unaltered/semantic-graph.example.json",
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "spec/diK-1.0/examples/proposed/dik-import-job.example.json",
+      "sha256": "1a75fb8899cc32340d87841dfe0a3e85c6c55d6249c62cc2b5ae84a652707cb2"
+    },
+    {
+      "path": "spec/diK-1.0/examples/proposed/dik-portfolio-coverage.example.json",
+      "sha256": "47e697570e5874e873a1d37b502129adfe61b9d5343d48e8ecbcadf4cec60a99"
+    },
+    {
+      "path": "spec/diK-1.0/examples/proposed/dik-review-decision.example.json",
+      "sha256": "221ea14c304f22098b36df3bbdc9aa52df58934a20991f57978c5474130c9246"
+    },
+    {
+      "path": "spec/diK-1.0/examples/proposed/dik-semantic-patch-intent.example.json",
+      "sha256": "dd03dcf8bac060e8dc21825f88beb71ed4c46bc2e2e48c3b0878c764c1d620fd"
+    },
+    {
+      "path": "spec/diK-1.0/examples/proposed/dik-workspace-manifest.example.json",
+      "sha256": "3d3e67e4b22f43983f7ce865b594677c61b9d7bc6786c9f26cacee2f773bca55"
+    },
+    {
+      "path": "spec/diK-1.0/tests/README.md",
+      "sha256": "5a863580de17f0e8c9ee458295ef093ec038925366cbb6fb225f6812544ee93f"
+    },
+    {
+      "path": "spec/diK-1.0/tests/TCK_CASES.json",
+      "sha256": "1749ba2ae6d90530c111a9a8907dcaacb1cb36fa6c39774e4df0f1c9198bcfc9"
+    },
+    {
+      "path": "spec/diK-1.0/tests/reference_vectors.json",
+      "sha256": "407e90ea89ac29bfd76f9ce73f4f91207c9c996a9ed67fdf4e84719c630e40b9"
+    },
+    {
+      "path": "spec/diK-1.0/tests/requirements.json",
+      "sha256": "2ac61ec4762a93b60ba0b5528f5d086e6052187d0ba775c8020be686e38cc3d2"
+    },
+    {
+      "path": "spec/diK-1.0/tools/validate_documentation.py",
+      "sha256": "0b94f6aac376d7ff82b8e5889fb8fa648704d09c07201d90d436012c57343f18"
+    },
+    {
+      "path": "spec/diK-1.0/tools/verify_reference_vectors.py",
+      "sha256": "66ba63493a82e92c61cb3652d6d138ba93a337d0c46ee23728869069b0232b99"
+    },
+    {
+      "path": "src/dik/__init__.py",
+      "sha256": "9fda9458f32fb55de02781f5e79c1e6a7fefb65762a8788b0df6326994e69a97"
+    },
+    {
+      "path": "src/dik/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "src/dik/_framework/__init__.py",
+      "sha256": "70634cd95eab82bf91f0c4ebdece47dde529cdae36053e8ba0400ce150571e8d"
+    },
+    {
+      "path": "src/dik/_framework/coverage.py",
+      "sha256": "a51f7837611c4204c07431bb063f44a0d483abccdef8657011dea6ed406540d8"
+    },
+    {
+      "path": "src/dik/_framework/dictionaries.py",
+      "sha256": "a588d18faa110a604ad3efa2bdc13535a7ba5c7a547868a3cc5d2b425c279f11"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-curated-dictionary.schema.json",
+      "sha256": "783b668fcd0399c4ebeaa2507bcf8761493d41b768c16a0064759a8ba455a6e2"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-dictionary-catalog.schema.json",
+      "sha256": "58132545e23367bf4b0f207d59fd9fa23235a8d0f8913d574cc036e7205426d9"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-dik-conversion-plan.schema.json",
+      "sha256": "9e6b70ad076da002208e2cd17d7a686b61981ceec20b3a60550d9f5822659475"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-dik-coverage-report.schema.json",
+      "sha256": "9eef3af61beaa8d74f821429fe685fe9532a1ac3e58cc4d59bfb71e50161f586"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-external-crosswalk.schema.json",
+      "sha256": "b89aad88281f500b9609045b99c5523873407cd8c3407aa0d2b629739fbbf172"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-external-lexical-record.schema.json",
+      "sha256": "92dd5465dd1a71b119d942b710ab57029c40ca07e81357b61627f4a537a5c1c4"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-identity-registry.schema.json",
+      "sha256": "d18d82432e35d64af82f175342c96d162c15a21966ba45ecdda8bb698997972a"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-legacy-resolution-requests.schema.json",
+      "sha256": "9ac93b9c4159573b9196f2c78cfbe26fb12803e3d29dd73b4b4308764249058b"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-lexical-dictionary.schema.json",
+      "sha256": "90dfd5c20d9e3728eaf18a30887ffd312c3cee472a8e818ee8968a0851b7dc6c"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-semantic-graph.schema.json",
+      "sha256": "405fdae79a2ab1c4c7147baf7aeac6b6964d59282046f8a5e2e9d2185e42de86"
+    },
+    {
+      "path": "src/dik/_framework/schemas/v11/kristal-wikidata-lexical-record.schema.json",
+      "sha256": "4f2cd9008bf30f650797589ac8b682c0a859c533a82fd5956c19c8b6c4b47eeb"
+    },
+    {
+      "path": "src/dik/cli.py",
+      "sha256": "ccfcc1f5d05e7d4e4ad610d8153981cdb4ade067b7d2c0db9c73312e6b4bd656"
+    },
+    {
+      "path": "src/dik/compact.py",
+      "sha256": "eda69d58b35340552ae3848281a650fe9545e4bd38e63e1aa0cb4f6221e4a335"
+    },
+    {
+      "path": "src/dik/conciliation.py",
+      "sha256": "ff3ccc1eb65118efd5ef0bc287afdaae6e9fbe663c547bc1e83bb6558543c925"
+    },
+    {
+      "path": "src/dik/contracts/dik-import-job.schema.json",
+      "sha256": "efa52bb550f2c5abe0787f3c2a920b2e533decb917ba3b698b08830813111015"
+    },
+    {
+      "path": "src/dik/contracts/dik-portfolio-coverage.schema.json",
+      "sha256": "599c23fa757cefc542226da1cdd57d64d75c881777ae5a325a67ea44ec582b1b"
+    },
+    {
+      "path": "src/dik/contracts/dik-review-decision.schema.json",
+      "sha256": "8de5e11db03b37ad24c21c54022a578caa259336225bf227d4d690005de70985"
+    },
+    {
+      "path": "src/dik/contracts/dik-semantic-patch-intent.schema.json",
+      "sha256": "a3e03acf488960624ffea8cc86e1def3dfe62944da6789c464c13e84cce29d19"
+    },
+    {
+      "path": "src/dik/contracts/dik-wikidata-evolution-event.schema.json",
+      "sha256": "390b3d18b167a64efe58efa1d27b5c9a0dadf59c18a0a1ce611ece6dc86c0612"
+    },
+    {
+      "path": "src/dik/contracts/dik-workspace-manifest.schema.json",
+      "sha256": "f5171a1350ada32bc385950ace16326d43c8b711489abec420623bc8ff7fddbb"
+    },
+    {
+      "path": "src/dik/curation.py",
+      "sha256": "cd3c4f9747d333448240c3058f427cde1f1873d19da9cc7601124226536dcf36"
+    },
+    {
+      "path": "src/dik/governance.py",
+      "sha256": "16aab817bddb9e8dedac7a52ae3f2b4b0c907d85f66b9c50355d812c9c93a599"
+    },
+    {
+      "path": "src/dik/index.py",
+      "sha256": "cb9e0831314ee116faf489ff5044bc2b7bb88eb466a18e3343580b56673d988b"
+    },
+    {
+      "path": "src/dik/large_import.py",
+      "sha256": "33101c5a26a81e9e5ec24fadf9f5d412884b2987e0f0faf3045c0f2c947f2fa5"
+    },
+    {
+      "path": "src/dik/legacy.py",
+      "sha256": "01df929ac26c1495977d75acfdf200f4aba089f5f27b79d5fcc921f6204e4871"
+    },
+    {
+      "path": "src/dik/mirror.py",
+      "sha256": "a15a54b17869500c10c3b3c69e63eaf390d5ca0b2e6e3a9aa21e2dd780239686"
+    },
+    {
+      "path": "src/dik/mirror_import.py",
+      "sha256": "ccc3d470bfe805806e35b56bac9b6873d42e1c96aec0498023293908168ca8d0"
+    },
+    {
+      "path": "src/dik/operations.py",
+      "sha256": "fb497c227aab1f4c534e404f7a3d4f40adc81aab6bf8fc99b03de7f9b9ed8654"
+    },
+    {
+      "path": "src/dik/patches.py",
+      "sha256": "1206c3b4b16aad011e76b507c1df359779b736430ffc998e6f7f58643c9e78c2"
+    },
+    {
+      "path": "src/dik/portfolio.py",
+      "sha256": "8221c23be744359bc0f53eb52175063c894bfd8b5bc21578712feb5fd20dd178"
+    },
+    {
+      "path": "src/dik/projection.py",
+      "sha256": "94319fe605f4ee133be067cc95d1f115a152e3db2eafbbfd03e9cd2e130dc581"
+    },
+    {
+      "path": "src/dik/reconcile.py",
+      "sha256": "bbef207b73268d14c387eecc3d7c9178438dd388a10b6b181873d5ab6b7ebd1a"
+    },
+    {
+      "path": "src/dik/redirect_sources.py",
+      "sha256": "c41731868f603d258eea0e2964ac521807c48a81276be26289675f1a5118e04c"
+    },
+    {
+      "path": "src/dik/snapshot_diff.py",
+      "sha256": "dc295cce86c5a9bf57ff061949aba4bd29f5f181639b2a3d5ac7e9c236551a91"
+    },
+    {
+      "path": "src/dik/sync.py",
+      "sha256": "da83ac4452cea04c0540239b6df2a755e1bdaab728b0c0d78e7b5fba2163af0f"
+    },
+    {
+      "path": "src/dik/webapp.py",
+      "sha256": "438e48fe9eda3f18432a5541171848555bfd3abf06826a455f9e59de9473ab30"
+    },
+    {
+      "path": "src/dik/wikidata_evolution.py",
+      "sha256": "12d87cb949c03fcd6542b44a9550948c9eab0967b3f21beddbb39e45805e4615"
+    },
+    {
+      "path": "src/dik/wikidata_probe.py",
+      "sha256": "9581114b22755394fe3ca8010b5c05d173db6e6d6e9935ee670e9f07c1b82d08"
+    },
+    {
+      "path": "tests/test_compact.py",
+      "sha256": "84cb53bc07315dd244f1ca5a53d84c6cd574b91b22021e6e66b727b9285065fe"
+    },
+    {
+      "path": "tests/test_conciliation.py",
+      "sha256": "bf584fcccd7d0cda75b6d01fbeca256ab885c9f0d1d9d6793a1157cc5589192b"
+    },
+    {
+      "path": "tests/test_dik.py",
+      "sha256": "29941d0bd5077b5410ae0ca0bd02f44591adcac5bdbc2a8dccaef8c6ee6c0cb9"
+    },
+    {
+      "path": "tests/test_large_import_alpha7.py",
+      "sha256": "1a60db832f34331251bf9f5e0e1096486040f7c23c21b47f58df28a897936730"
+    },
+    {
+      "path": "tests/test_mediawiki_redirect_adapter_alpha6.py",
+      "sha256": "f7eeaa50db147b7fa23a46d15d2171c287a79f7a919500743c95eac09f31ec58"
+    },
+    {
+      "path": "tests/test_projection.py",
+      "sha256": "7f83b97be886ab1fc5b39b7eee49ff5f47367f0d710d9a56164f9dd56523e490"
+    },
+    {
+      "path": "tests/test_v1_modules.py",
+      "sha256": "6b24ad7336d848659d52a92275546b1c3fd86bcb4f6e40d704d54fb62531419e"
+    },
+    {
+      "path": "tests/test_webapp_workbench.py",
+      "sha256": "29e42ff0c5fa43c7dee6b0d31365dcc21ed9c2bd6bee4fa704607eaa276e7f35"
+    },
+    {
+      "path": "tests/test_wikidata_evolution_alpha5.py",
+      "sha256": "73f535978a0e3cd58bd68a4a6e14075b5f70416b41424d091c11e9f97f37e3c6"
+    },
+    {
+      "path": "tests/test_wikidata_mirror_alpha4.py",
+      "sha256": "12f88266a11739ee7fba2d2a434232ade8356d3477c3835559c987473a0d2b68"
+    },
+    {
+      "path": "tools/build_release_manifest.py",
+      "sha256": "27b1492deac8549029675d8424b3d03134876566046d8f01f77aab046d751ace"
+    }
+  ],
+  "framework_contract": "11.0.0-draft.3",
+  "release": "1.0.0-alpha.7"
+}

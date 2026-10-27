@@ -1,0 +1,16 @@
+name: diK local tests
+on:
+  push:
+  pull_request:
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - run: python -m pip install "pytest>=8,<10"
+      - run: python -m pytest -q
+      - run: dik project inspect --project examples/demo/dik.project.json

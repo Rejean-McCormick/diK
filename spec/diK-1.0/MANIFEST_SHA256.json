@@ -1,0 +1,346 @@
+{
+  "specification": "1.0-candidate.2",
+  "scope": "complete documentation and proposed contracts; not executable software diK 1.0",
+  "files": [
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "size": 494,
+      "sha256": "ecfd469265b3a654a712c7a4d5e653098ebcfb7e34b6d59bff7b9ff5c6b50491"
+    },
+    {
+      "path": ".github/workflows/doc-conformance.yml",
+      "size": 399,
+      "sha256": "ef7c05886de4d25e5fbacb46473e083929ab98f1e9a3bd25f2941ed64fc54681"
+    },
+    {
+      "path": ".github/workflows/strict-qualification.yml",
+      "size": 888,
+      "sha256": "edfeed4816c47c9c9a4a65ee47be1f6ba8822ca88f5992925bf0bcbd4ef64a17"
+    },
+    {
+      "path": "AGENTS.md",
+      "size": 4936,
+      "sha256": "6f34adfa0233b912dde109597ce8795790edc5efa1d5d4462e8526955403a213"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size": 1226,
+      "sha256": "7006573f04a7cd7b857a95616ad828f15ca81c0d0b052ca75c4258f88307b929"
+    },
+    {
+      "path": "DECISIONS_OUVERTES.md",
+      "size": 1888,
+      "sha256": "13c4dca18e43e3a0423db292f5b6b9859260158a0e2426e7006b27483eb5feea"
+    },
+    {
+      "path": "DOCUMENTATION_INTEGRALE.md",
+      "size": 261208,
+      "sha256": "6236084422f6b4ccce86fb55031d97fee83c31d7e54cd774b6289974fd0e01f4"
+    },
+    {
+      "path": "IMPLEMENTATION_BACKLOG.md",
+      "size": 2519,
+      "sha256": "32546661238788bbceae19a0506fc52e81199ba8dfb734f0eb32a99e96a09b6e"
+    },
+    {
+      "path": "README.md",
+      "size": 6623,
+      "sha256": "5e7b456b2b547ad2fd44909512e712a42f836b25bc768b2aa5699facacf7aef4"
+    },
+    {
+      "path": "REVISION.md",
+      "size": 2641,
+      "sha256": "a8c6e3da6cedc287d2dad7b8751d0dff317483a7a9f5001db14fc274dfb27f96"
+    },
+    {
+      "path": "RUNBOOK_IA.md",
+      "size": 4753,
+      "sha256": "709339c5cff33c95c581c1628e21b8dcb98bd92ca1e7173beca7b3324f4e5553"
+    },
+    {
+      "path": "SOURCES_ET_DECISIONS.md",
+      "size": 2635,
+      "sha256": "c006e4cd5ac921f596af4ffbd1552e57c06d4d48cf7d39dc8329f4b0fc5db431"
+    },
+    {
+      "path": "SOURCE_LOCK.json",
+      "size": 3852,
+      "sha256": "f1193b40d6e0f014a68aa1d610d271ac673295efb09d1a8af1b5b9251a2be523"
+    },
+    {
+      "path": "SPEC_LOCK.md",
+      "size": 3912,
+      "sha256": "879108da9048558610e6c2ab921ed3514e53d2eb57519e6ce3c9c756cf70ef93"
+    },
+    {
+      "path": "START_HERE.md",
+      "size": 1065,
+      "sha256": "8d9de469c060b00e73ee5cdc0882801aaa3b08eaf7b29b85dbf25013f11ba7aa"
+    },
+    {
+      "path": "VALIDATION.md",
+      "size": 2468,
+      "sha256": "0b3aecbc2065b1fcbaac60ba84682f7c4f286870b7d94924da3b5d73c7a86b60"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 1008,
+      "sha256": "29257c63e4164d3ee430070a3ee2c518a05ffcd6779228198e7b2be21f714956"
+    },
+    {
+      "path": "contracts/dik-import-job.schema.json",
+      "size": 3160,
+      "sha256": "efa52bb550f2c5abe0787f3c2a920b2e533decb917ba3b698b08830813111015"
+    },
+    {
+      "path": "contracts/dik-portfolio-coverage.schema.json",
+      "size": 2078,
+      "sha256": "599c23fa757cefc542226da1cdd57d64d75c881777ae5a325a67ea44ec582b1b"
+    },
+    {
+      "path": "contracts/dik-review-decision.schema.json",
+      "size": 3767,
+      "sha256": "8de5e11db03b37ad24c21c54022a578caa259336225bf227d4d690005de70985"
+    },
+    {
+      "path": "contracts/dik-semantic-patch-intent.schema.json",
+      "size": 2145,
+      "sha256": "a3e03acf488960624ffea8cc86e1def3dfe62944da6789c464c13e84cce29d19"
+    },
+    {
+      "path": "contracts/dik-workspace-manifest.schema.json",
+      "size": 2507,
+      "sha256": "f5171a1350ada32bc385950ace16326d43c8b711489abec420623bc8ff7fddbb"
+    },
+    {
+      "path": "decisions/ADR-0001-NOYAU-IMMUTABLE.md",
+      "size": 993,
+      "sha256": "3c0bcaf735f3553da6b11071049ad6d8487ae375ce30c6130d4a8b9b58dd9c0b"
+    },
+    {
+      "path": "decisions/ADR-0002-MONOLITHE-MODULAIRE.md",
+      "size": 828,
+      "sha256": "008c157da12faccfecd2281909b333e27a2e38a5e0ff7f0a2abe7cd3ec02b5c0"
+    },
+    {
+      "path": "decisions/ADR-0003-PROFIL-LOCAL-1_0.md",
+      "size": 2733,
+      "sha256": "bd1857ae022ac9471f2db50bf1347e6060d73300cbe9c27ba3ade994bd1b1cf3"
+    },
+    {
+      "path": "docs/01_CONTRATS_ET_FRONTIERES.md",
+      "size": 3121,
+      "sha256": "bf1e4eaa06fe18c34d4f105b6a99777b6cfa69ce2c79cb4da224320e469c7e1e"
+    },
+    {
+      "path": "docs/02_IDENTITES.md",
+      "size": 2553,
+      "sha256": "8fb3dcf4d1ad039467e77fd0550794634a0464bf3b80ceb8b4e09f5617d903d1"
+    },
+    {
+      "path": "docs/03_DICTIONNAIRES.md",
+      "size": 3525,
+      "sha256": "28f171449413caf21a8fdf6b4bd197f4c1545fc07223868e807d664fbe0c0fca"
+    },
+    {
+      "path": "docs/04_CONCILIATION.md",
+      "size": 3143,
+      "sha256": "6a41661f08d854bdbbb4829b9876f5d8c3d536ad9c9ef99d433db567cd0466fc"
+    },
+    {
+      "path": "docs/05_WIKIDATA.md",
+      "size": 3530,
+      "sha256": "4529e8fc827fd349150b2f04e72ef80f30250614ef163e526ffb98c0ef804b93"
+    },
+    {
+      "path": "docs/06_PROJECTIONS.md",
+      "size": 4259,
+      "sha256": "206cbd8997f3fc2aff5ffc896939792834f89e01748cba0d736bbe9be6f7a9cd"
+    },
+    {
+      "path": "docs/07_MIGRATION.md",
+      "size": 3090,
+      "sha256": "1c806d338907997b4f4edeb79a5186e53ca1f16fc1450aaf6b9163980544c3b0"
+    },
+    {
+      "path": "docs/08_COMPLETUDE.md",
+      "size": 3009,
+      "sha256": "927ebcb84faf0d57bef6efda2c86ba4899e25809210ffb9a706b81427d3edd61"
+    },
+    {
+      "path": "docs/09_ARCHITECTURE.md",
+      "size": 3141,
+      "sha256": "1c08f50cf1ae37ddf43b588cf7ca4863f67d73b127c9dc40cb7651a98cdf4327"
+    },
+    {
+      "path": "docs/10_STOCKAGE_INDEXATION.md",
+      "size": 2757,
+      "sha256": "4a03ef932dd0176203ee871b571dcb38a1a14274877f9a8dd1da4b91c53b4de7"
+    },
+    {
+      "path": "docs/11_API_CLI.md",
+      "size": 3527,
+      "sha256": "10275c8bc6bc14af373f808b9df69a1c65292173b337b86093a9d7870b7ecac8"
+    },
+    {
+      "path": "docs/12_INTERFACE.md",
+      "size": 3127,
+      "sha256": "ac61e9e6da39865bb696962eec94431e9d074f79947f561f5d76f60cb0846fad"
+    },
+    {
+      "path": "docs/13_SECURITE.md",
+      "size": 3356,
+      "sha256": "a0b18394c2a6115685c1c8c67ca13e4290d63f3797fd6bb50999d41abb0420b5"
+    },
+    {
+      "path": "docs/14_PERFORMANCE.md",
+      "size": 3432,
+      "sha256": "a5a84f763b2f566adee1fbf8215124f2410d4779e035569b6aab9daed8993f92"
+    },
+    {
+      "path": "docs/15_TESTS_TCK.md",
+      "size": 3898,
+      "sha256": "3ad2278eb0624852a6d9d5cafe22ba43a2df6883f64588912283d7e5e665ceca"
+    },
+    {
+      "path": "docs/16_RELEASE.md",
+      "size": 3163,
+      "sha256": "9ba9f5eff4269dcaf5a04da5a64a0ef09bf187a303cdc2c92016bb863f9495d7"
+    },
+    {
+      "path": "docs/17_TRACABILITE.md",
+      "size": 2359,
+      "sha256": "323ef86283f4db90e5d36dc93392cffc4a4e84776be7d3a4fe6fc9e764e4a32e"
+    },
+    {
+      "path": "docs/18_INTEGRATION.md",
+      "size": 2335,
+      "sha256": "a0253d400091924d88dc0ac1cf5728b3ed346185eb2ec3fa5c89456c0e24401f"
+    },
+    {
+      "path": "docs/19_LOCALES.md",
+      "size": 1913,
+      "sha256": "a9fed51917b645f1abb0d542516eb66b94372a803b9b3f351939bc7bdc226ede"
+    },
+    {
+      "path": "docs/20_ETATS_ET_TRANSACTIONS.md",
+      "size": 2049,
+      "sha256": "a9f33fb312ba7509b48de90c0152550e39f8c200f797963223192857434426a1"
+    },
+    {
+      "path": "docs/21_ERREURS_OBSERVABILITE.md",
+      "size": 1917,
+      "sha256": "31a4dced7095852f3b22818d78fbf0f897854bb32e9841a06fb5ed0027509b2d"
+    },
+    {
+      "path": "docs/22_EVOLUTION_DES_CONTRATS.md",
+      "size": 1809,
+      "sha256": "72d4bbf32ec492b87e620862bc8bf21dca37f87fb238431993c2e34702fbf4ff"
+    },
+    {
+      "path": "docs/23_PROFIL_LOCAL_GOUVERNANCE.md",
+      "size": 2062,
+      "sha256": "026437408116e7cc673aa476803fed628466a421c22391c2cf0f3561bee1f350"
+    },
+    {
+      "path": "docs/24_ALGORITHMES_ORACLES.md",
+      "size": 6604,
+      "sha256": "219da271d01cc4cfaa2424f595676790774829cc808bb6c0e5b5c821466be515"
+    },
+    {
+      "path": "docs/25_GATES_CI_EXECUTABLES.md",
+      "size": 3799,
+      "sha256": "5da9ee2ea67d5b97aff14a5e37b10dbdc40ecb576dd995d47074f038f204de9b"
+    },
+    {
+      "path": "docs/26_BANC_PERFORMANCES.md",
+      "size": 2824,
+      "sha256": "93a97583f5f4df7bef3dcc73e120b0d2ba24e765cf6f42aed8d652d7acb287ca"
+    },
+    {
+      "path": "examples/README.md",
+      "size": 1688,
+      "sha256": "2188ce7199f948ab9592fc676f1307c5c38bde6e191f2d769264d960de9a0793"
+    },
+    {
+      "path": "examples/framework-v11-unaltered/dik-conversion-plan.example.json",
+      "size": 1149,
+      "sha256": "b29c05841ba03706ee40e709685f7db770f985b118e3b1565b0c0256a2e5afd1"
+    },
+    {
+      "path": "examples/framework-v11-unaltered/dik-coverage.example.json",
+      "size": 2306,
+      "sha256": "f8ccd25038d98707ea6eba3e6d0e0e403bf4555e2b459a7c0dcd9b81d3f9fc88"
+    },
+    {
+      "path": "examples/framework-v11-unaltered/external-crosswalk.example.json",
+      "size": 950,
+      "sha256": "3bcf0ab6a2dc6fdae4def9c3db4d5530f177ab53e18dc2ff1b859278ec4dc8e2"
+    },
+    {
+      "path": "examples/framework-v11-unaltered/identity-registry.example.json",
+      "size": 606,
+      "sha256": "95f671769ef44336eaa4790837d1fd24b4f28153d42c45680d9a9ebad9347410"
+    },
+    {
+      "path": "examples/framework-v11-unaltered/semantic-graph.example.json",
+      "size": 500,
+      "sha256": "50caca8e1af9af62d5af7f757c87b05d2302e00ab18010ea2bc6606f0a7fec27"
+    },
+    {
+      "path": "examples/proposed/dik-import-job.example.json",
+      "size": 696,
+      "sha256": "1a75fb8899cc32340d87841dfe0a3e85c6c55d6249c62cc2b5ae84a652707cb2"
+    },
+    {
+      "path": "examples/proposed/dik-portfolio-coverage.example.json",
+      "size": 644,
+      "sha256": "47e697570e5874e873a1d37b502129adfe61b9d5343d48e8ecbcadf4cec60a99"
+    },
+    {
+      "path": "examples/proposed/dik-review-decision.example.json",
+      "size": 819,
+      "sha256": "221ea14c304f22098b36df3bbdc9aa52df58934a20991f57978c5474130c9246"
+    },
+    {
+      "path": "examples/proposed/dik-semantic-patch-intent.example.json",
+      "size": 505,
+      "sha256": "dd03dcf8bac060e8dc21825f88beb71ed4c46bc2e2e48c3b0878c764c1d620fd"
+    },
+    {
+      "path": "examples/proposed/dik-workspace-manifest.example.json",
+      "size": 808,
+      "sha256": "3d3e67e4b22f43983f7ce865b594677c61b9d7bc6786c9f26cacee2f773bca55"
+    },
+    {
+      "path": "tests/README.md",
+      "size": 1224,
+      "sha256": "5a863580de17f0e8c9ee458295ef093ec038925366cbb6fb225f6812544ee93f"
+    },
+    {
+      "path": "tests/TCK_CASES.json",
+      "size": 6206,
+      "sha256": "1749ba2ae6d90530c111a9a8907dcaacb1cb36fa6c39774e4df0f1c9198bcfc9"
+    },
+    {
+      "path": "tests/reference_vectors.json",
+      "size": 17025,
+      "sha256": "407e90ea89ac29bfd76f9ce73f4f91207c9c996a9ed67fdf4e84719c630e40b9"
+    },
+    {
+      "path": "tests/requirements.json",
+      "size": 89454,
+      "sha256": "2ac61ec4762a93b60ba0b5528f5d086e6052187d0ba775c8020be686e38cc3d2"
+    },
+    {
+      "path": "tools/validate_documentation.py",
+      "size": 8077,
+      "sha256": "0b94f6aac376d7ff82b8e5889fb8fa648704d09c07201d90d436012c57343f18"
+    },
+    {
+      "path": "tools/verify_reference_vectors.py",
+      "size": 4496,
+      "sha256": "66ba63493a82e92c61cb3652d6d138ba93a337d0c46ee23728869069b0232b99"
+    }
+  ]
+}

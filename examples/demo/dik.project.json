@@ -1,0 +1,8 @@
+{
+  "format_version": "0.1",
+  "framework_contract": "11.0.0-draft.3",
+  "graph": "semantic-graph.example.json",
+  "registry": "identity-registry.example.json",
+  "crosswalk": "external-crosswalk.example.json",
+  "catalog": "dictionaries/catalog.json"
+}

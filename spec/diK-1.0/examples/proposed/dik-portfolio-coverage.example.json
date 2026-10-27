@@ -1,0 +1,20 @@
+{
+  "catalog_id": "wikidata-import-demo-snapshot",
+  "catalog_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "contract_profile": "dik.portfolio-coverage/1.0-candidate",
+  "graph_reports": [
+    {
+      "framework_report_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "graph_id": "demo-graph",
+      "graph_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "namespace_id": "example.org/kristal-demo"
+    }
+  ],
+  "legacy_unresolved_graph_ids": [],
+  "report_id": "demo-portfolio",
+  "requested_locales": [
+    "fr",
+    "en",
+    "fr-CA"
+  ]
+}

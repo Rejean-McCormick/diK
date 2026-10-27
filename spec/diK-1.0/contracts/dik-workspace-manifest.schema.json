@@ -1,0 +1,109 @@
+{
+  "$id": "https://example.invalid/dik/contracts/dik-workspace-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Cible de diK 1.0, contrat candidat à ratifier; ne remplace aucun schéma Framework.",
+  "properties": {
+    "active_catalog": {
+      "additionalProperties": false,
+      "properties": {
+        "relative_path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relative_path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "active_crosswalk": {
+      "additionalProperties": false,
+      "properties": {
+        "relative_path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relative_path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "active_registry": {
+      "additionalProperties": false,
+      "properties": {
+        "relative_path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relative_path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "contract_profile": {
+      "const": "dik.workspace/1.0-candidate"
+    },
+    "framework_version": {
+      "const": "11.0.0-draft.3"
+    },
+    "projects": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "project_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relative_path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "project_id",
+          "relative_path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "workspace_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_profile",
+    "workspace_id",
+    "framework_version",
+    "active_registry",
+    "active_catalog",
+    "active_crosswalk",
+    "projects"
+  ],
+  "title": "dik-workspace-manifest — DIK PROPOSED, NOT FRAMEWORK",
+  "type": "object"
+}

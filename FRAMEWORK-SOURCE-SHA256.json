@@ -1,0 +1,74 @@
+{
+  "contract": "11.0.0-draft.3",
+  "files": [
+    {
+      "upstream": "schemas/v11/kristal-curated-dictionary.schema.json",
+      "vendored_sha256": "783b668fcd0399c4ebeaa2507bcf8761493d41b768c16a0064759a8ba455a6e2",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-dictionary-catalog.schema.json",
+      "vendored_sha256": "58132545e23367bf4b0f207d59fd9fa23235a8d0f8913d574cc036e7205426d9",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-dik-conversion-plan.schema.json",
+      "vendored_sha256": "9e6b70ad076da002208e2cd17d7a686b61981ceec20b3a60550d9f5822659475",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-dik-coverage-report.schema.json",
+      "vendored_sha256": "9eef3af61beaa8d74f821429fe685fe9532a1ac3e58cc4d59bfb71e50161f586",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-external-crosswalk.schema.json",
+      "vendored_sha256": "b89aad88281f500b9609045b99c5523873407cd8c3407aa0d2b629739fbbf172",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-external-lexical-record.schema.json",
+      "vendored_sha256": "92dd5465dd1a71b119d942b710ab57029c40ca07e81357b61627f4a537a5c1c4",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-identity-registry.schema.json",
+      "vendored_sha256": "d18d82432e35d64af82f175342c96d162c15a21966ba45ecdda8bb698997972a",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-legacy-resolution-requests.schema.json",
+      "vendored_sha256": "9ac93b9c4159573b9196f2c78cfbe26fb12803e3d29dd73b4b4308764249058b",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-lexical-dictionary.schema.json",
+      "vendored_sha256": "90dfd5c20d9e3728eaf18a30887ffd312c3cee472a8e818ee8968a0851b7dc6c",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-semantic-graph.schema.json",
+      "vendored_sha256": "405fdae79a2ab1c4c7147baf7aeac6b6964d59282046f8a5e2e9d2185e42de86",
+      "identical": true
+    },
+    {
+      "upstream": "schemas/v11/kristal-wikidata-lexical-record.schema.json",
+      "vendored_sha256": "4f2cd9008bf30f650797589ac8b682c0a859c533a82fd5956c19c8b6c4b47eeb",
+      "identical": true
+    },
+    {
+      "upstream": "tools/v11/dictionaries.py",
+      "upstream_sha256": "8df5fec4d58aeee955f354fd0a17b7779589b6183927bbe345dd17282c076eee",
+      "vendored_sha256": "a588d18faa110a604ad3efa2bdc13535a7ba5c7a547868a3cc5d2b425c279f11",
+      "identical": false,
+      "adaptation": "import paths/package-local schema root only"
+    },
+    {
+      "upstream": "tools/v11/dik_coverage.py",
+      "upstream_sha256": "79b8b1bfbf35cf079fdc846ffac671a06fe4c9ac206201992b83b3b4e708762c",
+      "vendored_sha256": "a51f7837611c4204c07431bb063f44a0d483abccdef8657011dea6ed406540d8",
+      "identical": false,
+      "adaptation": "import paths/package-local schema root only"
+    }
+  ]
+}

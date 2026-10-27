@@ -1,0 +1,103 @@
+{
+  "$id": "https://example.invalid/dik/contracts/dik-semantic-patch-intent.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "review_status": {
+            "const": "approved"
+          }
+        },
+        "required": [
+          "review_status"
+        ]
+      },
+      "then": {
+        "required": [
+          "reviewer_id",
+          "evidence_refs"
+        ]
+      }
+    }
+  ],
+  "description": "Cible de diK 1.0, contrat candidat à ratifier; ne remplace aucun schéma Framework.",
+  "properties": {
+    "change_kind": {
+      "enum": [
+        "lexical_only",
+        "semantic_identity",
+        "semantic_relation",
+        "literal_value"
+      ]
+    },
+    "contract_profile": {
+      "const": "dik.semantic-patch-intent/1.0-candidate"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^KS[1-9][0-9]*$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "namespace_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "new_catalog_revision": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "original": {},
+    "patch_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "proposed": {},
+    "reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_status": {
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ]
+    },
+    "reviewer_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_graph_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_graph_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_path": {
+      "pattern": "^/",
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_profile",
+    "patch_id",
+    "source_graph_id",
+    "namespace_id",
+    "source_graph_sha256",
+    "source_path",
+    "change_kind",
+    "original",
+    "proposed",
+    "review_status",
+    "reason"
+  ],
+  "title": "dik-semantic-patch-intent — DIK PROPOSED, NOT FRAMEWORK",
+  "type": "object"
+}

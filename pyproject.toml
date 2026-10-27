@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dik-kristal"
+version = "1.0.0a7"
+description = "diK — dictionnaires et identités sémantiques pour Kristal"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "AGPL-3.0-or-later"}
+authors = [{name="Kristal project"}]
+dependencies = ["jsonschema>=4.21,<5"]
+keywords = ["kristal", "wikidata", "dictionnaires", "semantic identity"]
+
+[project.scripts]
+dik = "dik.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"dik._framework" = ["schemas/v11/*.json"]
+"dik" = ["contracts/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

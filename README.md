@@ -120,5 +120,3 @@ dik sync import-large --dump /chemin/vers/wikidata.json.bz2 \
 La lecture des fichiers comprimés est en flux, mais la **reprise** se fait en relisant les lignes décompressées jusqu'au checkpoint. Pour la provenance externe, utiliser en plus `--approved-sha256` avec une empreinte obtenue par une voie indépendante.
 
 [Limites, protections et plan d'exploitation](docs/docs/24_IMPORT_INDUSTRIEL_LOCAL_v1-alpha7.md).
-#   d i K  
- 

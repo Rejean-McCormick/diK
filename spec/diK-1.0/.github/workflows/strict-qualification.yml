@@ -1,0 +1,20 @@
+name: diK upstream-strict specification qualification
+on:
+  workflow_dispatch:
+jobs:
+  upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'jsonschema>=4.21,<5'
+      # The repository itself does not embed the third-party Framework or diK source.
+      # A release operator must securely mount verified pinned copies under these paths.
+      # No fetch from latest/default branch is permitted: pin exact release and SHA.
+      - name: Strict upstream verification (fail closed if mounts missing)
+        env:
+          DIK_SOURCE_DATA_ROOT: ${{ github.workspace }}/pinned-sources
+          KRISTAL_FRAMEWORK_ROOT: ${{ github.workspace }}/pinned-sources/work_kristal_v11_draft3
+        run: python tools/validate_documentation.py --strict

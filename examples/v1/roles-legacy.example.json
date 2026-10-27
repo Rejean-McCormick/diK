@@ -1,0 +1,5 @@
+[
+  {"source_path":"/subject", "semantic_role":"entity"},
+  {"source_path":"/predicate", "semantic_role":"property"},
+  {"source_path":"/object/id", "semantic_role":"entity"}
+]

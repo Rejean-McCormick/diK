@@ -1,0 +1,2 @@
+{"event_type":"redirect","source_id":"Q8018","targets":["Q99000"],"source_snapshot":"illustrative-2026-10-16","source_reference":"fictional-offline-test:line-1"}
+{"event_type":"redirect","source_id":"Q99000","targets":["Q99001"],"source_snapshot":"illustrative-2026-10-16","source_reference":"fictional-offline-test:line-2"}

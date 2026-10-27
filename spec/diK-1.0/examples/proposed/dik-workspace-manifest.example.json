@@ -1,0 +1,24 @@
+{
+  "active_catalog": {
+    "relative_path": "dictionaries/catalog.json",
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "active_crosswalk": {
+    "relative_path": "external-crosswalk.example.json",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "active_registry": {
+    "relative_path": "identity-registry.example.json",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "contract_profile": "dik.workspace/1.0-candidate",
+  "framework_version": "11.0.0-draft.3",
+  "projects": [
+    {
+      "project_id": "demo",
+      "relative_path": "dik.project.json",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "workspace_id": "demo-workspace"
+}
