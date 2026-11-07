@@ -1,0 +1,233 @@
+{
+  "archive_root": "repository-root",
+  "created_at_utc_date": "2026-11-04",
+  "file_count": 43,
+  "files": [
+    {
+      "bytes": 5875,
+      "path": "CHANGELOG.md",
+      "sha256": "0f6e9a0e159565bd5c5f5e54e143ad4b73a0bcb0d566e65496fe654f3a9d00dd"
+    },
+    {
+      "bytes": 4328,
+      "path": "DIK-LEX-1-README-OVERLAY.md",
+      "sha256": "f13830836f235a15a07e1ce5fc1583111ed698911bd0de5f2794c9fe460cbadf"
+    },
+    {
+      "bytes": 9790,
+      "path": "IMPLEMENTATION_STATUS.md",
+      "sha256": "a65df65351f4bb023433ae7a738144482bdd588a9bb154c6b2db92a0f6da0882"
+    },
+    {
+      "bytes": 14045,
+      "path": "README.md",
+      "sha256": "f1f38861b1b5604569e9638852f92776700acd0ace484458ea3d06e89a221b4a"
+    },
+    {
+      "bytes": 4280,
+      "path": "VALIDATION.md",
+      "sha256": "f1e98e5a8f0b0d876640a58a31cb498845b8116238bfbe562fcd463900f7143f"
+    },
+    {
+      "bytes": 3181,
+      "path": "docs/decisions/ADR-DIK-LEX-1-registre-mondial.md",
+      "sha256": "5e1271e624dbd806fb27d685b2d31fd60fccffb83e8c82fa809588f3c60ef0b4"
+    },
+    {
+      "bytes": 2103,
+      "path": "docs/decisions/ADR-DIK-LEX-1-v03-pipeline-mondial.md",
+      "sha256": "a7e794a30636a05eb6cf34b92b3aa5df47f0b5535c05292265d356d5b6ce3934"
+    },
+    {
+      "bytes": 4211,
+      "path": "docs/docs/25_COLLECTION_MONDE_DICTIONNAIRES.md",
+      "sha256": "5ad07f5451efa3c45705ca86503255a09173d13b3637f814d3d1e51457a60db1"
+    },
+    {
+      "bytes": 4726,
+      "path": "docs/docs/26_LANGUES_MONDE_CANDIDATES.md",
+      "sha256": "8b2a760b68168f78cdbcefbec608c3c3513c99923e31b9d12021d44f2f8cca43"
+    },
+    {
+      "bytes": 5517,
+      "path": "docs/docs/27_BCP47_IANA_ET_RECONCILIATION.md",
+      "sha256": "487436c379e7f6c0ac01d8b9ba1b875ebed6ca7c2a4d9bc251e458542020f31a"
+    },
+    {
+      "bytes": 4752,
+      "path": "docs/docs/28_WIKIDATA_LEXEMES_GF_PIPELINE.md",
+      "sha256": "c9e2d7fdbe46948184727bd2b276d3a6d3633512de7dcc5954653c6efa0491e5"
+    },
+    {
+      "bytes": 3267,
+      "path": "docs/docs/29_ROADMAP_COLLECTION_MONDE.md",
+      "sha256": "f931a2e83175c8bdfb6a865ab4e133bafe57a632eec5c8c17963332569e43bdc"
+    },
+    {
+      "bytes": 615,
+      "path": "examples/world-dictionaries/collection-slots-v0.3/manifest.json",
+      "sha256": "b8fe94d5d10a61aee89f2e459fe234d19306593f0a6c51f00ab46e2f1414fd35"
+    },
+    {
+      "bytes": 2800888,
+      "path": "examples/world-dictionaries/collection-slots-v0.3/slots.jsonl",
+      "sha256": "d5af21a86d1717343aebe2df1ce30b967d602b2c4bec0886e07301f9aa56f640"
+    },
+    {
+      "bytes": 1878,
+      "path": "examples/world-dictionaries/iana-fixtures/synthetic-language-subtag-registry.txt",
+      "sha256": "46b2a19f4de399947d8354da4c5a0325e1a967ee0860ae1ca09269b72bd2845f"
+    },
+    {
+      "bytes": 573028,
+      "path": "examples/world-dictionaries/language-code-candidates.jsonl",
+      "sha256": "9d334cd875d2a160cf058edcc5da6b826ec590509a26e1bf8ab965e9fb8830e2"
+    },
+    {
+      "bytes": 438,
+      "path": "examples/world-dictionaries/language-code-candidates.manifest.json",
+      "sha256": "e04dbb5e21267646d70a6f728fd39c9f647b976460f3d0a909a999b28e3af472"
+    },
+    {
+      "bytes": 9620,
+      "path": "examples/world-dictionaries/resource-catalog.json",
+      "sha256": "98c41570970c2eeaed2a106f151c4acfd4652dc33c8014bedc80e0fb724bac48"
+    },
+    {
+      "bytes": 1839,
+      "path": "examples/world-dictionaries/source-inventory.json",
+      "sha256": "cba13dc96ec03aa652e3bd6c501f216bc0f351af715deddefb47d2ec4418eb1c"
+    },
+    {
+      "bytes": 930,
+      "path": "examples/world-dictionaries/wikidata-lexeme-sample.jsonl",
+      "sha256": "b2486494cbcfe1f70780c7bfe7b295e2249390d171c37e6c8ccf5c4b58f28f81"
+    },
+    {
+      "bytes": 33062,
+      "path": "src/dik/cli.py",
+      "sha256": "2836a7ea7adbfb3dff510eaee91eb9710acbaee3bb5b2b86ccd5cdc1c2434309"
+    },
+    {
+      "bytes": 1883,
+      "path": "src/dik/contracts/dik-dictionary-source-inventory.schema.json",
+      "sha256": "dad73edf8e5ad8f2415478b3ab0ad57f75616d4a99c6a0ae3c2b98f7085545e8"
+    },
+    {
+      "bytes": 650,
+      "path": "src/dik/contracts/dik-language-code-candidate.schema.json",
+      "sha256": "96648e4cdb18d361890de896357a1a9a760e141471c2dafad2e699c17b077d92"
+    },
+    {
+      "bytes": 1306,
+      "path": "src/dik/contracts/dik-world-resource-catalog.schema.json",
+      "sha256": "a6ea1ea2dc8a15c7da017cd676f3f089911e81ee6860a5dc18916b2893f9c73e"
+    },
+    {
+      "bytes": 5028,
+      "path": "src/dik/gf_handoff.py",
+      "sha256": "995d33d1562175cd9eeeb9b4130bc2ec96001082b3dac3eeea07266f13f178b6"
+    },
+    {
+      "bytes": 4276,
+      "path": "src/dik/iana_fetch.py",
+      "sha256": "2a46b7a3bed48a298464f6cf2c2ecd7315a5c30bf6591e9204dd3a9e14516029"
+    },
+    {
+      "bytes": 10476,
+      "path": "src/dik/iana_registry.py",
+      "sha256": "f228bb9faa57f9c37eac6abc1b3d350b579f4193a8ba93fae0c3a10efc9004c5"
+    },
+    {
+      "bytes": 2367,
+      "path": "src/dik/source_inventory.py",
+      "sha256": "d339da72e6d2594b0569f7aee0c9450306b66c0bfa6a30c3a08d483c76214caa"
+    },
+    {
+      "bytes": 13378,
+      "path": "src/dik/wikidata_lexemes.py",
+      "sha256": "19441201f8c6ff823b36d06d47b032a01216790811c035e828791deeaa09478f"
+    },
+    {
+      "bytes": 5135,
+      "path": "src/dik/world_collection.py",
+      "sha256": "49849e22f1b172c42c8d38e402959a3cff2eb928863bd6d1f6dd1c7ad38c0e7c"
+    },
+    {
+      "bytes": 7540,
+      "path": "src/dik/world_languages.py",
+      "sha256": "c450c1f7075281fce4e624f00b072e956fbc3e2a4bbd39962a31814ae99266de"
+    },
+    {
+      "bytes": 6720,
+      "path": "src/dik/world_reconciliation.py",
+      "sha256": "b03b7e0a255ccb0676909b13913fd33b4cd12af0c9382b03d5d40b350097773e"
+    },
+    {
+      "bytes": 1348,
+      "path": "src/dik/world_sources.py",
+      "sha256": "d72e290695ae46ca23bbbb6f9e78a45d7e6d2214064ad06a387e8555728e2c67"
+    },
+    {
+      "bytes": 2670,
+      "path": "tests/test_iana_fetch.py",
+      "sha256": "527a3c8a5bcd8d0df3836e13c9b121dd411576c0f71ddacc6e6628cf1e5ee964"
+    },
+    {
+      "bytes": 2445,
+      "path": "tests/test_iana_registry.py",
+      "sha256": "0fd2422e9f00e79fb9222e7e04d691e11dd594f81efd24b31b0cc89c69a4d3de"
+    },
+    {
+      "bytes": 2517,
+      "path": "tests/test_source_inventory.py",
+      "sha256": "a7ffcc2ca25401ee6b42c3648f00bc2222f5664e2324b8f0af03b6d2d18e17c4"
+    },
+    {
+      "bytes": 4327,
+      "path": "tests/test_wikidata_lexemes.py",
+      "sha256": "804f6831a21bfb245c2c2bbd24091a549d1d90ee57a3d3c2f7ce1d207839f687"
+    },
+    {
+      "bytes": 1165,
+      "path": "tests/test_world_cli.py",
+      "sha256": "41958b24810700bb7fd64046dbbb0b7922907d1776d0258e6209f0f7675ba91c"
+    },
+    {
+      "bytes": 1576,
+      "path": "tests/test_world_collection.py",
+      "sha256": "a3c2207aac8478a12051f52ed3149470ec9f0f75566acdd7e4d36fd943787b6f"
+    },
+    {
+      "bytes": 4945,
+      "path": "tests/test_world_languages.py",
+      "sha256": "e5a5c728cdc650bff81d8954b421f98383b65ad97d0a355104cdd3227a59098d"
+    },
+    {
+      "bytes": 2144,
+      "path": "tests/test_world_reconciliation.py",
+      "sha256": "a3effec7b152225eb131047093a79f61ecd7b0d92ab0b58070b508213d5fe5d3"
+    },
+    {
+      "bytes": 1346,
+      "path": "tests/test_world_sources.py",
+      "sha256": "362292e2b589b10f8560a5b83cbfd99956a98c7140c0065d3ea3b87d56bf3701"
+    },
+    {
+      "bytes": 2148,
+      "path": "tools/verify_dik_lex_overlay.py",
+      "sha256": "08d23080884569f3ba38199c67ddea88b04e05ecd129e7155676ae2553fb3c9a"
+    }
+  ],
+  "framework_contracts_mutated": false,
+  "includes": [
+    "DIK-LEX-1 v0.1",
+    "DIK-LEX-1 v0.2",
+    "DIK-LEX-1 v0.3"
+  ],
+  "profile": "dik.lex-1-overlay/0.3-candidate",
+  "published_dictionaries": 0,
+  "source_snapshot_zip_sha256": "43c85fd40ccd5b3f9085ef9721438014a4f8e0d7b5ee8a6d95b8b7d4348907a8",
+  "target_package": "diK 1.0.0-alpha.7 snapshot 2026-11-04",
+  "total_file_bytes": 3573763
+}

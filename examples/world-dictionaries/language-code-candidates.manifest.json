@@ -1,0 +1,11 @@
+{
+  "profile": "dik.language-code-candidates/0.1-candidate",
+  "purpose": "discovery_only",
+  "source": "pycountry:iso639-3",
+  "source_version": "24.6.1",
+  "source_data_sha256": "9636ce5266053867627140ce5ada1f9aa897ca07a7501302c1b14b8d1147cdda",
+  "file_sha256": "9d334cd875d2a160cf058edcc5da6b826ec590509a26e1bf8ab965e9fb8830e2",
+  "record_count": 7910,
+  "bcp47_status": "not_iana_validated",
+  "dictionary_status": "none_imported"
+}

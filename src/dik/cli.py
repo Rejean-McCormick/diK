@@ -205,6 +205,57 @@ def make_parser() -> argparse.ArgumentParser:
     serve_p.add_argument('--project',required=True);serve_p.add_argument('--index')
     serve_p.add_argument('--port',type=int,default=8765)
     serve_p.add_argument('--workspace',help='Dossier distinct pour publier de nouveaux catalogues locaux; absent = consultation seulement')
+    world = sub.add_parser('world', help='DIK-LEX-1 : registre mondial, IANA, lexèmes et relais GF (candidats)')
+    world_sub = world.add_subparsers(dest='world_command', required=True)
+    slot_init = world_sub.add_parser('collection-init', help='Créer le catalogue mondial clairsemé de 7 910 emplacements candidats')
+    slot_init.add_argument('--index', required=True)
+    slot_init.add_argument('--manifest', required=True)
+    slot_init.add_argument('--output-dir', required=True)
+    slot_audit = world_sub.add_parser('collection-audit', help='Auditer la collection candidate, sans feindre des dictionnaires')
+    slot_audit.add_argument('--dir', required=True)
+    lang_audit = world_sub.add_parser('languages-audit', help='Auditer les 7 910 codes candidats ISO 639-3')
+    lang_audit.add_argument('--index', required=True);lang_audit.add_argument('--manifest', required=True)
+    src_audit = world_sub.add_parser('sources-audit', help='Auditer inventaire v0.2 de sources de découverte')
+    src_audit.add_argument('--inventory', required=True)
+    cat_audit = world_sub.add_parser('resource-audit', help='Auditer catalogue mondial de ressources candidates')
+    cat_audit.add_argument('--catalog', required=True)
+    iana_fetch = world_sub.add_parser('iana-fetch', help='Téléchargement HTTPS explicite du registre officiel IANA')
+    iana_fetch.add_argument('--output-file', required=True, help='Fichier nouveau, sans écrasement')
+    iana_fetch.add_argument('--user-agent', required=True, help='Nom du projet et contact opérateur')
+    iana_fetch.add_argument('--expected-sha256', help='Hash officiel/attesté indépendamment')
+    iana_fetch.add_argument('--timeout', type=int, default=30)
+    iana_fetch.add_argument('--max-bytes', type=int, default=25_000_000)
+    iana_audit = world_sub.add_parser('iana-audit', help='Auditer un registre IANA local (TXT officiel)')
+    iana_audit.add_argument('--registry', required=True)
+    tag_check = world_sub.add_parser('tag-check', help='Contrôler des tags contre le registre IANA local')
+    tag_check.add_argument('--registry', required=True)
+    tag_check.add_argument('--tags', required=True, help='Tags séparés par virgule')
+    iso_recon = world_sub.add_parser('reconcile-iso', help='Réconcilier les candidats ISO avec une version IANA')
+    for attr in ('index', 'manifest', 'registry', 'output-dir'):
+        iso_recon.add_argument('--' + attr, required=True)
+    iso_audit = world_sub.add_parser('reconcile-audit', help='Vérifier un rapport immuable de réconciliation')
+    iso_audit.add_argument('--dir', required=True)
+    lex_import = world_sub.add_parser('lexemes-import', help='Importer L/S/F en observations séparées')
+    for attr in ('dump', 'snapshot', 'output-dir'):
+        lex_import.add_argument('--' + attr, required=True)
+    lex_import.add_argument('--registry', help='Registre IANA TXT facultatif')
+    lex_import.add_argument('--expected-sha256', help='Empreinte source vérifiée par opérateur')
+    lex_import.add_argument('--max-records', type=int, default=5_000_000)
+    lex_import.add_argument('--max-line-bytes', type=int, default=16 * 1024 * 1024)
+    lex_audit = world_sub.add_parser('lexemes-audit', help='Auditer observations lexicales')
+    lex_audit.add_argument('--dir', required=True)
+    gf = world_sub.add_parser('gf-handoff', help='Produire les candidats à mapper en GF/SemantiK')
+    gf.add_argument('--observations', required=True)
+    gf.add_argument('--output-dir', required=True)
+    gf.add_argument('--locale', required=True)
+    sem = world_sub.add_parser('semantik-knowledge', help='Exporter un artefact SA 1.1 knowledge-only, jamais un RuntimeSet')
+    sem.add_argument('--handoff', required=True)
+    sem.add_argument('--output-dir', required=True)
+    sem.add_argument('--max-entries', type=int, default=50000)
+    sem_audit = world_sub.add_parser('semantik-knowledge-audit', help='Auditer un candidat knowledge-only diK')
+    sem_audit.add_argument('--dir', required=True)
+    gf_audit = world_sub.add_parser('gf-audit', help='Auditer handoff lexical candidat GF')
+    gf_audit.add_argument('--dir', required=True)
     return p
 
 
@@ -222,7 +273,72 @@ def _csv_coverage(report: dict) -> str:
     return out.getvalue()
 
 
+def _run_world(args: argparse.Namespace) -> dict:
+    """DIK-LEX-1 operations are deliberately separate from Framework publication."""
+    from .world_languages import inspect_language_candidates
+    from .world_collection import build_collection_slots, audit_collection_slots
+    from .source_inventory import inspect_inventory
+    from .world_sources import inspect_resource_catalog
+    from .iana_registry import check_tag, load_registry
+    from .iana_fetch import fetch_iana_registry
+    from .world_reconciliation import build_reconciliation, audit_reconciliation
+    from .wikidata_lexemes import import_lexeme_observations, audit_lexeme_observations
+    from .gf_handoff import build_gf_handoff, audit_gf_handoff
+
+    cmd = args.world_command
+    if cmd == 'collection-init':
+        return build_collection_slots(index=Path(args.index), language_manifest=Path(args.manifest),
+                                      output_dir=Path(args.output_dir))
+    if cmd == 'collection-audit':
+        return audit_collection_slots(Path(args.dir))
+    if cmd == 'languages-audit':
+        return inspect_language_candidates(Path(args.index), Path(args.manifest))
+    if cmd == 'sources-audit':
+        return inspect_inventory(json.loads(Path(args.inventory).read_text(encoding='utf-8')))
+    if cmd == 'resource-audit':
+        return inspect_resource_catalog(Path(args.catalog))
+    if cmd == 'iana-fetch':
+        return fetch_iana_registry(output=Path(args.output_file), user_agent=args.user_agent,
+                                   expected_sha256=args.expected_sha256,
+                                   timeout=args.timeout, max_bytes=args.max_bytes)
+    if cmd == 'iana-audit':
+        return load_registry(Path(args.registry)).summary()
+    if cmd == 'tag-check':
+        reg = load_registry(Path(args.registry))
+        tags = args.tags.split(',')
+        if not tags or any(not x for x in tags) or len(tags) > 500:
+            raise ValueError('invalid tag selection')
+        return {'registry_date':reg.file_date, 'results': [check_tag(tag, reg) for tag in tags]}
+    if cmd == 'reconcile-iso':
+        return build_reconciliation(index=Path(args.index), source_manifest=Path(args.manifest),
+                                    iana_registry=Path(args.registry), output_dir=Path(args.output_dir))
+    if cmd == 'reconcile-audit':
+        return audit_reconciliation(Path(args.dir))
+    if cmd == 'lexemes-import':
+        return import_lexeme_observations(dump=Path(args.dump), snapshot=args.snapshot,
+                                          output_dir=Path(args.output_dir),
+                                          iana_registry=Path(args.registry) if args.registry else None,
+                                          expected_sha256=args.expected_sha256,
+                                          max_records=args.max_records, max_line_bytes=args.max_line_bytes)
+    if cmd == 'lexemes-audit':
+        return audit_lexeme_observations(Path(args.dir))
+    if cmd == 'gf-handoff':
+        return build_gf_handoff(observations_dir=Path(args.observations),
+                                output_dir=Path(args.output_dir), locale=args.locale)
+    if cmd == 'semantik-knowledge':
+        from .semantik_handoff import build_semantik_knowledge_candidate
+        return build_semantik_knowledge_candidate(handoff_dir=Path(args.handoff), output_dir=Path(args.output_dir), max_entries=args.max_entries)
+    if cmd == 'semantik-knowledge-audit':
+        from .semantik_handoff import audit_semantik_knowledge_candidate
+        return audit_semantik_knowledge_candidate(Path(args.dir))
+    if cmd == 'gf-audit':
+        return audit_gf_handoff(Path(args.dir))
+    raise ValueError('unknown world command')
+
+
 def run(args: argparse.Namespace) -> dict:
+    if args.area == 'world':
+        return _run_world(args)
     if args.area=='reconcile':
         return publish_crosswalk(load_project(args.project),Path(args.journal),Path(args.output),args.revision_id)
     if args.area == 'serve':

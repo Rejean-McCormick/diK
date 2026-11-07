@@ -73,3 +73,39 @@ Le rendu web n’est pas qualifié sur des volumes industriels; la couverture es
 - [ ] Indexation disque du registre/crosswalk lorsque des millions de correspondances sont approuvées.
 - [ ] Traitement complet des deltas Wikidata et service de réconciliation industrialisé.
 - [ ] Authentification, workflow d'approbation complet et publication contrôlée des migrations.
+
+## DIK-LEX-1 (2026-11-04, proposition additive, non ratifiée)
+
+- [x] Inventaire descriptif *discovery_only*, schéma applicatif candidat et contrôles Python hors ligne.
+- [x] Seed de 2 flux Wikidata + 1 source Wiktionary candidate, et 7 tags de locales, sans supposer des traductions présentes.
+- [x] Tests positifs et négatifs (10 tests), sans toucher aux contrats vendoriés Framework.
+- [ ] Ratification humaine de l'ADR; registre mondial IANA BCP 47 versionné; évaluation de licences externes et mesures réelles de couverture.
+- [ ] Adaptateurs Wikidata L/S/F et GF, qualification complète DIK-LEX-1 et tests inter-dépôts.
+
+**Cet ajout ne certifie ni un dictionnaire mondial ni une version diK stable.**
+
+## DIK-LEX-1 — index ISO 639-3 de découverte (étape 2, proposition)
+
+- [x] Snapshot local de **7 910 codes candidats** produit par `pycountry 24.6.1`; SHA du fichier et du dataset source consignés.
+- [x] Schéma, lecture indépendante de `pycountry`, déterminisme, intégrité, tests négatifs.
+- [ ] Autorité IANA versionnée et validation complète BCP 47; mapping alias/langue/script/région CLDR.
+- [ ] Révision de licence et gouvernance pour redistribution du référentiel linguistique.
+- [ ] Dictionnaires multilingues réellement importés, approuvés ou publiés : **aucun dans cet ajout**.
+
+**Attention : 7 910 codes candidats ≠ 7 910 langues vivantes ≠ 7 910 dictionnaires.**
+
+
+## DIK-LEX-1 v0.3 — overlay cumulatif mondial candidat (2026-11-04)
+
+- [x] v0.1/v0.2 maintenues : 7 910 codes candidats ISO 639-3 de `pycountry 24.6.1`, manifestes, inventaire source et contrôles.
+- [x] Création d'un catalogue **clairsemé** de 7 910 *emplacements non peuplés*, SHA + audit, sans création de 7 910 dictionnaires factices.
+- [x] Catalogue de 25 ressources mondiales **à examiner** : 0 licence approuvée, 0 import certifié.
+- [x] Parser IANA TXT local + vérificateur conservateur de tags BCP 47, support du statut déprécié, scripts/régions/variantes, téléchargement HTTPS **opt-in** vers hôte IANA verrouillé.
+- [x] Réconciliation ISO→IANA dans une sortie immuable auditée, sans créer de KQ/KP, d'`exactMatch` ni de dictionnaire publié.
+- [x] Import local streaming de lexèmes Wikidata L/S/F à vocation d'observation, avec SHA, limites de ressources, détection de doublons et compteurs de locales; aucune correction curated automatique.
+- [x] Relais lexical **candidat** vers GF, Q grammaticaux explicitement non mappés.
+- [ ] Qualification réseau réelle de l'acquisition IANA; registres courants authentifiés et alias CLDR complets.
+- [ ] Tests sur dumps lexèmes industriels, compatibilité exacte avec de vraies grammaires GF, licences/qualité des 25 sources, support des claims Wikidata complets.
+- [ ] Certification DIK-LEX-1 par les autres dépôts; ratification de l'ADR.
+
+Voir `DIK-LEX-1-README-OVERLAY.md` et `docs/docs/27_*.md`, `28_*.md`, `29_*.md`. Ceci n'est **pas** une release diK 1.0 stable.

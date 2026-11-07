@@ -204,3 +204,41 @@ This is an **alpha release**, not a production-ready, certified 1.0 system. In p
 ## License
 
 Licensed under **GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later)**. See [LICENSE](LICENSE) for the repository's license notice and a link to the full license terms.
+
+## Discovery inventory for world dictionaries (proposed DIK-LEX-1)
+
+The [world-dictionary discovery plan](docs/docs/25_COLLECTION_MONDE_DICTIONNAIRES.md) and [proposed ADR](docs/decisions/ADR-DIK-LEX-1-registre-mondial.md) add an **offline, discovery-only** source inventory, separate from the Framework v11 dictionary catalog and reviewed crosswalks. This is **not** a global dictionary import, a validated BCP 47 registry, or a GF integration. No translations are asserted as available.
+
+```bash
+python -m dik.source_inventory examples/world-dictionaries/source-inventory.json
+python -m pytest -q tests/test_source_inventory.py
+```
+
+### World-language code candidates (discovery only)
+
+The source discovery seed also records Wiktionary as a candidate external dictionary under separate attribution/share-alike terms (not imported). A reproducible, offline snapshot of **7,910 ISO 639-3 candidate codes** (including historical, constructed, macrolanguage, and special codes) is available under `examples/world-dictionaries/`. It does **not** certify BCP 47 tags, verify translations, or populate published dictionaries. See [language candidate documentation](docs/docs/26_LANGUES_MONDE_CANDIDATES.md).
+
+```sh
+PYTHONPATH=src python -m dik.world_languages inspect \
+  examples/world-dictionaries/language-code-candidates.jsonl \
+  examples/world-dictionaries/language-code-candidates.manifest.json
+```
+
+
+## DIK-LEX-1 v0.3 — collection mondiale (overlay candidat)
+
+Ce dépôt peut recevoir l'overlay cumulatif **v0.1 + v0.2 + v0.3** (sans patch Git). Lire [DIK-LEX-1-README-OVERLAY.md](DIK-LEX-1-README-OVERLAY.md).
+
+La nouvelle famille de commandes `dik world` gère : 7 910 codes ISO 639-3 candidats, 7 910 emplacements vides de collection, 25 sources de découverte, acquisition explicite et validation conservatrice de registres IANA BCP 47, réconciliation ISO→IANA, observations lexicographiques Wikidata L/S/F et handoff **candidat** vers GF/SemantiK. **Aucun** dictionnaire vérifié, traduction approuvée, crosswalk `exactMatch` ou grammaire GF n'est créé par ce pipeline.
+
+```sh
+dik world --help
+dik world collection-audit --dir examples/world-dictionaries/collection-slots-v0.3
+dik world resource-audit --catalog examples/world-dictionaries/resource-catalog.json
+```
+
+Guides : [IANA](docs/docs/27_BCP47_IANA_ET_RECONCILIATION.md), [L/S/F et GF](docs/docs/28_WIKIDATA_LEXEMES_GF_PIPELINE.md), [programme mondial](docs/docs/29_ROADMAP_COLLECTION_MONDE.md). Le package Python reste `1.0.0-alpha.7` (extension candidate, non version stable).
+
+## SemantiK lexical candidate handoff
+
+Use `dik world semantik-knowledge` and `dik world semantik-knowledge-audit` for knowledge-only lexical schema 1.1 outputs. Review of actual GF mappings occurs outside diK in WordBench. See `docs/docs/30_SEMANTIK_GF_HANDOFF_V09.md`.

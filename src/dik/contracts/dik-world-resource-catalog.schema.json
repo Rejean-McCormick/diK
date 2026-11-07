@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DIK-LEX-1 / candidate world resource catalog (no imported records)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "catalog_id", "purpose", "resources"],
+  "properties": {
+    "profile": {"const": "dik.world-resource-catalog/0.1-candidate"},
+    "catalog_id": {"type": "string", "minLength": 1},
+    "purpose": {"const": "discovery_only"},
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["resource_id", "resource_type", "url", "license_status", "content_status", "coverage_status", "promotable", "remarks"],
+        "properties": {
+          "resource_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"},
+          "resource_type": {"enum": ["lexical", "dictionary", "morphology", "language-registry", "terminology", "linguistic-reference"]},
+          "url": {"type": "string", "pattern": "^https://[^ ]+$"},
+          "license_status": {"const": "not_reviewed"},
+          "content_status": {"const": "none_imported"},
+          "coverage_status": {"const": "not_measured"},
+          "promotable": {"const": false},
+          "remarks": {"type": "string", "minLength": 5}
+        }
+      }
+    }
+  }
+}

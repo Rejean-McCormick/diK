@@ -1,0 +1,20 @@
+{
+  "actual_lexical_entries": 0,
+  "bcp47_validated_slots": 0,
+  "dictionaries_published": 0,
+  "profile": "dik.world-dictionary-slots/0.1-candidate",
+  "purpose": "discovery_only",
+  "slot_count": 7910,
+  "slots_file": "slots.jsonl",
+  "slots_sha256": "d5af21a86d1717343aebe2df1ce30b967d602b2c4bec0886e07301f9aa56f640",
+  "source_index_sha256": "9d334cd875d2a160cf058edcc5da6b826ec590509a26e1bf8ab965e9fb8830e2",
+  "source_manifest_sha256": "e04dbb5e21267646d70a6f728fd39c9f647b976460f3d0a909a999b28e3af472",
+  "type_counts": {
+    "A": 124,
+    "C": 23,
+    "E": 608,
+    "H": 88,
+    "L": 7063,
+    "S": 4
+  }
+}

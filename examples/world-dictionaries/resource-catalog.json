@@ -1,0 +1,257 @@
+{
+  "profile": "dik.world-resource-catalog/0.1-candidate",
+  "catalog_id": "world-discovery-2026-11-04",
+  "purpose": "discovery_only",
+  "resources": [
+    {
+      "resource_id": "wikidata-structured",
+      "resource_type": "lexical",
+      "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Identités Q/P et libellés; importer dans Framework uniquement via crosswalk approuvé."
+    },
+    {
+      "resource_id": "wikidata-lexicographical",
+      "resource_type": "lexical",
+      "url": "https://www.wikidata.org/wiki/Wikidata:Lexicographical_data/Documentation",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Lexèmes L, sens S, formes F; observations distinctes des dictionnaires Kristal."
+    },
+    {
+      "resource_id": "wiktionary-fr",
+      "resource_type": "dictionary",
+      "url": "https://fr.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire francophone; modalités de réutilisation du texte à étudier."
+    },
+    {
+      "resource_id": "wiktionary-en",
+      "resource_type": "dictionary",
+      "url": "https://en.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionary anglophone; pas de présomption de compatibilité CC0 du contenu."
+    },
+    {
+      "resource_id": "wiktionary-es",
+      "resource_type": "dictionary",
+      "url": "https://es.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wikcionario hispanophone; couverture et droits non évalués."
+    },
+    {
+      "resource_id": "wiktionary-ar",
+      "resource_type": "dictionary",
+      "url": "https://ar.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire arabe; aucun contenu récupéré."
+    },
+    {
+      "resource_id": "wiktionary-zh",
+      "resource_type": "dictionary",
+      "url": "https://zh.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire chinois; aucune garantie de couverture par variante/script."
+    },
+    {
+      "resource_id": "wiktionary-ru",
+      "resource_type": "dictionary",
+      "url": "https://ru.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire russe; références de découverte seulement."
+    },
+    {
+      "resource_id": "wiktionary-ja",
+      "resource_type": "dictionary",
+      "url": "https://ja.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire japonais; références de découverte seulement."
+    },
+    {
+      "resource_id": "wiktionary-de",
+      "resource_type": "dictionary",
+      "url": "https://de.wiktionary.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Wiktionnaire allemand; références de découverte seulement."
+    },
+    {
+      "resource_id": "unimorph",
+      "resource_type": "morphology",
+      "url": "https://unimorph.github.io/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Paradigmes flexionnels multilingues; vérifier licences par jeu de données."
+    },
+    {
+      "resource_id": "apertium",
+      "resource_type": "morphology",
+      "url": "https://github.com/apertium",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Ressources linguistiques de langues et de paires; licences par dépôt."
+    },
+    {
+      "resource_id": "universal-dependencies",
+      "resource_type": "linguistic-reference",
+      "url": "https://universaldependencies.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Arbres syntaxiques et traits; pas un dictionnaire de concepts."
+    },
+    {
+      "resource_id": "global-wordnet",
+      "resource_type": "lexical",
+      "url": "https://globalwordnet.github.io/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Ressources lexicales WordNet; vérifier chaque fichier et licence."
+    },
+    {
+      "resource_id": "panlex",
+      "resource_type": "lexical",
+      "url": "https://panlex.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Ressource lexicale multilingue; droits et couverture non évalués."
+    },
+    {
+      "resource_id": "glottolog",
+      "resource_type": "language-registry",
+      "url": "https://glottolog.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Catalogue de langues et bibliographies, pas un dictionnaire lexical."
+    },
+    {
+      "resource_id": "iana-language-subtags",
+      "resource_type": "language-registry",
+      "url": "https://www.iana.org/assignments/language-subtags-tags-extensions",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Autorité d’enregistrement des subtags BCP 47; pas une source de traductions."
+    },
+    {
+      "resource_id": "iso639-3-sil",
+      "resource_type": "language-registry",
+      "url": "https://iso639-3.sil.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Index de codes et identifications; pas un dictionnaire lexical."
+    },
+    {
+      "resource_id": "unicode-cldr",
+      "resource_type": "linguistic-reference",
+      "url": "https://cldr.unicode.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Métadonnées de locales, aliases et conventions; versionner les dérivés."
+    },
+    {
+      "resource_id": "concepticon",
+      "resource_type": "linguistic-reference",
+      "url": "https://concepticon.clld.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Catalogue de concepts linguistiques; n’établit pas des alignements Kristal."
+    },
+    {
+      "resource_id": "lexibank",
+      "resource_type": "lexical",
+      "url": "https://lexibank.clld.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Données lexicales comparatives; vérifier sources et permissions."
+    },
+    {
+      "resource_id": "clics",
+      "resource_type": "linguistic-reference",
+      "url": "https://clics.clld.org/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Constructions de colexification; pas de vérité d’identité automatique."
+    },
+    {
+      "resource_id": "usito",
+      "resource_type": "dictionary",
+      "url": "https://usito.usherbrooke.ca/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Dictionnaire français du Québec; repérage uniquement, droits non examinés."
+    },
+    {
+      "resource_id": "grand-dictionnaire-terminologique",
+      "resource_type": "terminology",
+      "url": "https://vitrinelinguistique.oqlf.gouv.qc.ca/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Terminologie québécoise; vérifier licences et modalités avant ingestion."
+    },
+    {
+      "resource_id": "dictionnaire-academie",
+      "resource_type": "dictionary",
+      "url": "https://www.dictionnaire-academie.fr/",
+      "license_status": "not_reviewed",
+      "content_status": "none_imported",
+      "coverage_status": "not_measured",
+      "promotable": false,
+      "remarks": "Dictionnaire institutionnel; diffusion intégrale non présumée autorisée."
+    }
+  ]
+}

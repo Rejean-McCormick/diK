@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/dik/contracts/dik-language-code-candidate.schema.json",
+  "title": "diK ISO 639-3 discovery candidate, not IANA BCP 47 or dictionary data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["alpha3", "name_en", "scope_code", "type_code"],
+  "properties": {
+    "alpha3": {"type": "string", "pattern": "^[a-z]{3}$"},
+    "alpha2": {"type": "string", "pattern": "^[a-z]{2}$"},
+    "name_en": {"type": "string", "minLength": 1},
+    "scope_code": {"enum": ["I", "M", "S"]},
+    "type_code": {"enum": ["A", "C", "E", "H", "L", "S"]}
+  }
+}

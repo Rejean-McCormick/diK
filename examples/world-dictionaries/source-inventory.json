@@ -1,0 +1,74 @@
+{
+  "profile": "dik.dictionary-source-inventory/0.1-candidate",
+  "inventory_id": "world-dictionaries-discovery-seed-2026-11-04",
+  "purpose": "discovery_only",
+  "sources": [
+    {
+      "source_id": "wikidata-qp",
+      "kind": "wikidata-qp",
+      "target": "qp-label-candidates",
+      "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "license": "CC0-1.0",
+      "license_review": "declared_only"
+    },
+    {
+      "source_id": "wikidata-lexemes",
+      "kind": "wikidata-lexemes",
+      "target": "lexeme-observations",
+      "url": "https://www.wikidata.org/wiki/Wikidata:Lexicographical_data/Documentation",
+      "license": "CC0-1.0",
+      "license_review": "declared_only"
+    },
+    {
+      "source_id": "wiktionary",
+      "kind": "external-dictionary",
+      "target": "external-term-candidates",
+      "url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights",
+      "license": "CC-BY-SA-4.0 / GFDL (text; verify per material)",
+      "license_review": "declared_only"
+    }
+  ],
+  "locales": [
+    {
+      "tag": "fr",
+      "candidate_sources": [
+        "wikidata-qp",
+        "wikidata-lexemes"
+      ],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "en",
+      "candidate_sources": [
+        "wikidata-qp",
+        "wikidata-lexemes"
+      ],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "fr-CA",
+      "candidate_sources": [],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "ar",
+      "candidate_sources": [],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "zh-Hans",
+      "candidate_sources": [],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "zh-Hant",
+      "candidate_sources": [],
+      "coverage": "not_measured"
+    },
+    {
+      "tag": "sr-Latn",
+      "candidate_sources": [],
+      "coverage": "not_measured"
+    }
+  ]
+}

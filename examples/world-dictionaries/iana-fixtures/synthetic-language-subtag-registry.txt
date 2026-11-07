@@ -1,0 +1,125 @@
+File-Date: 2020-01-01
+%%
+Type: language
+Subtag: en
+Description: English
+Added: 2005-10-16
+%%
+Type: language
+Subtag: fr
+Description: French
+Added: 2005-10-16
+%%
+Type: language
+Subtag: fra
+Description: French
+Added: 2005-10-16
+Preferred-Value: fr
+Deprecated: 2005-10-16
+%%
+Type: language
+Subtag: eng
+Description: English
+Added: 2005-10-16
+Preferred-Value: en
+Deprecated: 2005-10-16
+%%
+Type: language
+Subtag: zh
+Description: Chinese
+Added: 2005-10-16
+%%
+Type: language
+Subtag: ar
+Description: Arabic
+Added: 2005-10-16
+%%
+Type: language
+Subtag: sr
+Description: Serbian
+Added: 2005-10-16
+%%
+Type: language
+Subtag: ca
+Description: Catalan
+Added: 2005-10-16
+%%
+Type: language
+Subtag: he
+Description: Hebrew
+Added: 2005-10-16
+%%
+Type: language
+Subtag: iw
+Description: Hebrew
+Added: 2005-10-16
+Preferred-Value: he
+Deprecated: 1989-01-01
+%%
+Type: language
+Subtag: tlh
+Description: Klingon
+Added: 2005-10-16
+%%
+Type: extlang
+Subtag: cmn
+Description: Mandarin Chinese
+Added: 2005-10-16
+Prefix: zh
+Preferred-Value: cmn
+%%
+Type: script
+Subtag: Latn
+Description: Latin
+Added: 2005-10-16
+%%
+Type: script
+Subtag: Hans
+Description: Han (Simplified variant)
+Added: 2005-10-16
+%%
+Type: script
+Subtag: Hant
+Description: Han (Traditional variant)
+Added: 2005-10-16
+%%
+Type: region
+Subtag: CA
+Description: Canada
+Added: 2005-10-16
+%%
+Type: region
+Subtag: CN
+Description: China
+Added: 2005-10-16
+%%
+Type: region
+Subtag: US
+Description: United States
+Added: 2005-10-16
+%%
+Type: region
+Subtag: RS
+Description: Serbia
+Added: 2005-10-16
+%%
+Type: variant
+Subtag: valencia
+Description: Valencian
+Added: 2005-10-16
+Prefix: ca
+%%
+Type: grandfathered
+Tag: i-klingon
+Description: Klingon
+Added: 2005-10-16
+Preferred-Value: tlh
+Deprecated: 2004-02-24
+%%
+Type: grandfathered
+Tag: en-GB-oed
+Description: English Oxford Dictionary spelling
+Added: 2005-10-16
+Preferred-Value: en-GB-oxendict
+Deprecated: 2015-04-17
+%%

@@ -36,3 +36,13 @@ Se référer à `docs/docs/23_EXTRACTION_REDIRECTIONS_MEDIAWIKI_v1-alpha6.md`.
 - Import comparé octet à octet à l'ancien importeur sur la fixture à deux langues.
 - Essai synthétique de 50 000 entités / 4,3 Mo JSONL : ~1,80 s, ~121 Mo pic RSS (une seule correspondance acceptée ; machine de test uniquement).
 - **Non exécuté** : validation sur dump Wikidata complet, 300 vraies langues avec traductions, multi-utilisateurs, pannes système physiques.
+
+
+## DIK-LEX-1 v0.3 — qualification de l'overlay cumulatif (2026-11-04)
+
+- Suite locale exécutée avec `PYTHONPATH=src python -m pytest -q` sur la copie préparée : **206 tests réussis et 11 sous-tests** dans cette copie de préparation; la validation post-overlay sur la racine du snapshot est à contrôler séparément.
+- Import des fixtures L/S/F (JSONL, JSON array, gzip, bzip2), contrôles de collision, taille, empreintes et création de handoff GF **sans mapping**.
+- Réconciliation de 7 910 codes contre une **fixture IANA synthétique**, audit d'index et refus d'alterations/affirmations de couverture.
+- Récupération HTTPS IANA uniquement avec **opener simulé** : hôte/destination verrouillés et refus des redirections suspectes; aucun accès réel réseau validé.
+- Les valeurs calculées à partir de la fixture ne sont **pas** des métriques officielles IANA.
+- Pas de qualification industrielle ni de TCK inter-dépôts; Framework vendorié et contrats gelés conservés.

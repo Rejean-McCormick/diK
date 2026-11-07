@@ -60,3 +60,12 @@
 - Empreinte d'origine indépendante optionnelle, marquage explicite des sources non attestées.
 - Nouveaux tests adversariaux et documentation d'exploitation `docs/docs/24_IMPORT_INDUSTRIEL_LOCAL_v1-alpha7.md`.
 - **Non livré** : import de vrais deltas Wikidata, authentification multi-utilisateur, index crosswalk intégralement sur disque, qualification sur un dump complet.
+
+
+## DIK-LEX-1 v0.3 — overlay candidat cumulatif, sans changement de version de release
+
+- Conserve les étapes v0.1/v0.2 : 7 910 candidats ISO 639-3, source inventory, tests, manifests.
+- 7 910 emplacements de collection candidats (aucun dictionnaire publié), catalogue de 25 ressources à licence non revue.
+- IANA TXT / tags BCP 47 conservateurs, acquisition HTTPS opt-in, réconciliation candidate avec SHA et publication immuable.
+- Observation Lexemes Wikidata L/S/F indépendante, compteurs lexicaux et handoff GF non mappé; aucune promotion `exactMatch` ou `curated`.
+- CLI `dik world`, documentation/ADR et tests adversariaux.

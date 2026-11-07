@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/dik/contracts/dik-dictionary-source-inventory.schema.json",
+  "title": "dik.dictionary-source-inventory/0.1-candidate — discovery only",
+  "description": "Candidate diK metadata inventory; NEVER a Framework dictionary catalog, a verified import, or a crosswalk.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "inventory_id", "purpose", "sources", "locales"],
+  "properties": {
+    "profile": {"const": "dik.dictionary-source-inventory/0.1-candidate"},
+    "inventory_id": {"type": "string", "minLength": 1},
+    "purpose": {"const": "discovery_only"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["source_id", "kind", "target", "url", "license", "license_review"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+          "kind": {"enum": ["wikidata-qp", "wikidata-lexemes", "external-dictionary"]},
+          "target": {"enum": ["qp-label-candidates", "lexeme-observations", "external-term-candidates"]},
+          "url": {"type": "string", "pattern": "^https://[^ ]+$"},
+          "license": {"type": "string", "minLength": 1},
+          "license_review": {"enum": ["declared_only", "unreviewed"]}
+        }
+      }
+    },
+    "locales": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["tag", "candidate_sources", "coverage"],
+        "properties": {
+          "tag": {"type": "string", "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"},
+          "candidate_sources": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "coverage": {"const": "not_measured"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "koa.unesco-mt1-10-repo-handoff/1.0",
+  "repo": "diK",
+  "local_path": "C:\\mycode\\diK\\diK",
+  "branch": "unesco-mt1-10",
+  "domain_title": "Educational policy",
+  "baseline_concept_count": 41,
+  "wikidata_candidates_are_unreviewed": true,
+  "target_locales": [
+    "en",
+    "fr",
+    "es",
+    "de",
+    "nl",
+    "sv",
+    "da",
+    "no",
+    "nn",
+    "fi",
+    "et",
+    "af",
+    "it",
+    "pt"
+  ],
+  "language_qualification": "NOT_PROVEN_FOR_ALL_14",
+  "semantic_grain": {
+    "one_branch_kristal": true,
+    "articles_are_projections": true,
+    "one_kristal_per_concept": false,
+    "one_kristal_per_language": false
+  },
+  "component_role": "lexical_dictionary",
+  "receives": [
+    "canonical_KQ_KP_registry",
+    "approved_crosswalks",
+    "unesco_source_labels"
+  ],
+  "produces": [
+    "versioned_candidate_dictionary",
+    "language_coverage"
+  ],
+  "current_gate": "CANDIDATE_INTEGRATION_ONLY",
+  "automatic_exact_match": false,
+  "automatic_canonical_write": false,
+  "public_upload_authorized": false,
+  "public_deployment_authorized": false,
+  "wikipedia_source": {
+    "mode": "LOCAL_SQLITE_AND_COMPRESSED_XML",
+    "path": "D:\\EncyKlopedia\\80_search_indexes\\mediatheque-references\\wikipedia_en.sqlite",
+    "xml_text_extracted": false,
+    "remote_wikipedia_required": false
+  },
+  "immediate_action": "Audit direct/fallback/missing over the requested 14 locales. Resolve Framework draft.3 vs draft.4 pin before qualified handoff."
+}
