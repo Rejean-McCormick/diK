@@ -242,3 +242,7 @@ Guides : [IANA](docs/docs/27_BCP47_IANA_ET_RECONCILIATION.md), [L/S/F et GF](doc
 ## SemantiK lexical candidate handoff
 
 Use `dik world semantik-knowledge` and `dik world semantik-knowledge-audit` for knowledge-only lexical schema 1.1 outputs. Review of actual GF mappings occurs outside diK in WordBench. See `docs/docs/30_SEMANTIK_GF_HANDOFF_V09.md`.
+
+## Branch 02 final-system alignment (2026-11-09)
+
+See [the English functional handoff and qualification limits](docs/BRANCH02_FRAMEWORK_INTEROP.md). This is an additive, owner-scoped alignment; no canonical state, public release or production deployment is implied.
