@@ -1,0 +1,21 @@
+{
+  "schema": "koa.daat-owner-observation/0.1.0-local",
+  "subject": "DaAT 0.4.3 local review-handoff (not an owner-adopted profile)",
+  "repository": "diK",
+  "role": "dik",
+  "authority": "lexical dictionaries and reviewed crosswalk proposals",
+  "evidence_status": "OBSERVED_SNAPSHOT",
+  "markers": [
+    "spec/diK-1.0/AGENTS.md",
+    "pyproject.toml",
+    "src/dik/_framework/schemas/v11/kristal-semantic-graph.schema.json",
+    "FRAMEWORK-PIN.md"
+  ],
+  "read_only": true,
+  "prototype_consumer_adopted": false,
+  "ik_ingress_approved": false,
+  "canonical_write_authorized": false,
+  "publication_authorized": false,
+  "boundary": "DaAT external identifiers, words and review assertions remain unverified. diK must not infer exactMatch, mint KQ/KP or rewrite canonical graphs.",
+  "acceptance_gate": "diK owner adopts a separate lexical/crosswalk proposal mapping and verifies reviewer, source digest, namespace and independent evidence."
+}
