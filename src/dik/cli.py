@@ -78,6 +78,21 @@ def make_parser() -> argparse.ArgumentParser:
     report.add_argument('--output', help='Créer un rapport JSON sans écraser un fichier')
     report.add_argument('--csv', help='Créer un CSV récapitulatif séparé')
 
+    scan14 = cs.add_parser('scan14', help='Scanner les 14 langues diK/Spek et exporter les lacunes KQ/KP')
+    scan14.add_argument('--project', required=True, help='Manifeste diK de projet réel à auditer')
+    scan14.add_argument('--out', required=True, help='Nouveau dossier de rapports (ne doit pas exister)')
+    scan14.add_argument('--konstellation', help='Répertoire/ZIP Konstellation facultatif (inventaire non aligné)')
+    scan14.add_argument('--corpus', default='data/demo.pack.json', help='Pack relatif au dossier Konstellation')
+    scan14.add_argument('--spek', help='Répertoire/ZIP Spek pour contrôler les 14 cibles')
+    scan14.add_argument('--handoff', help='Fichier handoff.json diK explicite pour contrôler les 14 cibles')
+
+    multi14 = cs.add_parser('kristals14', help='Scanner tous les Kristals locaux × 14 langues; rapports sous diK/reports')
+    multi14.add_argument('--root', default=r'C:\mycode' if sys.platform == 'win32' else '.',
+                         help='Dossier racine des dépôts Kristals (Windows: C:\\mycode)')
+    multi14.add_argument('--dik-root', help='Dossier du dépôt diK; défaut: dépôt contenant ce module')
+    multi14.add_argument('--reports-root', help='Sous-dossier de diK pour les rapports (défaut: reports/scans_14_langues)')
+    multi14.add_argument('--min-kristals', type=int, default=1, help='Nombre minimum attendu pour éviter un scan de mauvaise racine')
+
     projection = sub.add_parser('projection', help='Projeter et restaurer un Kristal sémantique sans perte')
     pjs = projection.add_subparsers(dest='command', required=True)
     export = pjs.add_parser('export', help='Créer une projection lisible réversible (JSON)')
@@ -337,6 +352,15 @@ def _run_world(args: argparse.Namespace) -> dict:
 
 
 def run(args: argparse.Namespace) -> dict:
+    if args.area == 'coverage' and args.command == 'kristals14':
+        from .kristals14 import scan_kristals14
+        return scan_kristals14(root=args.root, dik_root=args.dik_root,
+                               reports_root=args.reports_root, min_kristals=args.min_kristals)
+    if args.area == 'coverage' and args.command == 'scan14':
+        from .scan14 import scan14
+        return scan14(project=args.project, output=args.out,
+                      konstellation=args.konstellation, corpus=args.corpus,
+                      spek=args.spek, handoff=args.handoff)
     if args.area == 'world':
         return _run_world(args)
     if args.area=='reconcile':

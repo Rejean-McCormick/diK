@@ -90,7 +90,7 @@ def test_portfolio(project):
 def test_non_executable_legacy(project,idx,tmp_path):
     src=tmp_path/'legacy.json'
     src.write_text(json.dumps({'graph_id':'legacy', 'subject':'Saint Augustin',
-             'text':'Saint Augustin','predicate':'parle_de','object':{'id':'grâce'}},ensure_ascii=False))
+             'text':'Saint Augustin','predicate':'parle_de','object':{'id':'grâce'}},ensure_ascii=False),encoding='utf-8')
     roles=[{'source_path':'/subject','semantic_role':'entity'},
            {'source_path':'/predicate','semantic_role':'property'},
            {'source_path':'/object/id','semantic_role':'entity'}]
@@ -99,7 +99,7 @@ def test_non_executable_legacy(project,idx,tmp_path):
     assert len(result['unresolved'])==2
     assert all(x['decision']['status']=='pending' for x in result['plan']['operations'])
     assert validate_plan_source(result['plan'],src)['mutation_permitted_by_dik'] is False
-    src.write_text(src.read_text()+' ')
+    src.write_text(src.read_text(encoding='utf-8')+' ',encoding='utf-8')
     with pytest.raises(DiKError,match='STALE_SOURCE'):validate_plan_source(result['plan'],src)
 
 

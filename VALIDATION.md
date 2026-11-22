@@ -46,3 +46,13 @@ Se référer à `docs/docs/23_EXTRACTION_REDIRECTIONS_MEDIAWIKI_v1-alpha6.md`.
 - Récupération HTTPS IANA uniquement avec **opener simulé** : hôte/destination verrouillés et refus des redirections suspectes; aucun accès réel réseau validé.
 - Les valeurs calculées à partir de la fixture ne sont **pas** des métriques officielles IANA.
 - Pas de qualification industrielle ni de TCK inter-dépôts; Framework vendorié et contrats gelés conservés.
+
+## Scanner 14 langues — qualification additionnelle 2026-11-21 (copie isolée)
+
+- Exigences : **COV- (complétude), LEX- (libellés/provenance), ID-/XW- (identité/alignment), SEC- (sortie non destructive)**.
+- Base : snapshot `znapshot_diK_11211131.zip` ; Framework v11 `11.0.0-draft.3` inchangé.
+- `PYTHONPATH=src pytest -q tests/test_scan14.py --disable-warnings` : **8 tests réussis** (mode scanner, déterminisme des 14 cibles, intégrité, refus d'écrasement, langue non déclarée, corpus non aligné, repli, refus mapping CSV non qualifié).
+- `PYTHONPATH=src python -m pytest -q --disable-warnings` : **231 tests réussis, 1 ignoré, 11 sous-tests réussis** sur cette copie isolée (voir les journaux livrés avec le patch).
+- Fixture : `examples/demo/dik.project.json` uniquement. Les 42 cellules (3 KQ/KP × 14 langues) sont **2 directes, 4 manquantes dans les langues déclarées, 36 non configurées**. Ces chiffres **ne couvrent pas** les dictionnaires du poste de l'utilisateur.
+- **NON EXÉCUTÉ** : qualification sur tous les dictionnaires réels, couverture industrielle, comparaison live inter-dépôts, approbation d'alignements inter-projets, tests Windows du correctif.
+- Aucune mutation de graphe, registre, crosswalk, schéma Framework ni snapshot lexical. Aucun accès réseau.

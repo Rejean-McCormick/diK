@@ -45,6 +45,19 @@ dik dictionaries audit --project examples/demo/dik.project.json
 dik coverage report --project examples/demo/dik.project.json --locales fr,en,fr-CA
 ```
 
+### Scanner intégré — 14 langues ciblées
+
+Le scanner natif `dik coverage scan14` produit des CSV (séparateur `;`, UTF-8 BOM) et un rapport JSON. Il inspecte **le projet diK sélectionné** (pas tous les dictionnaires locaux de façon implicite), confirme les couches et leurs empreintes, puis distingue les libellés directs, les replis, les lacunes et les langues non configurées.
+
+```bash
+python -m dik coverage scan14 \
+  --project examples/demo/dik.project.json \
+  --handoff integrations/unesco-mt1-10/handoff.json \
+  --out /tmp/dik-scan14-demo
+```
+
+Ajoutez `--konstellation <dossier-ou-zip> [--corpus data/demo.pack.json]` pour obtenir un inventaire séparé du corpus et des chaînes UI **sans présumer que ses libellés sont alignés aux KQ/KP de diK**. L'option `--spek` accepte un dossier ou ZIP Spek afin de vérifier les 14 locales cibles. Utiliser un dossier de sortie neuf, hors des sources. Pour les données réelles, remplacez le projet de démonstration par son vrai `dik.project.json`. Voir [guide du scanner](docs/docs/31_SCANNER_14_LANGUES_DIK.md).
+
 Create a local search index and look up a term:
 
 ```bash
@@ -93,6 +106,7 @@ This creates **candidate dictionary revisions only**. It does not change the can
 | `dik dictionaries audit\|resolve` | Audit dictionary layers and resolve labels. |
 | `dik dictionaries compare\|conflicts\|conflict-detail` | Examine lexical disagreements with provenance, without merging identities. |
 | `dik coverage report` | Analyze coverage by language and KQ/KP family. |
+| `dik coverage scan14` | Produce an audited 14-language KQ/KP gap register with optional unaligned Konstellation inventory. |
 | `dik portfolio coverage` | Analyze coverage across multiple Kristal projects. |
 | `dik index build\|lookup` | Build the local SQLite index and search for lexical candidates. |
 | `dik projection export\|verify\|restore` | Produce, check, and restore reversible projections. |

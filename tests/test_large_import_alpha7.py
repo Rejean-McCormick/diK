@@ -8,6 +8,7 @@ import bz2
 import gzip
 import json
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 import pytest
@@ -67,7 +68,7 @@ def test_resume_at_transaction_boundaries(tmp_path):
     with pytest.raises(DiKError, match='SIMULATED_INTERRUPTION'):
         import_large(**kw,_stop_after_lines=17)
     stage=next((tmp_path/'out').glob('.dik-large-*'))
-    with sqlite3.connect(stage/'progress.sqlite') as db:
+    with closing(sqlite3.connect(stage/'progress.sqlite')) as db:
         row=db.execute('SELECT line,scanned FROM checkpoint').fetchone()
     assert row==(15,15)
     result=import_large(**kw)

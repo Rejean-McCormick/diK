@@ -1,5 +1,13 @@
 # Changelog
 
+## Intégration additive — scanner 14 langues (2026-11-21)
+
+- Nouvelle commande native `dik coverage scan14` sur les 14 langues cibles UNESCO déjà déclarées (en, fr, es, de, nl, sv, da, no, nn, fi, et, af, it, pt).
+- Rapports lecture seule JSON/CSV : registre KQ/KP complet, états directs/repli/manquant/langue non configurée, couches lexicales et liste des lacunes.
+- Inventaire Konstellation facultatif, strictement **non aligné** : aucun `exactMatch`, aucune traduction ou modification du canon inférée à partir des mots.
+- Contrôles d'intégrité diK Framework préalables à tout rapport, sortie neuve atomique et refus d'écrasement. Alpha non certifiée.
+
+
 ## 1.0.0-alpha.6 — Adaptateur de redirections MediaWiki Action API
 
 - Extraction depuis les réponses réelles `action=query&redirects=1` (JSON ou JSONL de réponses), avec validation stricte des titres Q et `Property:P`, limites de ressources et sortie JSONL atomique sans écrasement.
