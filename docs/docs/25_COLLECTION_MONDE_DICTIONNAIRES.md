@@ -44,3 +44,9 @@ Voir [`26_LANGUES_MONDE_CANDIDATES.md`](26_LANGUES_MONDE_CANDIDATES.md) : un ind
 ## Mise à jour cumulative DIK-LEX-1 v0.3
 
 Les modules expérimentaux IANA/BCP47, index clairsemé des 7 910 codes, import d’observations Wikidata L/S/F et handoff GF **existent désormais dans cette branche candidate**. Voir [27](27_BCP47_IANA_ET_RECONCILIATION.md), [28](28_WIKIDATA_LEXEMES_GF_PIPELINE.md) et [29](29_ROADMAP_COLLECTION_MONDE.md). Les étapes 1, 2 et 4 ci-dessus doivent donc être lues comme des programmes de **qualification, d’extension et de vérification sur données réelles**, pas comme une absence totale de code. Aucun dictionnaire publié ni alignement KQ approuvé n’est créé par ces nouveaux modules.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Le futur flux commence par localiser et référencer les ressources présentes sans les copier, avant toute importation ou admission. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

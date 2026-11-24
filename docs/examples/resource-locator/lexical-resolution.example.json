@@ -1,0 +1,14 @@
+{
+  "profile": "dik.lexical-resolution-evidence/0.1-proposal",
+  "status": "illustrative_only",
+  "semantic_key": {"namespace_id": "example.org/demo", "semantic_id": "KQ100"},
+  "requested_locale": "fr",
+  "resolved_locale": null,
+  "form": null,
+  "resolution_status": "alignment_unproven",
+  "source_id": null,
+  "source_sha256": null,
+  "crosswalk_decision_id": null,
+  "publication_authorized": false,
+  "reason": "Exemple fictif, aucun label approuve"
+}

@@ -30,3 +30,8 @@ Ne pas modifier silencieusement le Framework `11.0.0-draft.3` : si un nouveau ch
 - Integration Pack doit exporter les KQ/KP et données lexicales séparément.
 - Les tests de diK et ceux du Framework doivent partager des **fixtures normatives** versionnées pour éviter le drift entre repos.
 - Le pilote Catho doit avoir un inventaire avant/après avec seuil **zéro fusion silencieuse**.
+
+
+## Roadmap d'après le bilan réel V5.2 (mise à jour documentaire, 2026-11-23)
+
+La **prochaine étape de code**, détaillée au [chapitre 59](59_PLAN_IMPLEMENTATION_TESTS_V5_3.md), doit traiter dans l'ordre : (0) fixtures authentiques des 40 JSONL ; (1) détection de schéma et extraction Q/P par rôle ; (2) streaming avec reprise de `City` et `University` ; (3) jointure exacte avec les crosswalks acceptés ; (4) diagnostics non publiés et tests ; (5) paquet Windows protégé. Les 69 Kristals sans v11 évalué, Wikidata L/S/F et GF sont des chantiers **séparés**, et ne sont pas livrés par cette spécification.

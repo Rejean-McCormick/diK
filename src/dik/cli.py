@@ -93,6 +93,83 @@ def make_parser() -> argparse.ArgumentParser:
     multi14.add_argument('--reports-root', help='Sous-dossier de diK pour les rapports (défaut: reports/scans_14_langues)')
     multi14.add_argument('--min-kristals', type=int, default=1, help='Nombre minimum attendu pour éviter un scan de mauvaise racine')
 
+    resolved = cs.add_parser('resolve14', help='Resoudre les IDs des Kristals OFFICIELS dans 14 langues, sans traduction')
+    resolved.add_argument('--official-root',
+                          help='Repertoire kristals/ du catalogue officiel kristal-public')
+    resolved.add_argument('--sources-root', default=r'C:\mycode' if sys.platform=='win32' else '.',
+                          help='Recherche de catalogues v11 audites dans les depots locaux')
+    resolved.add_argument('--dik-root', help='Depot diK recevant les rapports')
+    resolved.add_argument('--reports-root', help='Sous-dossier de diK (defaut: reports/resolution_14_langues)')
+    resolved.add_argument('--min-kristals', type=int, default=126, help='Minimum officiel attendu')
+    resolved.add_argument('--resource-registry', help='Registre cree par dik sources discover; limite les catalogues examines')
+    resolved.add_argument('--wikidata-source-id', help='Pointer explicitement un dump Q/P inventorie; observation uniquement')
+    resolved.add_argument('--wikidata-dump', help='Dump local Wikidata Q/P JSONL(.gz/.bz2) facultatif')
+    resolved.add_argument('--approved-sha256', help='Empreinte de reference du dump verifiee independamment (facultatif)')
+    resolved.add_argument('--observe-qid-lexicon', action='store_true',
+                          help='Observer les labels explicites du lexique QID local; candidats seulement, aucun ajout a la couverture')
+    resolved.add_argument('--online-index', help='Cache Wikidata V5.6 déjà téléchargé (lecture locale vérifiée, candidats seulement)')
+    resolved.add_argument('--observe-wikidata-thematic', action='store_true',
+                          help='Inspecter les JSONL Wikidata thematiques avec SHA; sorties candidates separees, aucune activation')
+    resolved.add_argument('--wikidata-max-rows-per-pass', type=int, default=0,
+                          help='Budget de lignes par passage et source; 0=parcourir jusqu a EOF, reprise au prochain scan')
+    resolved.add_argument('--wikidata-max-bytes-per-pass', type=int, default=0,
+                          help='Budget d octets par passage/source; 0=jusqu a EOF')
+    resolved.add_argument('--wikidata-max-candidates', type=int, default=40000,
+                          help='Maximum de formes candidates en checkpoint par source (aucune activation)')
+
+    sources = sub.add_parser('sources', help='Localiser et referencer les ressources linguistiques sans les deplacer')
+    source_sub = sources.add_subparsers(dest='command', required=True)
+    locate = source_sub.add_parser('discover', help='Inventaire cible hors-ligne; aucune activation implicite')
+    locate.add_argument('--sources-root', default=r'C:\mycode' if sys.platform == 'win32' else '.')
+    locate.add_argument('--extra-root', action='append', default=[], help='Dossier supplementaire autorise (repeatable)')
+    locate.add_argument('--dik-root', help='Depot diK ou ranger le registre sous reports/resources')
+    locate.add_argument('--reports-root', help='Sous-dossier relatif diK/reports (defaut: reports/resources)')
+    locate.add_argument('--max-files', type=int, default=20000)
+    locate.add_argument('--max-hash-bytes', type=int, default=64 * 1024 * 1024)
+    check = source_sub.add_parser('verify', help='Controle des chemins et empreintes du registre; sans activation')
+    check.add_argument('--registry', required=True)
+    check.add_argument('--max-hash-bytes', type=int, default=64 * 1024 * 1024)
+    qualify = source_sub.add_parser('qualify', help='Qualifier les pointeurs GF/Wikidata/v11, sans activer de sources')
+    qualify.add_argument('--registry', required=True)
+    qualify.add_argument('--dik-root', help='Depot diK recevant les rapports sous reports/resources')
+    qualify.add_argument('--reports-root', default='reports/resources')
+    qualify.add_argument('--max-hash-bytes', type=int, default=64 * 1024 * 1024)
+    online_catalog = source_sub.add_parser('online-catalog',
+        help='Répertoire des fournisseurs en ligne et de leurs conditions, sans réseau')
+    online_fetch = source_sub.add_parser('online-fetch',
+        help='Interroger Wikidata uniquement pour les Q/P exactMatch acceptés; cache candidat')
+    online_fetch.add_argument('--official-root', required=True,
+        help='Dossier des 126 Kristals officiels')
+    online_fetch.add_argument('--dik-root', help='Répertoire diK; cache exclusivement sous reports')
+    online_fetch.add_argument('--allow-network', action='store_true',
+        help='Consentement explicite: requêtes HTTPS ciblées à Wikidata')
+    online_fetch.add_argument('--max-ids', type=int, default=2500)
+    online_fetch.add_argument('--batch-size', type=int, default=25)
+    online_fetch.add_argument('--min-kristals', type=int, default=126)
+    online_fetch.add_argument('--refresh', action='store_true',
+        help='Rafraîchir les Q/P déjà en cache sans les approuver')
+    online_fetch.add_argument('--user-agent',
+        help='User-Agent Wikimedia descriptif avec contact, si disponible')
+
+    exporter = source_sub.add_parser('export-v53', help='Alias historique : exporter le diagnostic Wikidata expurgé')
+    exporter.add_argument('--dik-root', help='Depot diK pour le ZIP sous reports')
+    exporter.add_argument('--resolution-dir', required=True, help='Dossier du scan V5.3 sous reports')
+    exporter.add_argument('--registry', help='Registre local (seuls comptes agrégés exportés)')
+    exporter54 = source_sub.add_parser('export-v54', help='Exporter le bilan V5.4 expurgé des chemins et formes')
+    exporter54.add_argument('--dik-root', help='Depot diK pour le ZIP sous reports')
+    exporter54.add_argument('--resolution-dir', required=True, help='Dossier du scan sous reports')
+    exporter54.add_argument('--registry', help='Registre local (comptages agreges)')
+
+    exporter56 = source_sub.add_parser('export-v56', help='Exporter le bilan V5.6 sans chemins ni formes en clair')
+    exporter56.add_argument('--dik-root')
+    exporter56.add_argument('--resolution-dir', required=True)
+    exporter56.add_argument('--registry')
+
+    exporter55 = source_sub.add_parser('export-v55', help='Exporter le bilan V5.5 expurgé des formes et chemins')
+    exporter55.add_argument('--dik-root', help='Depot diK pour le ZIP sous reports')
+    exporter55.add_argument('--resolution-dir', required=True, help='Dossier du scan sous reports')
+    exporter55.add_argument('--registry', help='Registre local (comptages agreges)')
+
     projection = sub.add_parser('projection', help='Projeter et restaurer un Kristal sémantique sans perte')
     pjs = projection.add_subparsers(dest='command', required=True)
     export = pjs.add_parser('export', help='Créer une projection lisible réversible (JSON)')
@@ -222,6 +299,34 @@ def make_parser() -> argparse.ArgumentParser:
     serve_p.add_argument('--workspace',help='Dossier distinct pour publier de nouveaux catalogues locaux; absent = consultation seulement')
     world = sub.add_parser('world', help='DIK-LEX-1 : registre mondial, IANA, lexèmes et relais GF (candidats)')
     world_sub = world.add_subparsers(dest='world_command', required=True)
+    federation_build = world_sub.add_parser('federation-build', help='Indexer KQ/KP et crosswalk Wikidata, lecture seule des Kristals')
+    federation_build.add_argument('--official-root', required=True)
+    federation_build.add_argument('--output-dir', required=True)
+    federation_build.add_argument('--min-kristals', type=int, default=126)
+    federation_build.add_argument('--selection-file', help='Decisions explicites, empreintes SHA256, vue derivee seulement')
+    federation_audit = world_sub.add_parser('federation-audit', help='Verifier le registre derive et son SHA256')
+    federation_audit.add_argument('--dir', required=True)
+    federation_query = world_sub.add_parser('federation-query', help='Chercher par namespace+KQ/KP OU par Q/P')
+    federation_query.add_argument('--dir', required=True)
+    federation_query.add_argument('--namespace')
+    federation_query.add_argument('--id')
+    federation_query.add_argument('--wikidata-id')
+    federation_query.add_argument('--limit', type=int, default=100)
+    revision_query = world_sub.add_parser('federation-revision-query', help='Preuves canoniques V11 par revision, sans approbation')
+    revision_query.add_argument('--dir', required=True)
+    revision_query.add_argument('--namespace')
+    revision_query.add_argument('--id')
+    revision_query.add_argument('--wikidata-id')
+    revision_query.add_argument('--limit', type=int, default=100)
+    selection_query = world_sub.add_parser('federation-selection-query', help='Rechercher dans les revisions selectionnees pour vue derivee (non approuve)')
+    selection_query.add_argument('--dir', required=True)
+    selection_query.add_argument('--namespace')
+    selection_query.add_argument('--id')
+    selection_query.add_argument('--wikidata-id')
+    selection_query.add_argument('--limit',type=int,default=100)
+    selection_review = world_sub.add_parser('federation-selection-review', help='Exporter localement la file de revue des revisions non selectionnees')
+    selection_review.add_argument('--dir',required=True)
+    selection_review.add_argument('--output-file',required=True)
     slot_init = world_sub.add_parser('collection-init', help='Créer le catalogue mondial clairsemé de 7 910 emplacements candidats')
     slot_init.add_argument('--index', required=True)
     slot_init.add_argument('--manifest', required=True)
@@ -271,6 +376,45 @@ def make_parser() -> argparse.ArgumentParser:
     sem_audit.add_argument('--dir', required=True)
     gf_audit = world_sub.add_parser('gf-audit', help='Auditer handoff lexical candidat GF')
     gf_audit.add_argument('--dir', required=True)
+    local_plan = world_sub.add_parser('local-plan14', help='DIK-LEX-1: plan lecture seule des 14 dictionnaires depuis EncyK D:')
+    local_plan.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    local_plan.add_argument('--languages', help='Codes exacts separes par virgules (defaut: 14)')
+    local_build = world_sub.add_parser('local-build14', help='Construire/reprendre les 14 dictionnaires locaux candidats, sans reseau')
+    local_build.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    local_build.add_argument('--output-dir', default=r'D:\diK\lexical\collection-v57')
+    local_build.add_argument('--languages', help='Codes exacts separes par virgules (defaut: 14)')
+    local_build.add_argument('--batch-size', type=int, default=4000)
+    local_build.add_argument('--max-rows-per-language', type=int, default=0, help='0=integralite; >0=essai partiel')
+    local_build.add_argument('--min-free-gib', type=float, default=10.0)
+    local_status = world_sub.add_parser('local-status14', help='Etat de la collection locale construite')
+    local_status.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    local_export = world_sub.add_parser('local-export14', help='Exporter un petit bilan expurge de la collection locale')
+    local_export.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    local_export.add_argument('--output-zip', required=True)
+    local_lookup = world_sub.add_parser('local-lookup', help='Chercher un lemme ou une forme dans les dictionnaires candidats')
+    local_lookup.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    local_lookup.add_argument('--language', required=True)
+    local_lookup.add_argument('--term', required=True)
+    local_lookup.add_argument('--limit', type=int, default=20)
+    sem_plan = world_sub.add_parser('local-semantic-plan14', help='V5.8: verifier v0.5/v0.6 et la collection V5.7 en lecture seule')
+    sem_plan.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    sem_plan.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    sem_plan.add_argument('--languages', help='Codes exacts separes par virgules')
+    sem_bind = world_sub.add_parser('local-semantic-bind14', help='V5.8: lier les preuves en lecture seule sans copier les bases')
+    sem_bind.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    sem_bind.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    sem_bind.add_argument('--languages', help='Codes exacts separes par virgules')
+    sem_lookup = world_sub.add_parser('local-semantic-lookup', help='V5.8: gloses candidates et preuves de source, sans approbation')
+    sem_lookup.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    sem_lookup.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    sem_lookup.add_argument('--language',required=True)
+    sem_lookup.add_argument('--term',required=True)
+    sem_lookup.add_argument('--max-lexemes',type=int,default=10)
+    sem_lookup.add_argument('--max-evidence',type=int,default=8)
+    sem_export = world_sub.add_parser('local-semantic-export14', help='V5.8: petit bilan expurge du raccordement')
+    sem_export.add_argument('--encyk-root', default=r'D:\EncyKlopedia')
+    sem_export.add_argument('--collection-dir', default=r'D:\diK\lexical\collection-v57')
+    sem_export.add_argument('--output-zip',required=True)
     return p
 
 
@@ -301,6 +445,52 @@ def _run_world(args: argparse.Namespace) -> dict:
     from .gf_handoff import build_gf_handoff, audit_gf_handoff
 
     cmd = args.world_command
+    if cmd=='federation-selection-review':
+        from .canonical_selection import review_queue
+        return review_queue(Path(args.dir),Path(args.output_file))
+    if cmd=='federation-selection-query':
+        from .canonical_selection import query as selection_query
+        return selection_query(Path(args.dir),namespace=args.namespace,semantic_id=args.id,
+                               wikidata_id=args.wikidata_id,limit=args.limit)
+    if cmd=='federation-revision-query':
+        from .canonical_v11 import query as canonical_query
+        return canonical_query(Path(args.dir),namespace=args.namespace,semantic_id=args.id,
+                               wikidata_id=args.wikidata_id,limit=args.limit)
+    if cmd in ('federation-build','federation-audit','federation-query'):
+        from .federated_registry import build as fed_build, audit as fed_audit, query as fed_query
+        if cmd=='federation-build':
+            return fed_build(official_root=Path(args.official_root),output_dir=Path(args.output_dir),
+                             min_kristals=args.min_kristals,
+                             selection_file=Path(args.selection_file) if args.selection_file else None)
+        if cmd=='federation-audit':
+            return fed_audit(Path(args.dir))
+        return fed_query(directory=Path(args.dir),namespace=args.namespace,
+                         semantic_id=args.id,wikidata_id=args.wikidata_id,limit=args.limit)
+    if cmd in ('local-plan14', 'local-build14', 'local-status14', 'local-lookup', 'local-export14'):
+        from .local_lexical_library import plan, build, status, lookup, export_summary
+        if cmd=='local-plan14':
+            return plan(encyk_root=Path(args.encyk_root),languages=args.languages)
+        if cmd=='local-build14':
+            return build(encyk_root=Path(args.encyk_root),output_dir=Path(args.output_dir),
+                         languages=args.languages,batch_size=args.batch_size,
+                         max_rows_per_language=args.max_rows_per_language,
+                         min_free_gib=args.min_free_gib)
+        if cmd=='local-status14':
+            return status(collection_dir=Path(args.collection_dir))
+        if cmd=='local-export14':
+            return export_summary(collection_dir=Path(args.collection_dir), output_zip=Path(args.output_zip))
+        return lookup(collection_dir=Path(args.collection_dir),language=args.language,term=args.term,limit=args.limit)
+    if cmd in ('local-semantic-plan14','local-semantic-bind14','local-semantic-lookup','local-semantic-export14'):
+        from .semantic_evidence_bridge import plan as sem_plan, bind as sem_bind, lookup as sem_lookup, export_summary as sem_export
+        common={'encyk_root':Path(args.encyk_root),'collection_dir':Path(args.collection_dir)}
+        if cmd=='local-semantic-plan14':
+            return sem_plan(**common,languages=args.languages)
+        if cmd=='local-semantic-bind14':
+            return sem_bind(**common,languages=args.languages)
+        if cmd=='local-semantic-lookup':
+            return sem_lookup(**common,language=args.language,term=args.term,
+                              max_lexemes=args.max_lexemes,max_evidence=args.max_evidence)
+        return sem_export(**common,output_zip=Path(args.output_zip))
     if cmd == 'collection-init':
         return build_collection_slots(index=Path(args.index), language_manifest=Path(args.manifest),
                                       output_dir=Path(args.output_dir))
@@ -352,6 +542,51 @@ def _run_world(args: argparse.Namespace) -> dict:
 
 
 def run(args: argparse.Namespace) -> dict:
+    if args.area == 'sources' and args.command in ('online-fetch','online-catalog'):
+        from .online_sources import PROVIDERS, DEFAULT_USER_AGENT, fetch_accepted
+        if args.command == 'online-catalog':
+            return {'schema':'dik.online-source-catalog/5.6.0',
+                    'network_used':False,'providers':list(PROVIDERS)}
+        return fetch_accepted(official_root=args.official_root,
+                              dik_root=args.dik_root or Path(__file__).resolve().parents[2],
+                              allow_network=args.allow_network,
+                              max_ids=args.max_ids,batch_size=args.batch_size,
+                              min_kristals=args.min_kristals,refresh=args.refresh,
+                              user_agent=args.user_agent or DEFAULT_USER_AGENT)
+    if args.area == 'sources':
+        if args.command in ('export-v53','export-v54','export-v55','export-v56'):
+            from .v53_export import export_v53
+            return export_v53(dik_root=args.dik_root or Path(__file__).resolve().parents[2],
+                              resolution_dir=args.resolution_dir, registry_file=args.registry, version='v56' if args.command=='export-v56' else ('v55' if args.command=='export-v55' else 'v54'))
+        from .resource_locator import discover_resources, save_registry, validate_registry
+        if args.command == 'qualify':
+            from .source_qualification import qualify_resources
+            return qualify_resources(registry_file=args.registry,
+                                     dik_root=args.dik_root or Path(__file__).resolve().parents[2],
+                                     reports_root=args.reports_root, max_hash_bytes=args.max_hash_bytes)
+        if args.command == 'verify':
+            result = validate_registry(args.registry, max_hash_bytes=args.max_hash_bytes)
+            if result['status'] == 'STALE':
+                raise ValueError(f"Registre périmé ou source modifiée: {result['counts']}")
+            return result
+        registry = discover_resources(sources_root=args.sources_root, extra_roots=tuple(args.extra_root),
+                                      max_files=args.max_files, max_hash_bytes=args.max_hash_bytes)
+        return save_registry(registry, dik_root=args.dik_root or Path(__file__).resolve().parents[2],
+                             reports_root=args.reports_root)
+    if args.area == 'coverage' and args.command == 'resolve14':
+        from .resolution14 import scan_resolution14
+        return scan_resolution14(official_root=args.official_root, sources_root=args.sources_root,
+                                 dik_root=args.dik_root, reports_root=args.reports_root,
+                                 min_kristals=args.min_kristals, wikidata_dump=args.wikidata_dump,
+                                 approved_sha256=args.approved_sha256,
+                                 resource_registry=args.resource_registry,
+                                 online_index=args.online_index,
+                                 wikidata_source_id=args.wikidata_source_id,
+                                 observe_qid_lexicon=args.observe_qid_lexicon,
+                                 observe_wikidata_thematic=args.observe_wikidata_thematic,
+                                 wikidata_max_rows_per_pass=args.wikidata_max_rows_per_pass,
+                                 wikidata_max_bytes_per_pass=args.wikidata_max_bytes_per_pass,
+                                 wikidata_max_candidates=args.wikidata_max_candidates)
     if args.area == 'coverage' and args.command == 'kristals14':
         from .kristals14 import scan_kristals14
         return scan_kristals14(root=args.root, dik_root=args.dik_root,
@@ -524,7 +759,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         args = parser.parse_args(argv)
         result = run(args)
-        if getattr(args, 'output', None) and args.area not in ('coverage','projection','index','legacy','portfolio','curate','sync') and not (args.area=='dictionaries' and args.command=='conflicts'):
+        if getattr(args, 'output', None) and args.area not in ('coverage','sources','projection','index','legacy','portfolio','curate','sync') and not (args.area=='dictionaries' and args.command=='conflicts'):
             write_new(args.output, serialize_json(result))
         print(serialize_json(result), end='')
         return 0

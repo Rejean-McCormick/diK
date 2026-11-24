@@ -43,3 +43,14 @@ Pour une terminologie externe, inscrire `source_system`, `source_snapshot`, `sou
 - Lexèmes, formes et sens : https://www.wikidata.org/wiki/Wikidata:Lexicographical_data/Documentation
 
 Ces liens servent d'orientation. Le **schéma des artefacts diK/Kristal** est défini localement par le Framework v11 et non par la page Wikidata.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Wikidata Q/P et L/S/F demandent deux adaptateurs distincts. L’inventaire ne signifie pas qu’un dump Q/P global est déjà accessible. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.
+
+
+## Addendum V5.3 — Jeux thématiques locaux (à implémenter)
+
+Les JSONL `identity-candidates`, `statements` et les quatre datasets GF-Wikidata repérés sous `C:\mycode` **ne sont pas** un dump Wikidata unique. Les liens Wikidata Q/P `exactMatch accepted` des Kristals officiels sont nécessaires pour raccorder ces observations au canon ; les entrées L/S/F et les ressources GF exigent des contrats distincts. Les véritables schémas des 40 sources n'étant pas inclus dans le bilan V5.2, aucune règle universelle de chemin de QID n'est affirmée. La future étape doit profiler les fichiers, reconnaître leurs champs exacts, lire jusqu'à EOF ou `partial`, et garder les formes en candidats non publiés. Voir [53](53_DIAGNOSTIC_FACTUEL_V5_2_VERS_V5_3.md), [55](55_CONTRATS_SCHEMAS_JSONL_V5_3.md) et [56](56_STREAMING_REPRISE_SECURITE_V5_3.md).

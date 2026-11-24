@@ -1,0 +1,33 @@
+{
+  "profile": "dik.local-source-registry/0.1-proposal",
+  "status": "documentation_only_not_activated",
+  "discovery_root_hint": "C:\\mycode",
+  "source_records": [
+    {
+      "source_id": "example-gf-lexicons-archive",
+      "kind": "gf_lexicon",
+      "declared_path": "C:\\mycode\\Grammatical-Framework\\GF_Lexicons_Archive\\DictFre.gf",
+      "evidence_type": "user_supplied_index_only",
+      "state": "declared",
+      "resolved_path": null,
+      "sha256": null,
+      "license": "unverified",
+      "namespace": null,
+      "alignment_evidence": null,
+      "enabled": false
+    },
+    {
+      "source_id": "example-gf-wikidata-qid-lexicon",
+      "kind": "wikidata_tools_dataset_not_global_dump",
+      "declared_path": "C:\\mycode\\Grammatical-Framework\\gf-wikidata_repos_source\\gf-wikidata-tools\\extraction\\data\\qid-lexicon.jsonl",
+      "evidence_type": "user_supplied_index_only",
+      "state": "declared",
+      "resolved_path": null,
+      "sha256": null,
+      "license": "unverified",
+      "namespace": null,
+      "alignment_evidence": null,
+      "enabled": false
+    }
+  ]
+}

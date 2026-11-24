@@ -77,3 +77,9 @@ Les exemples sont **fictifs**, destinés aux tests de structure, et n'attestent 
 - Pas de reprise par checkpoint pour le nouveau parseur L/S/F; une erreur annule la sortie et demande une nouvelle exécution.
 - Pas de source Wiktionary/Apertium/UniMorph importée. Les données externes doivent faire l'objet d'un examen séparé des licences.
 - Pas d'écriture dans le Framework v11 ou dans le catalogue `curated`.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Le handoff `candidate` n’est pas un adaptateur GF prêt à produire des formes KQ/P. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

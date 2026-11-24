@@ -43,3 +43,9 @@ Les synonymes peuvent être indexés pour la recherche et les propositions de co
 ## Mesures qualité distinctes
 
 DiK devrait mesurer séparément la **présence du libellé**, celle d'une **définition**, la couverture des **alias**, la révision humaine et le droit d'utilisation. Un libellé présent n'est pas une preuve de bonne traduction. La mesure canonique v11 draft.3 porte sur la présence/usable du libellé KQ/KP ; les autres mesures sont des indicateurs proposés pour de futures versions.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+La forme d’une langue est résolue par ID ; la présence d’un lexique GF ne prouve ni un alignement KQ ni une publication. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

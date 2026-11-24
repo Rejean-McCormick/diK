@@ -46,3 +46,19 @@
 `code_connu` → `tag_iana_controle` → `source_declaree` → `source_licence_revue` → `donnees_observees` → `alignement_revu` → `libelle_curated` → `dictionnaire_publie`.
 
 Une source observée en 2026 n'implique pas que le vocabulaire d'une langue ancienne, d'une macrolangue ou d'une variante locale soit complet. Chaque statut doit avoir sa preuve et ses compteurs indépendants; on ne fabrique pas un grand tableau `KQ x 7910` rempli de chaînes vides.
+
+
+## Réalisation V5.7 (23 novembre 2026)
+
+Le programme DIK-LEX-1 possède désormais un constructeur réel de 14
+bases par langue : `dik world local-build14`, alimenté par l’index EncyK
+local et non par des requêtes Wikidata partielles. C’est un stockage
+**lexical candidat** ; les définitions complètes, droits et équivalences
+KQ/KP exigent une autre étape. Voir [65](65_COLLECTION_LOCALE_14_LANGUES_ENCYK_V5_7.md).
+
+## Mise à jour V5.8
+
+Les 14 collections de lemmes/formes sont matérialisées (V5.7). Les preuves
+candidates de sens EncyK v0.5/v0.6 sont consultables en lecture seule (V5.8).
+À faire : extraction complète des sens et variantes depuis les sources locales,
+qualification des droits, liens d'identité étayés, validation et publication.

@@ -63,3 +63,18 @@ Le répertoire est **proposé**, pas imposé par le Framework ; seuls les **sch�
 ## Reproductibilité / limites
 
 Un rapport doit identifier au minimum graphe/namespace et empreintes du graphe + catalogue. L'exécution en lot multi-Kristals devra en plus figer la liste des graphes et des snapshots de crosswalk dans un manifeste diK versionné. Un service/API n'est qu'une façade de lecture ou de workflow par-dessus les mêmes fichiers, jamais une deuxième source de vérité.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+L’architecture Source Manager prévoit la gestion de sources ; le localisateur persistant multi-repo et ses adaptateurs ne sont pas encore prouvés opérationnels. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.
+
+## Implémentation V4 — Source Manager local
+
+`src/dik/resource_locator.py` introduit une couche d'inventaire **hors du canon** : racines ciblées, pointeurs absolus sous racine autorisée, métadonnées, hashes optionnels, rapport et registre daté sous `reports/resources`. Le résolveur `src/dik/resolution14.py` accepte un registre et utilise seulement les **catalogues v11 validés par Framework** comme couche lexicale raccordée ; un GF ou JSONL thématique reste une référence non alignée. Voir [44](44_SOURCE_MANAGER_V4_IMPLEMENTATION.md).
+
+
+## Addendum V5.3 (documentation proposée, non implémentée)
+
+L'inspection thématique Wikidata doit devenir un **pipeline typé**, sans confondre découverte, lecture, correspondance acceptée et publication : pointeur SHA → profil de schéma → adaptateur JSONL → extraction Q/P selon rôle de champ → jointure avec crosswalk officiel accepté → label de locale explicite **candidat** → décision de droits et d'activation séparée. Un parseur ne peut conclure à une absence de recoupement si le schéma est inconnu ou si la lecture s'arrête avant EOF. Voir [54](54_ARCHITECTURE_LECTURE_WIKIDATA_V5_3.md) et [55](55_CONTRATS_SCHEMAS_JSONL_V5_3.md). Aucun état « source active » nouveau n'est livré dans V5.2.

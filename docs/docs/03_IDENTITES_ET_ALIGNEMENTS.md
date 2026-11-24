@@ -34,3 +34,9 @@ Relations possibles : `exactMatch`, `closeMatch`, `broadMatch`, `narrowMatch`, `
 ## Sûreté multi-projet
 
 Deux Kristals peuvent avoir un `KQ1001` avec des sens distincts dans deux namespaces. diK **n'unifie pas** ces référents. Une correspondance inter-namespace a besoin d'une décision et d'une provenance explicites ; ses formats définitifs restent une extension future.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Un Q/P accepté n’est jamais déduit du chiffre dans KQ/KP ; GF requiert un mapping grammatical indépendant. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

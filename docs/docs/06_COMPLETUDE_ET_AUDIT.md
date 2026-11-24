@@ -58,3 +58,9 @@ Les rapports multi-Kristals constituent une **extension produit de diK** : le sc
 ## Exports proposés
 
 JSON machine conforme à `kristal_dik_coverage_report`, CSV par langue et par identifiant (vue de présentation), matrice UI, JSONL des manques très volumineux avec empreintes. Toujours conserver l'état exact du graphe et du catalogue ayant servi au calcul.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Le rapport V3 distingue 126 Kristals officiels, 57 évaluables et 69 non évaluables ; les 283 176 cellules non résolues ne sont pas des traductions à réaliser. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

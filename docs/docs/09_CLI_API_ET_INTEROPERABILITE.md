@@ -67,3 +67,9 @@ Un service local pourrait exposer lecture du catalogue, recherche d'un identifia
 ## CI et codes de sortie proposés
 
 `0` validation réussie ; `2` erreur de schéma/format ; `3` conflit lexical ; `4` identité ou namespace non résolu ; `5` source/hash/provenance invalide ; `6` approbation de migration manquante. Cette nomenclature est **une proposition diK** à tester, pas une valeur implémentée par le Framework.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Les commandes de cette spécification initiale sont historiques ; se référer au `--help` de la version installée pour les opérations V3. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

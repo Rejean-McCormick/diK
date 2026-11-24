@@ -9,3 +9,9 @@
 | diK (nouveau dépôt) | Aucun snapshot, nouvelle documentation `diK-spec-v0.1.0` | À créer ; application dédiée : conciliation, complétude, alignement Wikidata et préparation de conversion |
 
 Les archives sont des copies locales. Les branches GitHub, leurs HEAD et leur synchronisation n'ont pas été vérifiés ; ne pas prétendre que les modifications sont poussées sur GitHub.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+L’inventaire historique ne couvre pas les nouveaux snapshots Spek, Konstellation et les index GF de novembre 2026. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

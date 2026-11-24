@@ -64,3 +64,7 @@ La source normative est `spec/diK-1.0/AGENTS.md`, puis `SPEC_LOCK.md`.
 - Une reprise gzip/bzip2 implique une relecture jusqu'au checkpoint : ne pas prétendre faire un seek aléatoire rapide.
 - Ne pas annoncer une qualification réelle sur Wikidata massif à partir des tests synthétiques.
 - Toute évolution de `import-large` doit avoir des tests positifs et négatifs sur les interruptions, les duplications et l'intégrité des publications.
+
+## Interface fédérée diK V5.9 — règle additive candidate
+
+Ne jamais traiter `dik.federated-semantic-registry/0.1-candidate` comme une source d’autorité canonique ou une permission de publier. Toute identité locale exige `namespace_id+KQ/KP`; un Q/P Wikidata n’est qu’un alignement externe revu. Le précontrôle vérifie uniquement l’intégrité. Consulter `docs/docs/68_REGISTRE_SEMANTIQUE_FEDERE_INTEROP_V5_9.md`. Les contraintes propriétaire existantes prévalent.

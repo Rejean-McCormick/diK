@@ -27,3 +27,9 @@ Outputs are immutable `semantik.knowledge.json` (SemantiK lexical-artifact 1.1),
 - A Lexeme `L…` alone is not a unique asserted sense or truth claim.
 
 No file is activated as a RuntimeSet; existing diK contracts are unchanged.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Les ressources GF indexées restent candidates tant qu’aucune fonction/catégorie n’est explicitement liée à un KQ/P par décision qualifiée. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.

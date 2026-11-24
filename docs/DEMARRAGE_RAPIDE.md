@@ -1,6 +1,6 @@
 # diK — Démarrage rapide pour l'équipe de développement
 
-**Ce dépôt documentaire décrit un logiciel à construire. Les exemples exécutables ci-dessous appartiennent à Kristal Framework 11.0.0-draft.3.**
+**Note de mise à jour alpha.8 (22 novembre 2026) :** la phrase historique ci-dessus décrivait la spécification v0.2. La CLI diK est désormais livrée. Pour localiser les dictionnaires et les référencer sous `diK/reports/resources`, voir [44](docs/44_SOURCE_MANAGER_V4_IMPLEMENTATION.md) et [45](docs/45_COMMANDES_V4_WINDOWS.md). Les exemples Framework ci-dessous restent valables et les mappings GF automatiques restent à développer.
 
 ## Étape 1 — Identifier les dépendances
 

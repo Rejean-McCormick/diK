@@ -57,3 +57,9 @@ Les CSV utilisent UTF-8 BOM et `;`, compatibles avec Excel en configuration fran
 ## Portée des tests
 
 8 nouveaux tests ciblés positifs et négatifs; suite `pytest` diK sur copie isolée. Voir `VALIDATION.md` pour les chiffres réels et les travaux non exécutés. Aucun schéma Framework vendorié ou registre historique modifié.
+
+
+<!-- DIK-DOCS-LOCAL-1 -->
+## Actualisation documentaire — 22 novembre 2026
+
+Ne pas confondre `scan14` de projet, `kristals14` V2 et `resolve14` V3 sur les 126 Kristals officiels. Voir le [guide maître](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md), les [chapitres 34–43](../DIK_GUIDE_MAITRE_RESOLUTION_LOCALE.md) et l’[ADR DIK-LEX-2](../decisions/ADR-DIK-LEX-2-localiser-et-referencer.md). Ce complément est documentaire et ne change pas les contrats du Framework.
