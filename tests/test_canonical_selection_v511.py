@@ -84,6 +84,7 @@ def test_divergent_and_equivalent_are_not_chosen(tmp_path,monkeypatch):
     result=sel.review_queue(tmp_path/'view',queue)
     assert result['pending_kristals']==2
     assert 'revision_dir' in queue.read_text()
+    assert 'graph_sha256' in queue.read_text()
     with pytest.raises(ValueError):sel.review_queue(tmp_path/'view',queue)
     assert fed.audit(tmp_path/'view')==man
 
@@ -93,9 +94,9 @@ def test_operator_decision_is_hash_pinned_and_no_approval(tmp_path,monkeypatch):
     make(root,'alpha',['Q8018','Q1234'])
     first=tmp_path/'initial';build(monkeypatch,root,first)
     with sqlite3.connect(first/'registry.sqlite3') as db:
-        row=db.execute('''SELECT revision_dir,state_index_sha256,registry_sha256,crosswalk_sha256,catalog_sha256
+        row=db.execute('''SELECT revision_dir,state_index_sha256,registry_sha256,crosswalk_sha256,graph_sha256,catalog_sha256
              FROM canonical_revision_inputs WHERE kristal='alpha' ORDER BY revision_dir LIMIT 1''').fetchone()
-    decision=dict(zip(('revision_dir','state_index_sha256','registry_sha256','crosswalk_sha256','catalog_sha256'),row))
+    decision=dict(zip(('revision_dir','state_index_sha256','registry_sha256','crosswalk_sha256','graph_sha256','catalog_sha256'),row))
     decision.update(kristal='alpha',review_decision_id='REVIEW-2026-11-24',reviewer='reviewer-01',
                     rationale='Source selected for derived view only following manual review')
     file=write(tmp_path,'selection.json',{'profile':sel.DECISIONS_PROFILE,'scope':'derived_view_only',
@@ -111,6 +112,14 @@ def test_operator_decision_is_hash_pinned_and_no_approval(tmp_path,monkeypatch):
     with pytest.raises(ValueError,match='stale'):
         build(monkeypatch,root,tmp_path/'refused',file)
     assert not (tmp_path/'refused').exists()
+    # A graph-only change must also invalidate the *same* approved view.
+    # All other four selection hashes remain unchanged.
+    original.write_text(original.read_text().rstrip('\n'),encoding='utf-8')
+    graph=root/'alpha'/decision['revision_dir']/'graph.json'
+    graph.write_text(graph.read_text()+'\n',encoding='utf-8')
+    with pytest.raises(ValueError,match='stale'):
+        build(monkeypatch,root,tmp_path/'graph-refused',file)
+    assert not (tmp_path/'graph-refused').exists()
 
 
 def test_bad_decision_and_same_revision_conflicts_fail_closed(tmp_path,monkeypatch):

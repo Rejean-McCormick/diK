@@ -188,6 +188,12 @@
 
 ## V5.11 — 2026-11-24 : sélection dérivée des révisions, sécurité renforcée
 
+- **Durcissement additif du protocole de revue (décisions `/0.2`) :** le fichier
+  de décision doit épingler le SHA-256 du graphe inspecté en plus des quatre
+  autres sources. Les décisions `/0.1` sont refusées pour les nouveaux builds
+  dérivés, avec reprise par revue; les anciens fichiers restent archivés.
+  Aucun profil Framework normatif n'est modifié.
+
 - Ajout `canonical_selection.py`, table des empreintes source et table des décisions de sélection dans le registre fédéré SQLite, sans changer l'interface V5.9.
 - Sélection automatique limitée à une unique révision V11 complètement inspectée ; aucun choix automatique parmi plusieurs versions.
 - Support facultatif d'un fichier de décisions explicitement revues et SHA-256 épinglées (`--selection-file`), **pour consultation dérivée uniquement**.

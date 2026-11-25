@@ -15,7 +15,8 @@ import re
 import sqlite3
 
 PROFILE = 'dik.canonical-revision-selection/0.1'
-DECISIONS_PROFILE = 'dik.canonical-selection-decisions/0.1'
+LEGACY_DECISIONS_PROFILE = 'dik.canonical-selection-decisions/0.1'
+DECISIONS_PROFILE = 'dik.canonical-selection-decisions/0.2'
 HEX = re.compile(r'^[0-9a-f]{64}$')
 
 
@@ -37,6 +38,8 @@ def read_decisions(path: Path | None) -> dict[str, dict]:
     if path.is_symlink() or not path.is_file() or path.stat().st_size > 1024 * 1024:
         raise ValueError('selection decisions unavailable, symlinked or too large')
     data = json.loads(path.read_text(encoding='utf-8-sig'))
+    if isinstance(data, dict) and data.get('profile') == LEGACY_DECISIONS_PROFILE:
+        raise ValueError('legacy 0.1 selection decisions lack graph_sha256; re-review against exact graph bytes using profile 0.2')
     if not isinstance(data, dict) or data.get('profile') != DECISIONS_PROFILE or data.get('scope') != 'derived_view_only':
         raise ValueError('selection decisions profile/scope invalid')
     entries = data.get('decisions')
@@ -44,7 +47,8 @@ def read_decisions(path: Path | None) -> dict[str, dict]:
         raise ValueError('selection decisions must be a bounded list')
     decisions = {}
     expected = {'kristal', 'revision_dir', 'state_index_sha256', 'registry_sha256',
-                'crosswalk_sha256', 'catalog_sha256', 'review_decision_id', 'reviewer', 'rationale'}
+                'crosswalk_sha256', 'graph_sha256', 'catalog_sha256',
+                'review_decision_id', 'reviewer', 'rationale'}
     for record in entries:
         if not isinstance(record, dict) or set(record) != expected:
             raise ValueError('selection decision missing or unexpected fields')
@@ -53,7 +57,7 @@ def read_decisions(path: Path | None) -> dict[str, dict]:
         if len(record['review_decision_id']) < 6 or len(record['rationale'].strip()) < 12:
             raise ValueError('selection decision lacks sufficiently precise review metadata')
         if not all(isinstance(record[k],str) and HEX.fullmatch(record[k]) for k in
-                   ('state_index_sha256','registry_sha256','crosswalk_sha256','catalog_sha256')):
+                   ('state_index_sha256','registry_sha256','crosswalk_sha256','graph_sha256','catalog_sha256')):
             raise ValueError('selection decision hashes invalid')
         name=record['kristal']
         if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_-]*',name) or name in decisions:
@@ -125,7 +129,8 @@ def ingest(db: sqlite3.Connection, *, decisions_file: Path | None=None) -> dict:
             if not eligible(candidate):
                 raise ValueError('review decision targets unverified/incomplete revision: '+name)
             for input_key,expected in [('state_index_sha256','state_index_sha256'),('registry_sha256','registry_sha256'),
-                                       ('crosswalk_sha256','crosswalk_sha256'),('catalog_sha256','catalog_sha256')]:
+                                       ('crosswalk_sha256','crosswalk_sha256'),('graph_sha256','graph_sha256'),
+                                       ('catalog_sha256','catalog_sha256')]:
                 if dig[input_key]!=entry[expected]:
                     raise ValueError('review decision stale, source changed: '+name)
             selected=candidate['revision_dir'];decision_id=entry['review_decision_id']
@@ -140,7 +145,7 @@ def ingest(db: sqlite3.Connection, *, decisions_file: Path | None=None) -> dict:
                 state,reason='SINGLE_REVISION_NOT_VERIFIED','INCOMPLETE_OR_GRAPH_UNINSPECTED'
         else:
             signatures={_evidence_signature(db,name,r['revision_dir']) for r in rows if eligible(r)}
-            if len(signatures)==1 and len(signatures)==1 and all(eligible(r) for r in rows):
+            if len(signatures)==1 and all(eligible(r) for r in rows):
                 state,reason='MULTIPLE_EQUIVALENT_EVIDENCE_UNSELECTED','NO_EXPLICIT_AUTHORITY_EVEN_IF_LEXICAL_EVIDENCE_SAME'
             elif not all(eligible(r) for r in rows):
                 state,reason='MULTIPLE_INCOMPLETE_UNSELECTED','SOURCE_REVISION_UNREADABLE_OR_GRAPH_UNINSPECTED'
@@ -219,7 +224,7 @@ def review_queue(directory: Path, output_file: Path) -> dict:
             versions=[]
             for rev in db.execute('''SELECT r.revision_dir,r.state,r.entity_kq,r.property_kp,
                       r.source_accepted_exact,i.state_index_sha256,i.registry_sha256,
-                      i.crosswalk_sha256,i.catalog_sha256,i.graph_state
+                      i.crosswalk_sha256,i.graph_sha256,i.catalog_sha256,i.graph_state
                   FROM canonical_revisions r LEFT JOIN canonical_revision_inputs i
                     ON r.kristal=i.kristal AND r.revision_dir=i.revision_dir
                   WHERE r.kristal=? ORDER BY r.revision_dir''',(selected['kristal'],)):

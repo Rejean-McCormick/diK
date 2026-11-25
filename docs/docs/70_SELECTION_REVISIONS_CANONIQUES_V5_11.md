@@ -22,7 +22,7 @@ Le moteur V5.11 conserve les **72 Kristals multirévisions sans choix automatiqu
 1. Les identités canoniques restent `(namespace_id, KQ/KP)` dans le Framework. diK n'écrit ni dans `kristals` ni dans leurs index.
 2. Seuls les chemins répertoriés dans `canon/state.index.json` entrent dans la sélection. Les noms, dates et quantités ne désignent pas une autorité.
 3. Pour une révision unique **lisible et inspectée**, diK autorise la consultation dans une **vue dérivée** : `SINGLE_DECLARED_DERIVED_VIEW`. Ce n'est **pas** une sélection normative de l'autorité Framework.
-4. Plusieurs révisions nécessitent une décision de revue explicite, liée aux empreintes SHA-256 exactes de l'index, du registre, du crosswalk et du catalogue. Une telle décision ne crée que `OPERATOR_PINNED_DERIVED_VIEW` ; son rédacteur n'acquiert pas le pouvoir de modifier le canon ni d'approuver de nouveaux liens.
+4. Plusieurs révisions nécessitent une décision de revue explicite, liée aux empreintes SHA-256 exactes de l'index, du registre, du crosswalk, **du graphe inspecté** et du catalogue (profil `dik.canonical-selection-decisions/0.2`). Une telle décision ne crée que `OPERATOR_PINNED_DERIVED_VIEW` ; son rédacteur n'acquiert pas le pouvoir de modifier le canon ni d'approuver de nouveaux liens.
 5. Les graphes > 8 Mio ne sont pas intégralement inspectés dans ce profil léger. Une révision dont le graphe est non inspecté ne peut pas être sélectionnée : réévaluer le contrôle requis dans une nouvelle version.
 6. Un même KQ/KP rattaché à plusieurs Q/P exacts `accepted` à l'intérieur d'une même révision bloque la sélection de cette révision.
 7. Les liens `accepted`, les décisions de revue et les références KS restent **déclarations des sources**. Les données lexicales, les attestations Wikidata L/S/F et la qualification de licence demeurent indépendantes.
@@ -57,7 +57,7 @@ Après vérification par une autorité compétente, écrire un document JSON sé
 
 ```json
 {
-  "profile": "dik.canonical-selection-decisions/0.1",
+  "profile": "dik.canonical-selection-decisions/0.2",
   "scope": "derived_view_only",
   "decisions": [
     {
@@ -66,6 +66,7 @@ Après vérification par une autorité compétente, écrire un document JSON sé
       "state_index_sha256": "sha256-index-64-hex",
       "registry_sha256": "sha256-registre-64-hex",
       "crosswalk_sha256": "sha256-crosswalk-64-hex",
+      "graph_sha256": "sha256-graphe-inspecte-64-hex",
       "catalog_sha256": "sha256-catalogue-64-hex",
       "review_decision_id": "decision-reelle-du-relecteur",
       "reviewer": "identite-du-relecteur",
@@ -75,7 +76,7 @@ Après vérification par une autorité compétente, écrire un document JSON sé
 }
 ```
 
-Les exemples `sha256-...` sont des espaces réservés, **pas des empreintes valides**. Aucun fichier de décision n'est généré ou rempli automatiquement. Reconstruire **dans un dossier neuf** avec `federation-build ... --selection-file chemin-vers-decisions.json` : tout changement d'un octet dans une source épinglée sera refusé. L'activation éditoriale et l'autorité Framework nécessitent un contrat et un processus d'approbation distincts.
+Les exemples `sha256-...` sont des espaces réservés, **pas des empreintes valides**. Aucun fichier de décision n'est généré ou rempli automatiquement. Reconstruire **dans un dossier neuf** avec `federation-build ... --selection-file chemin-vers-decisions.json` : tout changement d'un octet dans une source épinglée sera refusé. **Les anciens fichiers de décision `/0.1`, qui n'épinglaient pas les octets du graphe, sont refusés pour toute nouvelle construction** ; les anciens registres dérivés restent des archives consultables, sans promotion. Réexaminer les cinq SHA-256 et établir un nouveau fichier `/0.2` par revue explicite. L'activation éditoriale et l'autorité Framework nécessitent un contrat et un processus d'approbation distincts. Voir [ADR-DIK-FEDERATION-03](../decisions/ADR-DIK-FEDERATION-03-selection-graphe-epingle.md).
 
 ## Bilan expurgé
 

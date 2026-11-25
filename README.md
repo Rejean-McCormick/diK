@@ -256,7 +256,7 @@ dik world collection-audit --dir examples/world-dictionaries/collection-slots-v0
 dik world resource-audit --catalog examples/world-dictionaries/resource-catalog.json
 ```
 
-Guides : [IANA](docs/docs/27_BCP47_IANA_ET_RECONCILIATION.md), [L/S/F et GF](docs/docs/28_WIKIDATA_LEXEMES_GF_PIPELINE.md), [programme mondial](docs/docs/29_ROADMAP_COLLECTION_MONDE.md). Le package Python reste `1.0.0-alpha.7` (extension candidate, non version stable).
+Guides : [IANA](docs/docs/27_BCP47_IANA_ET_RECONCILIATION.md), [L/S/F et GF](docs/docs/28_WIKIDATA_LEXEMES_GF_PIPELINE.md), [programme mondial](docs/docs/29_ROADMAP_COLLECTION_MONDE.md). Ces paragraphes décrivent le jalon historique `alpha.7` ; le `pyproject.toml` du snapshot du 24 novembre 2026 déclare le package **`1.0.0a16`**, toujours candidat et sans certification produit stable.
 
 ## SemantiK lexical candidate handoff
 
@@ -356,3 +356,9 @@ nouvelle équivalence Wikidata n'est approuvée par ce mécanisme.** Les 13
 langues cibles et les 14 bases historiques restent distinctes. Lire le
 [chapitre 70](docs/docs/70_SELECTION_REVISIONS_CANONIQUES_V5_11.md)
 et l'ADR de sélection.
+
+**Durcissement de sélection (profil de décision `/0.2`) :** l'opérateur doit
+également épingler le SHA-256 du graphe inspecté. Les fichiers de revue `/0.1`
+ne sont plus acceptés pour construire de nouvelles vues dérivées ; aucune
+sélection historique ou correspondance Wikidata n'est promue automatiquement.
+Voir [ADR-DIK-FEDERATION-03](docs/decisions/ADR-DIK-FEDERATION-03-selection-graphe-epingle.md).
