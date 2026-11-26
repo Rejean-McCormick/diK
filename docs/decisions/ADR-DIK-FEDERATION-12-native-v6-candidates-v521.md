@@ -1,0 +1,3 @@
+# ADR 12 — V5.21 native V6 migration candidates
+
+The V6-to-V11 native bridge maps an exact namespace-scoped native identity or assertion occurrence to a provisional KQ/KP/KA/KS. No identity merging by term; no Wikidata acceptance. Original bytes and locators retained. Separate active and candidate SQL tables and lexical review semantics: only KQ/KP require labels; KA/KS are not deleted. Candidate technical conformance is not editorial approval. The 14-language target remains; native data only supply French and English, without guessed translations. Local canon and public surfaces are unchanged.
