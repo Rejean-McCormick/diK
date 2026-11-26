@@ -1,0 +1,3 @@
+# ADR-DIK-FEDERATION-11 — Verified lexical source, preserved identity authority
+
+Accepted: V5.20 may append official-source labels for an existing accepted exactMatch in its owning local namespace, only for previously absent direct locale cells and graph KQ/KP. A fresh source response with exact Q/P, revision and language is not an independent validation of the semantic match. Historical consensus and native V6 exact reference observations are private evidence, never a new KQ/KP mapping. Missing profiles require migration and qualification. No publication authority flows from lexical enrichment.
