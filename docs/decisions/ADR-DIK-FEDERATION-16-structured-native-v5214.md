@@ -1,0 +1,3 @@
+# ADR-DIK-FEDERATION-16 — Structured native companion
+
+Status: experimental proposal, not adopted V11 evolution. Keep native structured values and epistemic records as exact source-bound packets. `scripts/read_structured_v5214.py --framework <Framework> --generation <generation> --slug <slug> --occurrence <sha256:...> --report-sha256 <trusted report hash>` validates the report anchor, packet digest, sources and occurrence index, then emits complete native assertion with a no-authority marker. No change to existing diK query routes. No reinterpretation of language, identities, sets or evidence. Reader hash anchors are integrity evidence, not signatures or authority.

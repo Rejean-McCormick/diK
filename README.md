@@ -7,7 +7,7 @@
 
 **diK** is an offline-first Python toolkit for managing multilingual Kristal dictionaries, auditing language coverage, exploring semantic concepts, and reviewing external Wikidata mappings without changing canonical semantic identities.
 
-> **Current code snapshot: `1.0.0-alpha.12` (V5.4), experimental software, not a certified 1.0 release.**
+> **Historical V5.4 checkpoint: `1.0.0-alpha.12`, experimental software, not a certified 1.0 release.** The dated note below reports `pyproject.toml` version `1.0.0a16` for the 24 November 2026 snapshot. Verify the active local package before asserting its current version. The Framework pin and historical evidence are unchanged.
 > This repository combines the established v0.3 functionality with candidate 1.0 modules and the [diK 1.0 candidate specification](spec/diK-1.0/START_HERE.md). It targets **Kristal Framework `11.0.0-draft.3`**. See [Implementation Status](IMPLEMENTATION_STATUS.md) for unfinished work and limitations.
 
 ## Core principles

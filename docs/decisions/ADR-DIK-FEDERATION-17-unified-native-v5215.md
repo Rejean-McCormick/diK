@@ -1,0 +1,3 @@
+# ADR-DIK-FEDERATION-17 — Explicit private reader
+
+Adopt an experimental opt-in read interface over frozen private generations without modifying diK production resolution. Active metadata, candidate projections, structured occurrences, native artifacts and native records retain separate scoped keys and statuses. No new authority granted; no implicit fallback across layers. Preserve source hashes and native epistemic fields. The CLI `scripts/read_unified_v5215.py` requires explicit framework path, generation path, trusted report digest and read mode. This is not production activation or publication authorization.

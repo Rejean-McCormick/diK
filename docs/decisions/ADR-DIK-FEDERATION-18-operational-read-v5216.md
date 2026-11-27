@@ -1,0 +1,3 @@
+# ADR-DIK-FEDERATION-18 — explicit private operational read
+
+Use `scripts/read_operational_v5216.py` with Framework directory, generation and trusted report SHA. Default `--purpose active-only`; commands `active-graph <namespace>`, `active-assertion <namespace> <KA>`, `active <namespace> <id>`. Nonactive commands require `--purpose private-review` before the subcommand. Reuse V5.21.5 native envelopes without reclassification. Never use the result as an automatic truth/authority signal or a publication authorization. Snapshot read only; production application routes and actual activation remain unchanged. Preserve all six ancestor generations.
