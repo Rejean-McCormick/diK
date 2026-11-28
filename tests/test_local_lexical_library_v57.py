@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -17,7 +18,7 @@ def seed(root: Path, *, malformed=False):
     directory=root/ROOT
     directory.mkdir(parents=True)
     database=directory/'lexical.sqlite3'
-    with sqlite3.connect(database) as db:
+    with closing(sqlite3.connect(database)) as db, db:
         db.executescript('''
             CREATE TABLE source_files(
               id INTEGER PRIMARY KEY,relative_path TEXT NOT NULL,kind TEXT,edition TEXT,
@@ -128,7 +129,7 @@ class TestLocalLexicalLibrary(unittest.TestCase):
     def test_source_change_refused(self):
         build(encyk_root=self.root,output_dir=self.dest,languages='fr',batch_size=10,
               max_rows_per_language=1,min_free_gib=0)
-        with sqlite3.connect(self.source) as db:
+        with closing(sqlite3.connect(self.source)) as db, db:
             db.execute("UPDATE entries SET lemma='chien' WHERE id=1")
         with self.assertRaisesRegex(ValueError,'incompatible'):
             build(encyk_root=self.root,output_dir=self.dest,languages='fr',batch_size=10,min_free_gib=0)
@@ -147,13 +148,13 @@ class TestLocalLexicalLibrary(unittest.TestCase):
             build(encyk_root=self.root,output_dir=foreign,min_free_gib=0)
 
     def test_stat_missing_blocks_incomplete_false_success(self):
-        with sqlite3.connect(self.source) as db:
+        with closing(sqlite3.connect(self.source)) as db, db:
             db.execute("DELETE FROM language_stats WHERE language_code='fr'")
         with self.assertRaisesRegex(ValueError,'language_stats manquant'):
             plan(encyk_root=self.root)
 
     def test_wrong_version_or_symlink_refused(self):
-        with sqlite3.connect(self.source) as db:
+        with closing(sqlite3.connect(self.source)) as db, db:
             db.execute('DROP INDEX idx_entries_language_lemma')
         with self.assertRaisesRegex(ValueError,'Index EncyK'):
             plan(encyk_root=self.root)

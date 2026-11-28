@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -23,7 +24,7 @@ class TestV58(unittest.TestCase):
         idx=self.root/'30_working/lexical/harvester/index-v1'
         idx.mkdir(parents=True)
         self.index=idx/'lexical.sqlite3'
-        with sqlite3.connect(self.index) as db:
+        with closing(sqlite3.connect(self.index)) as db, db:
             db.executescript('''
                 CREATE TABLE source_files(id INTEGER PRIMARY KEY,relative_path TEXT,kind TEXT,edition TEXT,
                     status TEXT,source_sha256_verified INTEGER,size_bytes INTEGER,mtime_ns INTEGER,
@@ -57,7 +58,7 @@ class TestV58(unittest.TestCase):
         self.recdb=rec/'reconciliation.sqlite3'
         self.enrdb=enr/'enrichment.sqlite3'
         cid=_candidate_id_real('fr','chat')
-        with sqlite3.connect(self.recdb) as db:
+        with closing(sqlite3.connect(self.recdb)) as db, db:
             db.executescript('''
                 CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT);
                 CREATE TABLE completed_languages(language TEXT PRIMARY KEY,cross_family_keys INTEGER);
@@ -67,7 +68,7 @@ class TestV58(unittest.TestCase):
                      ('profile','encyklopedia.dik-lex1-candidate-reconciliation/0.5')])
             db.execute('INSERT INTO completed_languages VALUES(?,?)',('fr',1))
             db.execute('INSERT INTO candidates VALUES(?,?,?,?)',(cid,'fr','chat','{}'))
-        with sqlite3.connect(self.enrdb) as db:
+        with closing(sqlite3.connect(self.enrdb)) as db, db:
             db.executescript('''
                 CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT);
                 CREATE TABLE staged_languages(language TEXT PRIMARY KEY,candidate_count INTEGER,anchors_added INTEGER);
@@ -187,7 +188,7 @@ class TestV58(unittest.TestCase):
 
     def test_sense_payload_wrong_source_family_refused(self):
         bind(encyk_root=self.root,collection_dir=self.collection)
-        with sqlite3.connect(self.enrdb) as db:
+        with closing(sqlite3.connect(self.enrdb)) as db, db:
             payload=json.loads(db.execute('SELECT payload_json FROM evidence WHERE source_line=42').fetchone()[0])
             payload['source_relative_path']='malicious/other-source.gz'
             db.execute('UPDATE evidence SET payload_json=? WHERE source_line=42',(json.dumps(payload),))
@@ -202,7 +203,7 @@ class TestV58(unittest.TestCase):
         self.assertFalse((self.collection/'semantic-v58/fr.json').exists())
 
     def test_review_queue_counts_must_match(self):
-        with sqlite3.connect(self.enrdb) as db:
+        with closing(sqlite3.connect(self.enrdb)) as db, db:
             db.execute('UPDATE staged_languages SET candidate_count=2 WHERE language=?',('fr',))
         with self.assertRaisesRegex(ValueError,'nombre de candidats'):
             plan(encyk_root=self.root,collection_dir=self.collection)

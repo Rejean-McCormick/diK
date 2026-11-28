@@ -759,7 +759,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         args = parser.parse_args(argv)
         result = run(args)
-        if getattr(args, 'output', None) and args.area not in ('coverage','sources','projection','index','legacy','portfolio','curate','sync') and not (args.area=='dictionaries' and args.command=='conflicts'):
+        if getattr(args, 'output', None) and args.area not in ('coverage','sources','projection','index','legacy','portfolio','curate','sync','wikidata') and not (args.area=='dictionaries' and args.command=='conflicts'):
             write_new(args.output, serialize_json(result))
         print(serialize_json(result), end='')
         return 0

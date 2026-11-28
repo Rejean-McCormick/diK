@@ -127,6 +127,24 @@ class BasicFixture(unittest.TestCase):
                     crosswalk=self.project.crosswalk, registry=self.project.registry,
                     namespace='example.org/kristal-demo', snapshot='test-snap', locales=['fr'], output=output)
 
+    def test_cli_wikidata_import_reports_success_after_creating_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / 'snapshot'
+            args = ['wikidata', 'import-local', '--dump', str(FIX/'wikidata-small.sample.jsonl'),
+                    '--crosswalk', str(self.project.crosswalk), '--registry', str(self.project.registry),
+                    '--namespace', 'example.org/kristal-demo', '--snapshot', 'cli-snap',
+                    '--locales', 'fr,en', '--output', str(output)]
+            stdout = io.StringIO()
+            with contextlib.redirect_stdout(stdout):
+                self.assertEqual(main(args), 0)
+            result = json.loads(stdout.getvalue())
+            self.assertEqual(Path(result['catalog']), output/'catalog.json')
+            self.assertEqual(result['labels_by_locale'], {'fr': 1, 'en': 1})
+            before = (output/'catalog.json').read_bytes()
+            with contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(main(args), 2)
+            self.assertEqual((output/'catalog.json').read_bytes(), before)
+
     def test_import_rejects_wrong_namespace_and_does_not_publish(self):
         with tempfile.TemporaryDirectory() as tmp:
             out=Path(tmp)/'output'
